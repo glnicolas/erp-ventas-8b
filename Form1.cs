@@ -16,5 +16,10 @@ namespace ERP_ventas
         {
             InitializeComponent();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
