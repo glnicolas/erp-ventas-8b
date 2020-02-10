@@ -36,5 +36,11 @@ namespace ERP_ventas
         {
 
         }
+
+        private void MenuPrincipal_Click(object sender, EventArgs e)
+        {
+            Ventas venta = new Ventas();
+            venta.ShowDialog();
+        }
     }
 }
