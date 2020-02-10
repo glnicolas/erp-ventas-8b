@@ -14,6 +14,8 @@ namespace ERP_ventas
     {
         public Form1()
         {
+            ClienteIndividual cl = new ClienteIndividual();
+            cl.Show();
             InitializeComponent();
         }
 
