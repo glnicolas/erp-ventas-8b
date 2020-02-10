@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Datos\ClienteIndividualDAO.cs" />
+    <Compile Include="Formularios\Envios\UnidadesTransporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Envios\UnidadesTransporte.Designer.cs">
+      <DependentUpon>UnidadesTransporte.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,7 +121,6 @@
     <None Include="Resources\editar2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Formularios\Envios\" />
     <Folder Include="Formularios\Ofertas\" />
     <Folder Include="Formularios\Ventas\" />
   </ItemGroup>
