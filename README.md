@@ -1,1 +1,1 @@
-# Creación del módulo ventas para ERP de zapatería.
+# Módulo ventas del ERP zapatería.
