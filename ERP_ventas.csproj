@@ -46,25 +46,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Datos\ClienteIndividualDAO.cs" />
+    <Compile Include="Formularios\MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Formularios\MenuPrincipal.Designer.cs">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClienteIndividual.cs">
+    <Compile Include="Formularios\Clientes\ClienteIndividual.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ClienteIndividual.Designer.cs">
+    <Compile Include="Formularios\Clientes\ClienteIndividual.Designer.cs">
       <DependentUpon>ClienteIndividual.cs</DependentUpon>
     </Compile>
+    <Compile Include="mensajes.cs" />
+    <Compile Include="Modelo\ClienteIndividual.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ClienteIndividual.resx">
+    <Compile Include="Utilidades.cs" />
+    <EmbeddedResource Include="Formularios\Clientes\ClienteIndividual.resx">
       <DependentUpon>ClienteIndividual.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\MenuPrincipal.resx">
+      <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -109,6 +113,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\editar2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Formularios\Envios\" />
+    <Folder Include="Formularios\Ofertas\" />
+    <Folder Include="Formularios\Ventas\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

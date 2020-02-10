@@ -1,4 +1,4 @@
-﻿namespace ERP_ventas
+﻿namespace ERP_ventas.Clientes
 {
     partial class ClienteIndividual
     {
@@ -49,10 +49,10 @@
             this.txtID = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientes)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -62,6 +62,8 @@
             // 
             // dataGridViewClientes
             // 
+            this.dataGridViewClientes.AllowUserToAddRows = false;
+            this.dataGridViewClientes.AllowUserToDeleteRows = false;
             this.dataGridViewClientes.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.dataGridViewClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -73,6 +75,7 @@
             this.dataGridViewClientes.Enabled = false;
             this.dataGridViewClientes.Location = new System.Drawing.Point(206, 80);
             this.dataGridViewClientes.Name = "dataGridViewClientes";
+            this.dataGridViewClientes.ReadOnly = true;
             this.dataGridViewClientes.Size = new System.Drawing.Size(790, 597);
             this.dataGridViewClientes.TabIndex = 0;
             this.dataGridViewClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -81,26 +84,35 @@
             // 
             this.idCliente.HeaderText = "id";
             this.idCliente.Name = "idCliente";
+            this.idCliente.ReadOnly = true;
             // 
             // nombre
             // 
+            this.nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.nombre.HeaderText = "Nombre";
             this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
             // 
             // apellido
             // 
+            this.apellido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.apellido.HeaderText = "A. Paterno";
             this.apellido.Name = "apellido";
+            this.apellido.ReadOnly = true;
             // 
             // amaterno
             // 
+            this.amaterno.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.amaterno.HeaderText = "A. Materno";
             this.amaterno.Name = "amaterno";
+            this.amaterno.ReadOnly = true;
             // 
             // sexo
             // 
+            this.sexo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.sexo.HeaderText = "Sexo";
             this.sexo.Name = "sexo";
+            this.sexo.ReadOnly = true;
             // 
             // panel1
             // 
@@ -179,6 +191,7 @@
             // rdtMasculino
             // 
             this.rdtMasculino.AutoSize = true;
+            this.rdtMasculino.Checked = true;
             this.rdtMasculino.Location = new System.Drawing.Point(6, 19);
             this.rdtMasculino.Name = "rdtMasculino";
             this.rdtMasculino.Size = new System.Drawing.Size(73, 17);
@@ -254,14 +267,7 @@
             this.txtNombre.Size = new System.Drawing.Size(161, 20);
             this.txtNombre.TabIndex = 1;
             this.txtNombre.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // panel3
-            // 
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 683);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1008, 46);
-            this.panel3.TabIndex = 1;
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // btnEliminar
             // 
@@ -300,6 +306,14 @@
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
+            // panel3
+            // 
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 683);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1008, 46);
+            this.panel3.TabIndex = 1;
+            // 
             // ClienteIndividual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -308,7 +322,9 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Name = "ClienteIndividual";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Clientes Individual";
+            this.Load += new System.EventHandler(this.ClienteIndividual_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientes)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -324,15 +340,9 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridViewClientes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idCliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn apellido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn amaterno;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sexo;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.TextBox txtNombre;
@@ -348,5 +358,11 @@
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idCliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn apellido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn amaterno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sexo;
+        private System.Windows.Forms.Panel panel3;
     }
 }
