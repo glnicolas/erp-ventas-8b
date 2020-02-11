@@ -73,6 +73,9 @@
     <EmbeddedResource Include="Formularios\Clientes\ClienteIndividual.resx">
       <DependentUpon>ClienteIndividual.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Envios\UnidadesTransporte.resx">
+      <DependentUpon>UnidadesTransporte.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>

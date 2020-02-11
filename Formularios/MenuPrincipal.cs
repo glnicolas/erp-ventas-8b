@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ERP_ventas.Clientes;
+using ERP_ventas.Formularios.Envios;
 
 namespace ERP_ventas
 {
@@ -40,6 +41,12 @@ namespace ERP_ventas
         private void MenuPrincipal_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnTransporte_Click(object sender, EventArgs e)
+        {
+            UnidadesTransporte UnTra = new UnidadesTransporte();
+            UnTra.ShowDialog();
         }
     }
 }
