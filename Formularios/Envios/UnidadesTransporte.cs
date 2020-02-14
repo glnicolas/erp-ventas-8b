@@ -38,13 +38,5 @@ namespace ERP_ventas.Formularios.Envios
 
         }
 
-        private bool ValidarCampos()
-        {
-            if (!string.IsNullOrWhiteSpace(PlacasTextBox.Text))
-            {
-
-            }
-            return false;
-        }
     }
 }
