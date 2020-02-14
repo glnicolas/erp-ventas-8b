@@ -53,6 +53,12 @@
     <Compile Include="Datos\ClienteIndividualDAO.cs" />
     <Compile Include="Datos\EmpleadoDAO.cs" />
     <Compile Include="Datos\UsuarioDAO.cs" />
+    <Compile Include="Formularios\Envios\AddTransporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Envios\AddTransporte.Designer.cs">
+      <DependentUpon>AddTransporte.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Envios\UnidadesTransporte.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,9 @@
     <Compile Include="Utilidades.cs" />
     <EmbeddedResource Include="Formularios\Clientes\ClienteIndividualForm.resx">
       <DependentUpon>ClienteIndividualForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Envios\AddTransporte.resx">
+      <DependentUpon>AddTransporte.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Envios\UnidadesTransporte.resx">
       <DependentUpon>UnidadesTransporte.cs</DependentUpon>
