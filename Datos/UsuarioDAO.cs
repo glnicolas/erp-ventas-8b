@@ -13,7 +13,7 @@ namespace ERP_ventas.Datos
         public Usuario iniciarSesion(string user, string pass)
         {
             
-            SqlConnection conexion = new SqlConnection("Data Source=DESKTOP-QLD6ULH;Initial Catalog=ERP2020;Persist Security Info=True;User ID=sa; Password=clan.3cp");//Properties.Settings.Default.ConBD);
+            SqlConnection conexion = new SqlConnection("Data Source=35.232.179.222;Initial Catalog=ERP2020;Persist Security Info=True;User ID=sqlserver; Password=Hola.123_");//Properties.Settings.Default.ConBD);
             conexion.Open();
 
             SqlParameter param_usuario = new SqlParameter("@usuario", user);
