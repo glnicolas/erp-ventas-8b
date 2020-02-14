@@ -1,6 +1,6 @@
 ﻿namespace ERP_ventas.Clientes
 {
-    partial class ClienteIndividual
+    partial class ClienteIndividualForm
     {
         /// <summary>
         /// Required designer variable.

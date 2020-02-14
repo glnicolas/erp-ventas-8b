@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace ERP_ventas.Clientes
 {
-    public partial class ClienteIndividual : Form
+    public partial class ClienteIndividualForm : Form
     {
-        public ClienteIndividual()
+        public ClienteIndividualForm()
         {
             InitializeComponent();
         }

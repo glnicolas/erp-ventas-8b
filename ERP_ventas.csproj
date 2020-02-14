@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Newtonsoft.Json\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,11 +51,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Datos\ClienteIndividualDAO.cs" />
+    <Compile Include="Datos\EmpleadoDAO.cs" />
+    <Compile Include="Datos\UsuarioDAO.cs" />
     <Compile Include="Formularios\Envios\UnidadesTransporte.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\Envios\UnidadesTransporte.Designer.cs">
       <DependentUpon>UnidadesTransporte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\MenuPrincipal.cs">
       <SubType>Form</SubType>
@@ -59,22 +71,27 @@
     <Compile Include="Formularios\MenuPrincipal.Designer.cs">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Clientes\ClienteIndividual.cs">
+    <Compile Include="Formularios\Clientes\ClienteIndividualForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Clientes\ClienteIndividual.Designer.cs">
-      <DependentUpon>ClienteIndividual.cs</DependentUpon>
+    <Compile Include="Formularios\Clientes\ClienteIndividualForm.Designer.cs">
+      <DependentUpon>ClienteIndividualForm.cs</DependentUpon>
     </Compile>
     <Compile Include="mensajes.cs" />
     <Compile Include="Modelo\ClienteIndividual.cs" />
+    <Compile Include="Modelo\Empleado.cs" />
+    <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilidades.cs" />
-    <EmbeddedResource Include="Formularios\Clientes\ClienteIndividual.resx">
-      <DependentUpon>ClienteIndividual.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\Clientes\ClienteIndividualForm.resx">
+      <DependentUpon>ClienteIndividualForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Envios\UnidadesTransporte.resx">
       <DependentUpon>UnidadesTransporte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
@@ -141,6 +158,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Sector 5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_sign_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minus_math_32px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
