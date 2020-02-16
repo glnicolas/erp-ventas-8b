@@ -12,11 +12,8 @@ using ERP_ventas.Formularios.Envios;
 using ERP_ventas.Modelo;
 using System.Data.SqlClient;
 using System.IO;
-<<<<<<< HEAD
-using ERP_ventas.Formularios;
-=======
 using ERP_ventas.Datos;
->>>>>>> 8adf23837b3115010db7b44b8cc563d396178c1b
+using ERP_ventas.Formularios;
 
 namespace ERP_ventas
 {
@@ -43,32 +40,6 @@ namespace ERP_ventas
 
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-            Usuario user = JsonConvert.DeserializeObject<Usuario>(Properties.Settings.Default.usuarioJSON);
-            lblUsuario.Text = "Bienvenido, "+user.Nombre;
-            prueba();
-        }
-
-        private void prueba()
-        {
-            SqlConnection conexion = new SqlConnection("Data Source=localhost;Initial Catalog=ERP2020;Persist Security Info=True;User ID=sa; Password=Hola.123_");//Properties.Settings.Default.ConBD);
-            conexion.Open();
-
-            SqlCommand comando = new SqlCommand("select fotografia from Empleados where idEmpleado=1");
-            comando.Connection = conexion;
-
-            var reader = comando.ExecuteReader();
-            byte[] imagebytes;
-            Bitmap bitmap = null;
-            while (reader.Read())
-            {
-                imagebytes = (byte[])reader["fotografia"];
-                bitmap = new Bitmap(new MemoryStream(imagebytes));
-            }
-=======
-            Console.WriteLine(Properties.Settings.Default.IDUsuario);
->>>>>>> 8adf23837b3115010db7b44b8cc563d396178c1b
-
             Usuario user = new UsuarioDAO().obtenerUsuario(Properties.Settings.Default.IDUsuario);
             lblUsuario.Text = "Bienvenido, " + user.Nombre;
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
