@@ -12,8 +12,13 @@ using ERP_ventas.Formularios.Envios;
 using ERP_ventas.Modelo;
 using System.Data.SqlClient;
 using System.IO;
+<<<<<<< HEAD
 using ERP_ventas.Formularios;
 using ERP_ventas.Datos;
+=======
+using ERP_ventas.Datos;
+using ERP_ventas.Formularios;
+>>>>>>> 9e21f93bd0bed8dde84df609af00a6b177dc3d7d
 
 namespace ERP_ventas
 {
@@ -40,6 +45,7 @@ namespace ERP_ventas
 
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             Usuario user = JsonConvert.DeserializeObject<Usuario>(Properties.Settings.Default.usuarioJSON);
             lblUsuario.Text = "Bienvenido, "+user.Nombre;
             prueba();
@@ -64,6 +70,8 @@ namespace ERP_ventas
 
             Console.WriteLine(Properties.Settings.Default.IDUsuario);
 
+=======
+>>>>>>> 9e21f93bd0bed8dde84df609af00a6b177dc3d7d
             Usuario user = new UsuarioDAO().obtenerUsuario(Properties.Settings.Default.IDUsuario);
             lblUsuario.Text = "Bienvenido, " + user.Nombre;
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
