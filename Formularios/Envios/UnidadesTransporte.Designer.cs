@@ -39,8 +39,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.btnNuevo = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -55,9 +53,9 @@
             this.Modelo,
             this.Anio,
             this.Capacidad});
-            this.dataGridView1.Location = new System.Drawing.Point(206, 100);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 100);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(650, 379);
+            this.dataGridView1.Size = new System.Drawing.Size(844, 301);
             this.dataGridView1.TabIndex = 13;
             // 
             // ID
@@ -126,48 +124,20 @@
             // 
             this.btnNuevo.Image = global::ERP_ventas.Properties.Resources.plus;
             this.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevo.Location = new System.Drawing.Point(13, 397);
+            this.btnNuevo.Location = new System.Drawing.Point(239, 423);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(161, 38);
+            this.btnNuevo.Size = new System.Drawing.Size(372, 38);
             this.btnNuevo.TabIndex = 16;
             this.btnNuevo.Tag = "Agregar nuevo registro";
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Image = global::ERP_ventas.Properties.Resources.eliminar2;
-            this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminar.Location = new System.Drawing.Point(97, 441);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(77, 38);
-            this.btnEliminar.TabIndex = 17;
-            this.btnEliminar.Text = "Eliminar  ";
-            this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Image = global::ERP_ventas.Properties.Resources.editar2;
-            this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditar.Location = new System.Drawing.Point(13, 441);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(77, 38);
-            this.btnEditar.TabIndex = 18;
-            this.btnEditar.Text = "Editar  ";
-            this.btnEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
-            // 
             // UnidadesTransporte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(856, 494);
-            this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label7);
@@ -194,7 +164,5 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnNuevo;
-        private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Button btnEditar;
     }
 }
