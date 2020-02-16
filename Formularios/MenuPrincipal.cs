@@ -12,6 +12,7 @@ using ERP_ventas.Formularios.Envios;
 using ERP_ventas.Modelo;
 using System.Data.SqlClient;
 using System.IO;
+using ERP_ventas.Datos;
 
 namespace ERP_ventas
 {
@@ -38,31 +39,12 @@ namespace ERP_ventas
 
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
-            Usuario user = JsonConvert.DeserializeObject<Usuario>(Properties.Settings.Default.usuarioJSON);
-            lblUsuario.Text = "Bienvenido, "+user.Nombre;
-            prueba();
-        }
+            Console.WriteLine(Properties.Settings.Default.IDUsuario);
 
-        private void prueba()
-        {
-            SqlConnection conexion = new SqlConnection("Data Source=DESKTOP-QLD6ULH;Initial Catalog=ERP2020;Persist Security Info=True;User ID=sa; Password=clan.3cp");//Properties.Settings.Default.ConBD);
-            conexion.Open();
-
-            SqlCommand comando = new SqlCommand("select fotografia from Empleados where idEmpleado=1");
-            comando.Connection = conexion;
-
-            var reader = comando.ExecuteReader();
-            byte[] imagebytes;
-            Bitmap bitmap = null;
-            while (reader.Read())
-            {
-                imagebytes = (byte[])reader["fotografia"];
-                bitmap = new Bitmap(new MemoryStream(imagebytes));
-            }
-
+            Usuario user = new UsuarioDAO().obtenerUsuario(Properties.Settings.Default.IDUsuario);
+            lblUsuario.Text = "Bienvenido, " + user.Nombre;
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            if (bitmap != null)
-                pictureBox1.Image = bitmap;
+            pictureBox1.Image = user.Empleado.Fotografia;
         }
 
         private void MenuPrincipal_Click(object sender, EventArgs e)
@@ -78,7 +60,6 @@ namespace ERP_ventas
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //lblFechaHora.Text = DateTime.Today.TimeOfDay.ToString();
             lblFechaHora.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
         }
     }

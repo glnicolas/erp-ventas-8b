@@ -173,7 +173,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.dataGridView1);
             this.Name = "UnidadesTransporte";
-            this.Text = "UnidadesTransporte";
+            this.Text = "Unidades de Transporte";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

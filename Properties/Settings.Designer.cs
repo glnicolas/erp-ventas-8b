@@ -25,13 +25,26 @@ namespace ERP_ventas.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string usuarioJSON {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int IDUsuario {
             get {
-                return ((string)(this["usuarioJSON"]));
+                return ((int)(this["IDUsuario"]));
             }
             set {
-                this["usuarioJSON"] = value;
+                this["IDUsuario"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=ERP2020;Persist Security Info=True;User ID=" +
+            "sa; Password=Hola.123_")]
+        public string cadenaConexion {
+            get {
+                return ((string)(this["cadenaConexion"]));
+            }
+            set {
+                this["cadenaConexion"] = value;
             }
         }
     }

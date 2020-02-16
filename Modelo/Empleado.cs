@@ -13,18 +13,33 @@ namespace ERP_ventas.Modelo
         public string Nombre { get; set; }
         public string Apaterno { get; set; }
         public string Amaterno { get; set; }
-        public Image Estatus { get; set; }
-        public string Tipo { get; set; }
-        public DateTime FechaRegistro { get; set; }
+        public System.Drawing.Bitmap Fotografia { get; set; }
+        public int idDepartamento { get; set; }
+        public int idPuesto { get; set; }
 
-        public Empleado(int id, string nombre, char estatus, string tipo, DateTime fecharegistro, int idempleado)
+        /* char Sexo { get; set; }
+        DateTime FechaContratacion { get; set; }
+        DateTime FechaNacimiento { get; set; }
+        decimal Salario { get; set; }
+        string Nss { get; set; }
+        string EstadoCivil { get; set; }
+        int DiasVacaciones { get; set; }
+        int DiasPermiso { get; set; } 
+        string Direccion { get; set; }
+        string Colonia { get; set; }
+        string CodigoPostal { get; set; }
+        string Escolaridad { get; set; }
+        float PorcentajeComision { get; set; } 
+        int idCiudad { get; set; }
+        */
+
+        public Empleado(int id, string nombre, string apaterno, string amaterno, byte[] foto_bytes)
         {
             ID = id;
             Nombre = nombre;
-            //Estatus = estatus;
-            //Tipo = tipo;
-            //FechaRegistro = fecharegistro;
-            //IDEmpleado = idempleado;
+            Apaterno= apaterno;
+            Amaterno = amaterno;
+            Fotografia = new Bitmap(new System.IO.MemoryStream(foto_bytes));
         }
     }
 }

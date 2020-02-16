@@ -27,9 +27,9 @@ namespace ERP_ventas.Formularios
             Usuario user = usuarioDAO.iniciarSesion(usuariotextBox.Text, passtextBox.Text);
            if (user != null)
             {
-                Properties.Settings.Default.usuarioJSON = JsonConvert.SerializeObject(user);
+                Properties.Settings.Default.IDUsuario = user.ID;
                 Properties.Settings.Default.Save();
-                Console.WriteLine(Properties.Settings.Default.usuarioJSON);
+                Console.WriteLine(Properties.Settings.Default.IDUsuario);
                 MenuPrincipal menu = new MenuPrincipal();
                 menu.Show();
                 this.Close();
