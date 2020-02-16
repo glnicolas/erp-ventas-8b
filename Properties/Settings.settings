@@ -2,8 +2,11 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ERP_ventas.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="usuarioJSON" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="IDUsuario" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="cadenaConexion" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Data Source=localhost;Initial Catalog=ERP2020;Persist Security Info=True;User ID=sa; Password=Hola.123_</Value>
     </Setting>
   </Settings>
 </SettingsFile>

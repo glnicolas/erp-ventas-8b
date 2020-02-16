@@ -14,9 +14,9 @@ namespace ERP_ventas.Modelo
         public char Estatus { get; set; }
         public string Tipo { get; set; }
         public DateTime FechaRegistro { get; set; }
-        public int IDEmpleado { get; set; } //Reemplazar con un objeto de tipo Empleado
+        public Empleado Empleado { get; set; } //Reemplazar con un objeto de tipo Empleado
 
-        public Usuario(int id, string nombre, string contra, char estatus, string tipo, DateTime fecharegistro, int idempleado)
+        public Usuario(int id, string nombre, string contra, char estatus, string tipo, DateTime fecharegistro, Empleado empleado)
         {
             ID = id;
             Nombre = nombre;
@@ -24,7 +24,8 @@ namespace ERP_ventas.Modelo
             Estatus = estatus;
             Tipo = tipo;
             FechaRegistro = fecharegistro;
-            IDEmpleado = idempleado;
+            Empleado = empleado;
         }
+       
     }
 }
