@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modelo\Cliente.cs" />
     <Compile Include="Datos\ClienteIndividualDAO.cs" />
     <Compile Include="Datos\EmpleadoDAO.cs" />
     <Compile Include="Datos\UsuarioDAO.cs" />
@@ -102,6 +103,7 @@
       <DependentUpon>SubMClientes.cs</DependentUpon>
     </Compile>
     <Compile Include="mensajes.cs" />
+    <Compile Include="Datos\ClienteDAO.cs" />
     <Compile Include="Modelo\ClienteIndividual.cs" />
     <Compile Include="Modelo\Empleado.cs" />
     <Compile Include="Modelo\Usuario.cs" />

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ERP_ventas.Modelo
+namespace ERP_ventas.Datos
 {
     class ClienteIndividual
     {
@@ -33,5 +33,10 @@ namespace ERP_ventas.Modelo
                 Sexo = "Femenino";
         }
 
+        override
+        public string ToString()
+        {
+            return "nombre: " + Nombre + "\nApellido Paterno: " + Apaterno + "\nApellido Materno: " + Amaterno + "\nSexo: " + Sexo + "\nSexo_char: " + Sexo_char;
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ERP_ventas.Datos;
+using ERP_ventas.Modelo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,9 +15,12 @@ namespace ERP_ventas.Clientes
 {
     public partial class ClienteIndividualForm : Form
     {
+
+        ClienteDAO clienteDAO;
         public ClienteIndividualForm()
         {
             InitializeComponent();
+            clienteDAO = new ClienteDAO();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -30,103 +35,48 @@ namespace ERP_ventas.Clientes
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            ///*Verificación de ingresar datos*/
-           // string nombre, aPaterno, aMaterno, sexo;
-            //    mensajeError;
-
-            //nombre = txtNombre.Text;
-            //aPaterno = txtAPaterno.Text;
-            //aMaterno = txtAMaterno.Text;
-            //mensajeError = "Errores: \n";
-            ///*
-            // * Se utilizan expresiones regulares para que todos los campos sean solo letras.
-
-            // En el caso del nombre existe la posibilidad de tener 2 nombres por lo que se permite el espacio
-            // */
-            //bool soloLetras = Regex.IsMatch(nombre, @"^[a-zA-Z][a-z A-Z]+$");
-            //soloLetras = soloLetras && Regex.IsMatch(aPaterno, @"^[a-zA-Z]+$");
-            //soloLetras = soloLetras && Regex.IsMatch(aMaterno, @"^[a-zA-Z]+$");
-
-            //if (soloLetras)
-            //{
-            //    MessageBox.Show("Todo bien", "titulo");
-            //}
-            //else
-            //{
-            //    mensajeError = "-Solo se permiten el uso de letras \n";
-            //    if (Regex.IsMatch(nombre, @"^[a-z A-Z][a-zA-Z]+$"))
-            //    { //¿Comienza con espacio?
-            //        mensajeError += "-No se puede comenzar con espacio \n";
-            //    }
-            //}
-
-            ////Verificación de campo sexo
-            //if (rdtMasculino.Checked)
-            //{
-            //    sexo = "M";
-            //}
-            //else if (rdtFemenino.Checked)
-            //{
-            //    sexo = "F";
-            //}
-            //else
-            //{
-            //    mensajeError += "Campo sexo no seleccionado \n";
-            //}
-
-            ////Mostrar errores
-            //MessageBox.Show(mensajeError, "Error al registrar");
-            if (validarCampos())
-            {
-                char sexo;
-                if (rdtMasculino.Checked)
-                    sexo = 'M';
-                else
-                    sexo = 'F';
-
-                Mensajes.Info("nombre: " + txtNombre.Text + " \napellidos: " + txtAPaterno.Text + " " + txtAMaterno.Text + "\nsexo: " + sexo);
-            }
 
         }
 
-        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Utilidades.soloLetras(e);
-        }
-
-        private bool validarCampos()
-        {
-            if (!string.IsNullOrWhiteSpace(txtNombre.Text))
-            {
-                if (!string.IsNullOrWhiteSpace(txtAPaterno.Text))
-                {
-                    if (!string.IsNullOrWhiteSpace(txtAMaterno.Text))
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        Mensajes.Info("Ingresa el apellido materno");
-                        return false;
-                    }
-                }
-                else
-                {
-                    Mensajes.Info("Ingresa el apellido paterno");
-                    return false;
-                }
-
-            }
-            else
-            {
-                Mensajes.Info("Ingresa el nombre(s)");
-                return false;
-            }
-        }
 
         private void ClienteIndividual_Load(object sender, EventArgs e)
         {
+            actualizarTabla();
+        }
 
+        private void actualizarTabla()
+        {
+            string sql_where = " where estatus=@estatus";
+            List<string> parametros = new List<string>(); 
+            List<object> valores = new List<object>();
+
+            parametros.Add("@estatus");
+            valores.Add('A');
+
+            llenarTabla(clienteDAO.ConsultaGeneral(sql_where, parametros, valores));
+        }
+
+        private void llenarTabla(List<Cliente> clientes)
+        {
+            foreach (Cliente cliente in clientes)
+            {
+                DataGridViewRow renglon = new DataGridViewRow();
+                renglon.CreateCells(dataGridViewClientes);
+
+                renglon.Cells[0].Value = cliente.ID;
+                renglon.Cells[1].Value = ((ClienteIndividual)cliente.InfoCliente).Nombre;
+                renglon.Cells[2].Value = ((ClienteIndividual)cliente.InfoCliente).Apaterno;
+                renglon.Cells[3].Value = ((ClienteIndividual)cliente.InfoCliente).Amaterno;
+                renglon.Cells[4].Value = ((ClienteIndividual)cliente.InfoCliente).Sexo;
+                renglon.Cells[5].Value = cliente.Direccion;
+                renglon.Cells[6].Value = cliente.CP;
+                renglon.Cells[7].Value = cliente.RFC;
+                renglon.Cells[8].Value = cliente.Telefono;
+                renglon.Cells[9].Value = cliente.Email;
+                renglon.Cells[10].Value = cliente.IDCiudad;
+
+                dataGridViewClientes.Rows.Add(renglon);
+            }
         }
     }
 }
