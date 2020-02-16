@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Datos\ClienteIndividualDAO.cs" />
+    <Compile Include="Datos\ClienteTiendaDAO.cs" />
     <Compile Include="Datos\EmpleadoDAO.cs" />
     <Compile Include="Datos\UsuarioDAO.cs" />
     <Compile Include="Formularios\Clientes\ClienteTienda.cs">
@@ -103,7 +104,9 @@
     </Compile>
     <Compile Include="mensajes.cs" />
     <Compile Include="Modelo\ClienteIndividual.cs" />
+    <Compile Include="Modelo\ClienteTienda.cs" />
     <Compile Include="Modelo\Empleado.cs" />
+    <Compile Include="Modelo\nombre.cs" />
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -12,11 +12,8 @@ using ERP_ventas.Formularios.Envios;
 using ERP_ventas.Modelo;
 using System.Data.SqlClient;
 using System.IO;
-<<<<<<< HEAD
 using ERP_ventas.Formularios;
-=======
 using ERP_ventas.Datos;
->>>>>>> 8adf23837b3115010db7b44b8cc563d396178c1b
 
 namespace ERP_ventas
 {
@@ -43,7 +40,6 @@ namespace ERP_ventas
 
         private void MenuPrincipal_Load(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             Usuario user = JsonConvert.DeserializeObject<Usuario>(Properties.Settings.Default.usuarioJSON);
             lblUsuario.Text = "Bienvenido, "+user.Nombre;
             prueba();
@@ -65,9 +61,8 @@ namespace ERP_ventas
                 imagebytes = (byte[])reader["fotografia"];
                 bitmap = new Bitmap(new MemoryStream(imagebytes));
             }
-=======
+
             Console.WriteLine(Properties.Settings.Default.IDUsuario);
->>>>>>> 8adf23837b3115010db7b44b8cc563d396178c1b
 
             Usuario user = new UsuarioDAO().obtenerUsuario(Properties.Settings.Default.IDUsuario);
             lblUsuario.Text = "Bienvenido, " + user.Nombre;
