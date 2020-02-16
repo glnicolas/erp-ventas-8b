@@ -73,7 +73,7 @@
             this.amaterno,
             this.sexo});
             this.dataGridViewClientes.Enabled = false;
-            this.dataGridViewClientes.Location = new System.Drawing.Point(206, 80);
+            this.dataGridViewClientes.Location = new System.Drawing.Point(201, 80);
             this.dataGridViewClientes.Name = "dataGridViewClientes";
             this.dataGridViewClientes.ReadOnly = true;
             this.dataGridViewClientes.Size = new System.Drawing.Size(790, 597);
@@ -314,14 +314,14 @@
             this.panel3.Size = new System.Drawing.Size(1008, 46);
             this.panel3.TabIndex = 1;
             // 
-            // ClienteIndividual
+            // ClienteIndividualForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
-            this.Name = "ClienteIndividual";
+            this.Name = "ClienteIndividualForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Clientes Individual";
             this.Load += new System.EventHandler(this.ClienteIndividual_Load);

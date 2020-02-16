@@ -53,6 +53,18 @@
     <Compile Include="Datos\ClienteIndividualDAO.cs" />
     <Compile Include="Datos\EmpleadoDAO.cs" />
     <Compile Include="Datos\UsuarioDAO.cs" />
+    <Compile Include="Formularios\Clientes\ClienteTienda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Clientes\ClienteTienda.Designer.cs">
+      <DependentUpon>ClienteTienda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Clientes\EditarClienteTienda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Clientes\EditarClienteTienda.Designer.cs">
+      <DependentUpon>EditarClienteTienda.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Envios\AddTransporte.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +95,12 @@
     <Compile Include="Formularios\Clientes\ClienteIndividualForm.Designer.cs">
       <DependentUpon>ClienteIndividualForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\SubMClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\SubMClientes.Designer.cs">
+      <DependentUpon>SubMClientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="mensajes.cs" />
     <Compile Include="Modelo\ClienteIndividual.cs" />
     <Compile Include="Modelo\Empleado.cs" />
@@ -92,6 +110,9 @@
     <Compile Include="Utilidades.cs" />
     <EmbeddedResource Include="Formularios\Clientes\ClienteIndividualForm.resx">
       <DependentUpon>ClienteIndividualForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Clientes\ClienteTienda.resx">
+      <DependentUpon>ClienteTienda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Envios\AddTransporte.resx">
       <DependentUpon>AddTransporte.cs</DependentUpon>
@@ -104,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\SubMClientes.resx">
+      <DependentUpon>SubMClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

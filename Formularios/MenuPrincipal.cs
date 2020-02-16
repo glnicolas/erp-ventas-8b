@@ -12,6 +12,7 @@ using ERP_ventas.Formularios.Envios;
 using ERP_ventas.Modelo;
 using System.Data.SqlClient;
 using System.IO;
+using ERP_ventas.Formularios;
 
 namespace ERP_ventas
 {
@@ -45,7 +46,7 @@ namespace ERP_ventas
 
         private void prueba()
         {
-            SqlConnection conexion = new SqlConnection("Data Source=DESKTOP-QLD6ULH;Initial Catalog=ERP2020;Persist Security Info=True;User ID=sa; Password=clan.3cp");//Properties.Settings.Default.ConBD);
+            SqlConnection conexion = new SqlConnection("Data Source=localhost;Initial Catalog=ERP2020;Persist Security Info=True;User ID=sa; Password=Hola.123_");//Properties.Settings.Default.ConBD);
             conexion.Open();
 
             SqlCommand comando = new SqlCommand("select fotografia from Empleados where idEmpleado=1");
@@ -80,6 +81,12 @@ namespace ERP_ventas
         {
             //lblFechaHora.Text = DateTime.Today.TimeOfDay.ToString();
             lblFechaHora.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+        }
+
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+            SubMClientes subClientes = new SubMClientes();
+            subClientes.ShowDialog();
         }
     }
 }
