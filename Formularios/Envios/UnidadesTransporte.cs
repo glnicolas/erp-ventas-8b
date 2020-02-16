@@ -12,30 +12,15 @@ namespace ERP_ventas.Formularios.Envios
 {
     public partial class UnidadesTransporte : Form
     {
-        Boolean ValPla, ValMar, ValMod, ValAn, ValCap;
         public UnidadesTransporte()
         {
             InitializeComponent();
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            
-        }
-
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-
+            AddTransporte AT = new AddTransporte();
+            AT.Show();
         }
 
     }

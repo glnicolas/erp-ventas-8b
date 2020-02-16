@@ -53,6 +53,7 @@
     <Compile Include="Modelo\Cliente.cs" />
     <Compile Include="Datos\ClienteIndividualDAO.cs" />
     <Compile Include="Datos\EmpleadoDAO.cs" />
+    <Compile Include="Datos\TransporteDAO.cs" />
     <Compile Include="Datos\UsuarioDAO.cs" />
     <Compile Include="Formularios\Clientes\ClienteTienda.cs">
       <SubType>Form</SubType>
@@ -106,6 +107,7 @@
     <Compile Include="Datos\ClienteDAO.cs" />
     <Compile Include="Modelo\ClienteIndividual.cs" />
     <Compile Include="Modelo\Empleado.cs" />
+    <Compile Include="Modelo\Transporte.cs" />
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
