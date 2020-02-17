@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ERP_ventas.Modelo
 {
-    class Transporte
+    public class Transporte
     {
         public int ID { get; set; }
         public string Placas { get; set; }
@@ -16,8 +16,7 @@ namespace ERP_ventas.Modelo
         public int Capacidad { get; set; }
         public char Estatus { get; set; }
 
-        public Transporte(int id, string placas, string marca, string modelo, int anio, int cap, char estatus)
-        {
+        public Transporte(int id, string placas, string marca, string modelo, int anio, int cap, char estatus) {
             ID = id;
             Placas = placas;
             Marca = marca;
