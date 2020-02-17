@@ -183,11 +183,10 @@ namespace ERP_ventas.Datos
                 {
                     string cadena_sql = "";
                     if (tipo == 0)
-                        cadena_sql = "select idUnidadTransporte from UnidadesTransporte where placas=@placas and " +
-                       "marca=@marca and anio=@anio and capacidad=@cap";
+                        cadena_sql = "select idUnidadTransporte from UnidadesTransporte where placas=@placas ";
+
                     else
-                        cadena_sql = "select idUnidadTransporte from UnidadesTransporte where placas=@placas and " +
-                       "marca=@marca and anio=@anio and capacidad=@cap and idUnidadTransporte!=@id";
+                        cadena_sql = "select idUnidadTransporte from UnidadesTransporte where placas=@placas and idUnidadTransporte!=@id";
 
                     SqlCommand comando = new SqlCommand(cadena_sql, conexion);
                     comando.Parameters.AddWithValue("@placas", tr.Placas);
