@@ -32,63 +32,55 @@ namespace ERP_ventas.Datos
             //}
         }
 
-        public Transporte ObtenerTransporte(int idUnidadTransporte)
+    public List<Transporte> ConsultaGeneral(string sql_where, List<string> parametros, List<object> valores)
+    {
+        List<Transporte> uniTrans = new List<Transporte>();
+        try
         {
-            try
+            using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion))
             {
-                using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion))
+                string cadena_sql = "select * from UnidadesTransporte " + sql_where;
+
+                SqlCommand comando = new SqlCommand(cadena_sql, conexion);
+
+                conexion.Open();
+                for (int i = 0; i < parametros.Count; i++)
                 {
-                    string cadena_sql = "Select * from unidadesTransporte where idUnidadTrasnporte=@id ";
-                    
+                    comando.Parameters.AddWithValue(parametros[i], valores[i]);
+                }
 
-                    SqlCommand comando = new SqlCommand(cadena_sql, conexion);
-
-                    conexion.Open();
-                    comando.Parameters.AddWithValue("@id", idUnidadTransporte);
-
-                    SqlDataReader lector = comando.ExecuteReader();
-                    if (lector.HasRows)
+                SqlDataReader lector = comando.ExecuteReader();
+                if (lector.HasRows)
+                {
+                    while (lector.Read())
                     {
-                        Transporte tras;
-                        lector.Read();
-                        {
-                            // Otra opción de recuperar los datos del lector
-                            //empleado = new Empleado(
-                            //    lector.GetInt32(0),
-                            //    lector.GetString(1),
-                            //    lector.GetString(2),
-                            //    lector.GetString(3),
-                            //    (byte[])lector["fotografia"]
-                            //    );
-                            tras = new Transporte(
-                                 (int)lector["idUnidadTransporte"],
-                                 (string)lector["placas"],
-                                 (string)lector["marca"],
-                                 (string)lector["modelo"],
-                                 (int)lector["anio"],
-                                 (int)lector["capacidad"],
-                                 (char)lector["estatus"]
-                                 );
-
-                        }
-                        lector.Close();
-                        conexion.Close();
-                        return tras;
+                        Transporte trans = new Transporte(
+                             (int)lector["idUnidadTransporte"],
+                             (string)lector["placas"],
+                             (string)lector["marca"],
+                             (string)lector["modelo"],
+                             (int)lector["anio"],
+                             (int)lector["capacidad"],
+                             (char)lector["estatus"]
+                             );
+                        uniTrans.Add(trans);
                     }
-                    else
-                    {
-                        lector.Close();
-                        conexion.Close();
-                        return null;
-                    }
+                    lector.Close();
+                    conexion.Close();
+                }
+                else
+                {
+                    lector.Close();
+                    conexion.Close();
                 }
             }
-            catch (SqlException ex)
-            {
-                throw new Exception("Error relacionado con la BD. [EmpleadoDAO] \n Anota este error y contacta al administrador.\n" + ex.Message);
-            }
-
         }
-
+        catch (SqlException ex)
+        {
+            throw new Exception("Error relacionado con la BD. [ClienteIndividualDAO] \n Anota este error y contacta al administrador.\n" + ex.Message);
+        }
+        return uniTrans;
     }
+
+}
 }

@@ -23,5 +23,9 @@ namespace ERP_ventas.Formularios.Envios
             AT.Show();
         }
 
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
