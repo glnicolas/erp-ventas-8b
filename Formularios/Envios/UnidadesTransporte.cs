@@ -9,8 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ERP_ventas.Datos;
-using ERP_ventas.Modelo;
 
 namespace ERP_ventas.Formularios.Envios
 {
@@ -86,9 +84,7 @@ namespace ERP_ventas.Formularios.Envios
                     {
                         Mensajes.Error(ex.Message);
                     }
-
                 }
-
             }
         }
 

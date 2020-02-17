@@ -1,4 +1,5 @@
 ﻿using ERP_ventas.Datos;
+using ERP_ventas.Modelo;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -10,8 +11,6 @@ namespace ERP_ventas.Datos
 {
     class ClienteDAO
     {
-
-        
         public List<Cliente> ConsultaGeneral(string sql_where, List<string> parametros, List<object> valores)
         {
             List<Cliente> clientes = new List<Cliente>();
@@ -59,16 +58,12 @@ namespace ERP_ventas.Datos
                 }
                 foreach(Cliente cliente in clientes)
                 {
-                    //List<string> parametros = new List<string>();
-                    //List<object> valores = new List<object>();
-                    //Reutilizar las listas que ya existen
                     parametros.Clear();
                     valores.Clear();
                     parametros.Add("@id");
                     valores.Add(cliente.ID);
                     if (cliente.Tipo == 'I')
                     {
-                        //Realizar consulta para traer los datos en clienteIndividual
                         List<ClienteIndividual> clientesind = new ClienteIndividualDAO().ConsultaGeneral(" where idCliente=@id", parametros, valores);
                         if (clientesind.Count == 1)
                         {
@@ -77,9 +72,11 @@ namespace ERP_ventas.Datos
                     }
                     else
                     {
-                        //Realizar consulta para traer los datos en clienteTienda
-                        //Crear el método ConsultaGeneral en una clase ClienteTiendaDAO y una clae ClienteTienda para almacenar los datos. 
-                        //Asignarlo de igual manera a cliente.InfoCliente
+                        List<ClienteTienda> clientestienda = new ClienteTiendaDAO().ConsultaGeneral(" where idCliente=@id", parametros, valores);
+                        if (clientestienda.Count == 1)
+                        {
+                            cliente.InfoCliente = clientestienda[0]; 
+                        }
                     }
                 }
 
@@ -89,6 +86,21 @@ namespace ERP_ventas.Datos
                 throw new Exception("Error relacionado con la BD. [ClienteIndividualDAO] \n Anota este error y contacta al administrador.\n" + ex.Message);
             }
             return clientes;
+        }
+
+        internal void Eliminar(int value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object Registrar(Cliente cte)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal object Editar(Cliente cte)
+        {
+            throw new NotImplementedException();
         }
     }
 }

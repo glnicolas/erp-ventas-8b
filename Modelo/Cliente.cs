@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ERP_ventas.Datos
 {
-    class Cliente
+    public class Cliente
     {
         public int ID { get; set; } 
         public string Direccion { get; set; } 

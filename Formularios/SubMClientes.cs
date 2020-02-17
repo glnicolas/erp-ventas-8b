@@ -32,7 +32,7 @@ namespace ERP_ventas.Formularios
 
         private void btnClienteTienda_Click(object sender, EventArgs e)
         {
-            ClienteTienda clienteTiendaF = new ClienteTienda();
+            ClienteTiendaGUI clienteTiendaF = new ClienteTiendaGUI();
             clienteTiendaF.ShowDialog();
         }
     }

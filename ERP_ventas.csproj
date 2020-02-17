@@ -50,23 +50,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Datos\CiudadDAO.cs" />
+    <Compile Include="Datos\ClienteTiendaDAO.cs" />
+    <Compile Include="Datos\EstadoDAO.cs" />
+    <Compile Include="Formularios\Clientes\ClienteTiendaGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Clientes\ClienteTiendaGUI.Designer.cs">
+      <DependentUpon>ClienteTiendaGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Clientes\ClienteTiendaRegistro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Clientes\ClienteTiendaRegistro.Designer.cs">
+      <DependentUpon>ClienteTiendaRegistro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Ciudad.cs" />
     <Compile Include="Modelo\Cliente.cs" />
     <Compile Include="Datos\ClienteIndividualDAO.cs" />
     <Compile Include="Datos\EmpleadoDAO.cs" />
     <Compile Include="Datos\TransporteDAO.cs" />
     <Compile Include="Datos\UsuarioDAO.cs" />
-    <Compile Include="Formularios\Clientes\ClienteTienda.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Clientes\ClienteTienda.Designer.cs">
-      <DependentUpon>ClienteTienda.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\Clientes\EditarClienteTienda.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Clientes\EditarClienteTienda.Designer.cs">
-      <DependentUpon>EditarClienteTienda.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formularios\Envios\AddTransporte.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,7 +110,9 @@
     <Compile Include="mensajes.cs" />
     <Compile Include="Datos\ClienteDAO.cs" />
     <Compile Include="Modelo\ClienteIndividual.cs" />
+    <Compile Include="Modelo\ClienteTienda.cs" />
     <Compile Include="Modelo\Empleado.cs" />
+    <Compile Include="Modelo\Estado.cs" />
     <Compile Include="Modelo\Transporte.cs" />
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Program.cs" />
@@ -115,8 +121,11 @@
     <EmbeddedResource Include="Formularios\Clientes\ClienteIndividualForm.resx">
       <DependentUpon>ClienteIndividualForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Clientes\ClienteTienda.resx">
-      <DependentUpon>ClienteTienda.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\Clientes\ClienteTiendaGUI.resx">
+      <DependentUpon>ClienteTiendaGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Clientes\ClienteTiendaRegistro.resx">
+      <DependentUpon>ClienteTiendaRegistro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Envios\AddTransporte.resx">
       <DependentUpon>AddTransporte.cs</DependentUpon>

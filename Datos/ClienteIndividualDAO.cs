@@ -65,13 +65,12 @@ namespace ERP_ventas.Datos
             {
                 using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion))
                 {
-                    string cadena_sql = "select idcliente from ClienteIndividual where nombre=@nombre and apaterno=@ap and amaterno=@am and sexo=@sexo ";
+                    string cadena_sql = "select idcliente from ClienteIndividual where nombre=@nombre and apaterno=@ap and amaterno=@am ";
 
                     SqlCommand comando = new SqlCommand(cadena_sql, conexion);
                     comando.Parameters.AddWithValue("@nombre", cliente.Nombre);
                     comando.Parameters.AddWithValue("@ap", cliente.Apaterno);
                     comando.Parameters.AddWithValue("@am", cliente.Amaterno);
-                    comando.Parameters.AddWithValue("@sexo", cliente.Sexo_char);
                     conexion.Open();
                     SqlDataReader lector = comando.ExecuteReader();
 

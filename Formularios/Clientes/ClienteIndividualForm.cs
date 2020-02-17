@@ -23,16 +23,6 @@ namespace ERP_ventas.Clientes
             clienteDAO = new ClienteDAO();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void btnNuevo_Click(object sender, EventArgs e)
         {
 
@@ -46,12 +36,15 @@ namespace ERP_ventas.Clientes
 
         private void actualizarTabla()
         {
-            string sql_where = " where estatus=@estatus";
+            string sql_where = " where estatus=@estatus and tipo=@tipo";
             List<string> parametros = new List<string>(); 
             List<object> valores = new List<object>();
 
             parametros.Add("@estatus");
             valores.Add('A');
+
+            parametros.Add("@tipo");
+            valores.Add('I');
 
             llenarTabla(clienteDAO.ConsultaGeneral(sql_where, parametros, valores));
         }
@@ -77,6 +70,11 @@ namespace ERP_ventas.Clientes
 
                 dataGridViewClientes.Rows.Add(renglon);
             }
+        }
+
+        private void dataGridViewClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
