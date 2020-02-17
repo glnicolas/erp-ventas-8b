@@ -10,7 +10,6 @@ namespace ERP_ventas.Datos
 {
     class TransporteDAO
     {
-
         public List<Transporte> ConsultaGeneral(string sql_where, List<string> parametros, List<object> valores)
         {
             List<Transporte> uniTrans = new List<Transporte>();
@@ -20,6 +19,7 @@ namespace ERP_ventas.Datos
                 {
                     string cadena_sql = "select * from UnidadesTransporte " + sql_where;
                     //idUnidadTransporte placas  marca modelo  anio capacidad   estatus
+
                     SqlCommand comando = new SqlCommand(cadena_sql, conexion);
 
                     conexion.Open();
@@ -218,6 +218,5 @@ namespace ERP_ventas.Datos
                 throw new Exception("Error relacionado con la BD. [ClienteIndividualDAO.V] \n Anota este error y contacta al administrador.\n" + ex.Message);
             }
         }
-
     }
 }

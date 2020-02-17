@@ -9,11 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ERP_ventas.Datos;
+using ERP_ventas.Modelo;
 
 namespace ERP_ventas.Formularios.Envios
 {
     public partial class UnidadesTransporte : Form
     {
+
         TransporteDAO transporteDAO;
         public UnidadesTransporte()
         {
@@ -27,6 +30,7 @@ namespace ERP_ventas.Formularios.Envios
             AT.ShowDialog();
             actualizarTabla();
         }
+
 
         private void UnidadesTransporte_Load(object sender, EventArgs e)
         {
@@ -42,7 +46,6 @@ namespace ERP_ventas.Formularios.Envios
 
             parametros.Add("@estatus");
             valores.Add('A');
-
             llenarTabla(transporteDAO.ConsultaGeneral(sql_where, parametros, valores));
         }
 
@@ -106,9 +109,6 @@ namespace ERP_ventas.Formularios.Envios
                 AddTransporte AT = new AddTransporte(transporte);
                 AT.ShowDialog();
                 actualizarTabla();
-
-
-
             }
             else
             {
