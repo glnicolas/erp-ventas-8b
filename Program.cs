@@ -18,7 +18,7 @@ namespace ERP_ventas
             Application.SetCompatibleTextRenderingDefault(false);
 
             //Application.Run(new Login());
-            SubMClientes loginForm = new SubMClientes();
+            MenuPrincipal loginForm = new MenuPrincipal();
             loginForm.FormClosed += MainForm_Closed;
             loginForm.Show();
             Application.Run();
