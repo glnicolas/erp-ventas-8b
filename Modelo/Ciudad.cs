@@ -6,9 +6,19 @@ using System.Threading.Tasks;
 
 namespace ERP_ventas.Modelo
 {
-    class Ciudad
+    public class Ciudad
     {
         public int ID { get; set; }
         public string Nombre { get; set; }
+        public Ciudad(int iD, string nombre)
+        {
+            ID = iD;
+            Nombre = nombre;
+        }
+
+        public override string ToString()
+        {
+            return Nombre;
+        }
     }
 }

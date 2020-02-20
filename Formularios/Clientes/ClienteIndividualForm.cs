@@ -1,4 +1,5 @@
 ﻿using ERP_ventas.Datos;
+using ERP_ventas.Formularios.Clientes;
 using ERP_ventas.Modelo;
 using System;
 using System.Collections.Generic;
@@ -23,12 +24,6 @@ namespace ERP_ventas.Clientes
             clienteDAO = new ClienteDAO();
         }
 
-        private void btnNuevo_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
         private void ClienteIndividual_Load(object sender, EventArgs e)
         {
             actualizarTabla();
@@ -37,7 +32,7 @@ namespace ERP_ventas.Clientes
         private void actualizarTabla()
         {
             string sql_where = " where estatus=@estatus and tipo=@tipo";
-            List<string> parametros = new List<string>(); 
+            List<string> parametros = new List<string>();
             List<object> valores = new List<object>();
 
             parametros.Add("@estatus");
@@ -74,7 +69,57 @@ namespace ERP_ventas.Clientes
 
         private void dataGridViewClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (dataGridViewClientes.Rows.Count > 0)
+            {
+                if (e.RowIndex != -1)
+                {
+                    DataGridViewRow renglon = dataGridViewClientes.Rows[e.RowIndex];
+                    string sql_where = " where idcliente=@id";
+                    List<string> parametros = new List<string>();
+                    List<object> valores = new List<object>();
 
+                    parametros.Add("@id");
+                    valores.Add(renglon.Cells["ID"].Value);
+
+                    Cliente cliente = clienteDAO.ConsultaGeneral(sql_where, parametros, valores)[0];
+                    ClienteIndividualAgregar clienteIndividualAgregar = new ClienteIndividualAgregar(cliente);
+                    clienteIndividualAgregar.ShowDialog();
+                    actualizarTabla();
+                }
+                else
+                {
+                    Mensajes.Error("Selecciona un registro");
+                }
+            }
+        }
+
+        private void btnNuevo_Click_1(object sender, EventArgs e)
+        {
+            ClienteIndividualAgregar clienteIndividualAgregar = new ClienteIndividualAgregar();
+            clienteIndividualAgregar.ShowDialog();
+            actualizarTabla();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewClientes.SelectedRows.Count != 0)
+            {
+                DialogResult respuesta = Mensajes.PreguntaAdvertencia("¿Estás seguro de que quieres eliminar el cliente seleccionado?");
+                if (respuesta == DialogResult.OK)
+                {
+                    try
+                    {
+                        DataGridViewRow renglon = dataGridViewClientes.SelectedRows[0];
+                        clienteDAO.Eliminar((int)renglon.Cells["ID"].Value);
+                        Mensajes.Info("Cliente eliminado");
+                        actualizarTabla();
+                    }
+                    catch (Exception ex)
+                    {
+                        Mensajes.Error(ex.Message);
+                    }
+                }
+            }
         }
     }
 }

@@ -111,5 +111,10 @@ namespace ERP_ventas.Formularios.Envios
                 Mensajes.Error("Selecciona un registro");
             }
         }
+
+        private void tablaPrueba_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            
+        }
     }
 }

@@ -32,7 +32,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewClientes = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Contacto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,6 +42,7 @@
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDCiudad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientes)).BeginInit();
             this.SuspendLayout();
@@ -53,9 +53,9 @@
             this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnAgregar.Image = global::ERP_ventas.Properties.Resources.plus;
             this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregar.Location = new System.Drawing.Point(12, 80);
+            this.btnAgregar.Location = new System.Drawing.Point(18, 80);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(108, 39);
+            this.btnAgregar.Size = new System.Drawing.Size(86, 39);
             this.btnAgregar.TabIndex = 1;
             this.btnAgregar.Text = "Nuevo";
             this.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -100,27 +100,14 @@
             this.Telefono,
             this.Email,
             this.IDCiudad});
-            this.dataGridViewClientes.Location = new System.Drawing.Point(126, 80);
+            this.dataGridViewClientes.Location = new System.Drawing.Point(0, 125);
             this.dataGridViewClientes.MultiSelect = false;
             this.dataGridViewClientes.Name = "dataGridViewClientes";
             this.dataGridViewClientes.ReadOnly = true;
             this.dataGridViewClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewClientes.Size = new System.Drawing.Size(790, 520);
+            this.dataGridViewClientes.Size = new System.Drawing.Size(927, 487);
             this.dataGridViewClientes.TabIndex = 3;
             this.dataGridViewClientes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewClientes_CellDoubleClick);
-            // 
-            // button1
-            // 
-            this.button1.Image = global::ERP_ventas.Properties.Resources.eliminar;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(12, 125);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(108, 36);
-            this.button1.TabIndex = 18;
-            this.button1.Tag = "Agregar nuevo registro";
-            this.button1.Text = "Eliminar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // ID
             // 
@@ -191,6 +178,19 @@
             this.IDCiudad.HeaderText = "IDCiudad";
             this.IDCiudad.Name = "IDCiudad";
             this.IDCiudad.ReadOnly = true;
+            // 
+            // button1
+            // 
+            this.button1.Image = global::ERP_ventas.Properties.Resources.eliminar;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(122, 83);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(108, 36);
+            this.button1.TabIndex = 18;
+            this.button1.Tag = "Agregar nuevo registro";
+            this.button1.Text = "Eliminar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // ClienteTiendaGUI
             // 

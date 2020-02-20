@@ -28,11 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnAgregarCliente = new System.Windows.Forms.Button();
             this.NumCredito = new System.Windows.Forms.NumericUpDown();
             this.ComboEstatus = new System.Windows.Forms.ComboBox();
             this.comboTipo = new System.Windows.Forms.ComboBox();
-            this.comboCiuadad = new System.Windows.Forms.ComboBox();
             this.MtxtEmail = new System.Windows.Forms.MaskedTextBox();
             this.MtxtTelefono = new System.Windows.Forms.MaskedTextBox();
             this.MtxtRFC = new System.Windows.Forms.MaskedTextBox();
@@ -54,27 +52,16 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.modificarBtn = new System.Windows.Forms.Button();
+            this.btnAgregarCliente = new System.Windows.Forms.Button();
+            this.comboBoxCiudad = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.NumCredito)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnAgregarCliente
-            // 
-            this.btnAgregarCliente.Image = global::ERP_ventas.Properties.Resources.save_24px;
-            this.btnAgregarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregarCliente.Location = new System.Drawing.Point(33, 426);
-            this.btnAgregarCliente.Name = "btnAgregarCliente";
-            this.btnAgregarCliente.Size = new System.Drawing.Size(94, 39);
-            this.btnAgregarCliente.TabIndex = 52;
-            this.btnAgregarCliente.Text = "Guardar";
-            this.btnAgregarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAgregarCliente.UseVisualStyleBackColor = true;
-            this.btnAgregarCliente.Click += new System.EventHandler(this.btnAgregarCliente_Click);
-            // 
             // NumCredito
             // 
             this.NumCredito.DecimalPlaces = 2;
-            this.NumCredito.Location = new System.Drawing.Point(184, 162);
+            this.NumCredito.Location = new System.Drawing.Point(248, 172);
             this.NumCredito.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -115,52 +102,44 @@
             this.comboTipo.TabIndex = 49;
             this.comboTipo.Visible = false;
             // 
-            // comboCiuadad
-            // 
-            this.comboCiuadad.FormattingEnabled = true;
-            this.comboCiuadad.Location = new System.Drawing.Point(133, 383);
-            this.comboCiuadad.Name = "comboCiuadad";
-            this.comboCiuadad.Size = new System.Drawing.Size(121, 21);
-            this.comboCiuadad.TabIndex = 48;
-            // 
             // MtxtEmail
             // 
-            this.MtxtEmail.Location = new System.Drawing.Point(115, 347);
+            this.MtxtEmail.Location = new System.Drawing.Point(177, 353);
             this.MtxtEmail.Name = "MtxtEmail";
             this.MtxtEmail.Size = new System.Drawing.Size(140, 20);
             this.MtxtEmail.TabIndex = 47;
             // 
             // MtxtTelefono
             // 
-            this.MtxtTelefono.Location = new System.Drawing.Point(137, 312);
+            this.MtxtTelefono.Location = new System.Drawing.Point(199, 321);
             this.MtxtTelefono.Name = "MtxtTelefono";
             this.MtxtTelefono.Size = new System.Drawing.Size(118, 20);
             this.MtxtTelefono.TabIndex = 46;
             // 
             // MtxtRFC
             // 
-            this.MtxtRFC.Location = new System.Drawing.Point(101, 272);
+            this.MtxtRFC.Location = new System.Drawing.Point(163, 277);
             this.MtxtRFC.Name = "MtxtRFC";
             this.MtxtRFC.Size = new System.Drawing.Size(154, 20);
             this.MtxtRFC.TabIndex = 45;
             // 
             // MtxtCodigoPostal
             // 
-            this.MtxtCodigoPostal.Location = new System.Drawing.Point(195, 234);
+            this.MtxtCodigoPostal.Location = new System.Drawing.Point(257, 240);
             this.MtxtCodigoPostal.Name = "MtxtCodigoPostal";
             this.MtxtCodigoPostal.Size = new System.Drawing.Size(60, 20);
             this.MtxtCodigoPostal.TabIndex = 44;
             // 
             // MtxtDireccion
             // 
-            this.MtxtDireccion.Location = new System.Drawing.Point(149, 198);
+            this.MtxtDireccion.Location = new System.Drawing.Point(209, 204);
             this.MtxtDireccion.Name = "MtxtDireccion";
             this.MtxtDireccion.Size = new System.Drawing.Size(108, 20);
             this.MtxtDireccion.TabIndex = 43;
             // 
             // MtxtContacto
             // 
-            this.MtxtContacto.Location = new System.Drawing.Point(148, 128);
+            this.MtxtContacto.Location = new System.Drawing.Point(211, 124);
             this.MtxtContacto.Name = "MtxtContacto";
             this.MtxtContacto.Size = new System.Drawing.Size(106, 20);
             this.MtxtContacto.TabIndex = 42;
@@ -279,7 +258,7 @@
             // 
             // MtxtNombre
             // 
-            this.MtxtNombre.Location = new System.Drawing.Point(136, 91);
+            this.MtxtNombre.Location = new System.Drawing.Point(199, 86);
             this.MtxtNombre.Name = "MtxtNombre";
             this.MtxtNombre.Size = new System.Drawing.Size(118, 20);
             this.MtxtNombre.TabIndex = 30;
@@ -291,7 +270,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(331, 74);
+            this.panel1.Size = new System.Drawing.Size(337, 74);
             this.panel1.TabIndex = 53;
             // 
             // label1
@@ -318,18 +297,39 @@
             this.modificarBtn.UseVisualStyleBackColor = true;
             this.modificarBtn.Click += new System.EventHandler(this.modificarBtn_Click);
             // 
+            // btnAgregarCliente
+            // 
+            this.btnAgregarCliente.Image = global::ERP_ventas.Properties.Resources.save_24px;
+            this.btnAgregarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAgregarCliente.Location = new System.Drawing.Point(33, 426);
+            this.btnAgregarCliente.Name = "btnAgregarCliente";
+            this.btnAgregarCliente.Size = new System.Drawing.Size(94, 39);
+            this.btnAgregarCliente.TabIndex = 52;
+            this.btnAgregarCliente.Text = "Guardar";
+            this.btnAgregarCliente.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAgregarCliente.UseVisualStyleBackColor = true;
+            this.btnAgregarCliente.Click += new System.EventHandler(this.btnAgregarCliente_Click);
+            // 
+            // comboBoxCiudad
+            // 
+            this.comboBoxCiudad.FormattingEnabled = true;
+            this.comboBoxCiudad.Location = new System.Drawing.Point(196, 390);
+            this.comboBoxCiudad.Name = "comboBoxCiudad";
+            this.comboBoxCiudad.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxCiudad.TabIndex = 55;
+            // 
             // ClienteTiendaRegistro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(331, 484);
+            this.ClientSize = new System.Drawing.Size(337, 490);
+            this.Controls.Add(this.comboBoxCiudad);
             this.Controls.Add(this.modificarBtn);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnAgregarCliente);
             this.Controls.Add(this.NumCredito);
             this.Controls.Add(this.ComboEstatus);
             this.Controls.Add(this.comboTipo);
-            this.Controls.Add(this.comboCiuadad);
             this.Controls.Add(this.MtxtEmail);
             this.Controls.Add(this.MtxtTelefono);
             this.Controls.Add(this.MtxtRFC);
@@ -364,7 +364,6 @@
         private System.Windows.Forms.NumericUpDown NumCredito;
         private System.Windows.Forms.ComboBox ComboEstatus;
         private System.Windows.Forms.ComboBox comboTipo;
-        private System.Windows.Forms.ComboBox comboCiuadad;
         private System.Windows.Forms.MaskedTextBox MtxtEmail;
         private System.Windows.Forms.MaskedTextBox MtxtTelefono;
         private System.Windows.Forms.MaskedTextBox MtxtRFC;
@@ -386,5 +385,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button modificarBtn;
+        private System.Windows.Forms.ComboBox comboBoxCiudad;
     }
 }

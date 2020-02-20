@@ -153,10 +153,10 @@ namespace ERP_ventas.Datos
                 {
                     string cadena_sql = "";
                     if (tipo == 0)
-                        cadena_sql = "select idcliente from ClienteTienda where nomre=@nombre and contacto=@contacto";
+                        cadena_sql = "select idcliente from ClienteTienda where nombre=@nombre and contacto=@contacto";
 
                     else
-                        cadena_sql = "select idcliente from ClienteTienda where nomre=@nombre and contacto=@contacto and idcliente!=@id";
+                        cadena_sql = "select idcliente from ClienteTienda where nombre=@nombre and contacto=@contacto and idcliente!=@id";
 
                     SqlCommand comando = new SqlCommand(cadena_sql, conexion);
                     comando.Parameters.AddWithValue("@nombre", cte.Nombre);

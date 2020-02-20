@@ -59,32 +59,7 @@ namespace ERP_ventas.Datos
             return clientesInd;
         }
 
-        internal bool ValidarRegistro(ClienteIndividual cliente)
-        {
-            try
-            {
-                using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion))
-                {
-                    string cadena_sql = "select idcliente from ClienteIndividual where nombre=@nombre and apaterno=@ap and amaterno=@am ";
 
-                    SqlCommand comando = new SqlCommand(cadena_sql, conexion);
-                    comando.Parameters.AddWithValue("@nombre", cliente.Nombre);
-                    comando.Parameters.AddWithValue("@ap", cliente.Apaterno);
-                    comando.Parameters.AddWithValue("@am", cliente.Amaterno);
-                    conexion.Open();
-                    SqlDataReader lector = comando.ExecuteReader();
-
-                    if (lector.HasRows)
-                        return false;
-                    else
-                        return true;
-                }
-            }
-            catch (SqlException ex)
-            {
-                throw new Exception("Error relacionado con la BD. [ClienteIndividualDAO] \n Anota este error y contacta al administrador.\n" + ex.Message);
-            }
-        }
 
         public bool Registrar(ClienteIndividual cliente, int ID)
         {
@@ -102,7 +77,7 @@ namespace ERP_ventas.Datos
                     comando.Parameters.AddWithValue("@sexo", cliente.Sexo_char);
                     conexion.Open();
                     int rows = comando.ExecuteNonQuery();
-                    if (rows!=0)
+                    if (rows != 0)
                         return true;
                     else
                         return false;
@@ -115,5 +90,91 @@ namespace ERP_ventas.Datos
             }
         }
 
+        internal object Editar(ClienteIndividual cte, int ID)
+        {
+            object resultado = new object();
+            try
+            {
+                if (Validar(1, ID, cte))
+                {
+                    using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion))
+                    {
+                        string cadena_sql = "update ClienteIndividual set nombre= @nombre, apaterno= @ap, amaterno= @am, sexo=@sexo where idCliente=@id";
+
+                        SqlCommand comando = new SqlCommand(cadena_sql, conexion);
+                        comando.Parameters.AddWithValue("@id", ID);
+                        comando.Parameters.AddWithValue("@nombre", cte.Nombre);
+                        comando.Parameters.AddWithValue("@ap", cte.Apaterno);
+                        comando.Parameters.AddWithValue("@am", cte.Amaterno);
+                        comando.Parameters.AddWithValue("@sexo", cte.Sexo_char);
+                        conexion.Open();
+
+                        int cant_registros = (int)comando.ExecuteNonQuery();
+                        conexion.Close();
+                        if (cant_registros == 1)
+                        {
+                            resultado = true;
+                        }
+                        else
+                        {
+                            resultado = "Se ha generado un error no especificado";
+                        }
+                    }
+                }
+                else
+                {
+                    resultado = "Error: Ya existe un cliente de tienda con datos en común";
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error relacionado con la BD. [ClienteIndividualDAOs.R] \n Anota este error y contacta al administrador.\n" + ex.Message);
+            }
+            return resultado;
+        }
+
+        private bool Validar(int tipo, int ID, ClienteIndividual cte)
+        {
+            // tipo 0 -> insert ; 1 -> update
+
+            try
+            {
+                using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion))
+                {
+                    string cadena_sql = "";
+                    if (tipo == 0)
+                        cadena_sql = "select idcliente from ClienteIndividual where nombre=@nombre and apaterno=@apaterno and amaterno=@amaterno";
+
+                    else
+                        cadena_sql = "select idcliente from ClienteIndividual where nombre=@nombre and apaterno=@apaterno and amaterno=@amaterno and idcliente!=@id";
+
+                    SqlCommand comando = new SqlCommand(cadena_sql, conexion);
+                    comando.Parameters.AddWithValue("@nombre", cte.Nombre);
+                    comando.Parameters.AddWithValue("@apaterno", cte.Apaterno);
+                    comando.Parameters.AddWithValue("@amaterno", cte.Amaterno);
+                    if (tipo == 1)
+                        comando.Parameters.AddWithValue("@id", ID);
+                    conexion.Open();
+
+                    SqlDataReader lector = comando.ExecuteReader();
+
+                    if (lector.HasRows)
+                    {
+                        conexion.Close();
+                        return false;
+                    }
+                    else
+                    {
+                        conexion.Close();
+                        return true;
+                    }
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error relacionado con la BD. [ClienteIndividualDAOs.V] \n Anota este error y contacta al administrador.\n" + ex.Message);
+            }
+        }
     }
 }

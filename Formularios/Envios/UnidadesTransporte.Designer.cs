@@ -63,7 +63,7 @@
             this.dataGridViewtransportes.Name = "dataGridViewtransportes";
             this.dataGridViewtransportes.ReadOnly = true;
             this.dataGridViewtransportes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewtransportes.Size = new System.Drawing.Size(856, 364);
+            this.dataGridViewtransportes.Size = new System.Drawing.Size(856, 352);
             this.dataGridViewtransportes.TabIndex = 13;
             this.dataGridViewtransportes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewtransportes_CellDoubleClick);
             // 
@@ -201,7 +201,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnNuevo;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Placas;
         private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
@@ -209,5 +208,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Anio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Capacidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estatus;
+        private System.Windows.Forms.Button button1;
     }
 }

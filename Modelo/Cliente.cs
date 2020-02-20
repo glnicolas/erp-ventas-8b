@@ -1,10 +1,11 @@
-﻿using System;
+﻿using ERP_ventas.Modelo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ERP_ventas.Datos
+namespace ERP_ventas.Modelo
 {
     public class Cliente
     {
@@ -17,7 +18,8 @@ namespace ERP_ventas.Datos
         public char Tipo { get; set; } // Usar I para clienteIndividual y T para clienteTienda
         public object InfoCliente { get; set; } //Almacena los datos de ClienteIndividual o ClienteTienda
         public char Estatus { get; set; } 
-        public int IDCiudad { get; set; } //Reemplazar con clase Ciudad
+        public int IDCiudad { get; set; } 
+        public Ciudad Ciudad { get; set; }
 
         public Cliente(int id, string direccion, string cp, string rfc, string telefono, string email, char tipo, char estatus, int idciudad)
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ERP_ventas.Formularios;
 using System.Windows.Forms;
+using ERP_ventas.Formularios.Clientes;
 
 namespace ERP_ventas
 {
@@ -18,7 +19,7 @@ namespace ERP_ventas
             Application.SetCompatibleTextRenderingDefault(false);
 
             //Application.Run(new Login());
-            MenuPrincipal loginForm = new MenuPrincipal();
+            Login loginForm = new Login();
             loginForm.FormClosed += MainForm_Closed;
             loginForm.Show();
             Application.Run();

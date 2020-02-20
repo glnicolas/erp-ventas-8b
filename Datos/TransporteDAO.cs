@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ERP_ventas.Modelo;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace ERP_ventas.Datos
 {
@@ -80,6 +81,18 @@ namespace ERP_ventas.Datos
             {
                 throw new Exception("Error relacionado con la BD. [ClienteIndividualDAO.E] \n Anota este error y contacta al administrador.\n" + ex.Message);
             }
+        }
+
+        public DataTable consultagral()
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion))
+            {
+                string sql = "select idunidadtransporte 'Nombre col' from UnidadesTransporte";
+                SqlDataAdapter adaptador = new SqlDataAdapter(sql, conexion);
+                adaptador.Fill(dt);
+            }
+            return dt;
         }
 
         public object Registrar(Transporte tr)

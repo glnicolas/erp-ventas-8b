@@ -43,6 +43,7 @@ namespace ERP_ventas.Formularios.Clientes
 
         private void llenarTabla(List<Cliente> clientes)
         {
+            dataGridViewClientes.Rows.Clear();
             foreach (Cliente cliente in clientes)
             {
                 DataGridViewRow renglon = new DataGridViewRow();

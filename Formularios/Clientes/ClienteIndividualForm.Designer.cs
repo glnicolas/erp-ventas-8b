@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.dataGridViewClientes = new System.Windows.Forms.DataGridView();
-            this.idCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,18 +40,15 @@
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDCiudad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ciudad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientes)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewClientes
@@ -61,7 +58,7 @@
             this.dataGridViewClientes.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.dataGridViewClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idCliente,
+            this.ID,
             this.nombre,
             this.apellido,
             this.amaterno,
@@ -71,26 +68,32 @@
             this.RFC,
             this.Telefono,
             this.Email,
-            this.IDCiudad});
-            this.dataGridViewClientes.Enabled = false;
-            this.dataGridViewClientes.Location = new System.Drawing.Point(201, 80);
+            this.IDCiudad,
+            this.Ciudad});
+            this.dataGridViewClientes.Location = new System.Drawing.Point(3, 133);
+            this.dataGridViewClientes.MultiSelect = false;
             this.dataGridViewClientes.Name = "dataGridViewClientes";
             this.dataGridViewClientes.ReadOnly = true;
-            this.dataGridViewClientes.Size = new System.Drawing.Size(790, 597);
+            this.dataGridViewClientes.RowHeadersVisible = false;
+            this.dataGridViewClientes.RowHeadersWidth = 51;
+            this.dataGridViewClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewClientes.Size = new System.Drawing.Size(1002, 593);
             this.dataGridViewClientes.TabIndex = 0;
             this.dataGridViewClientes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewClientes_CellDoubleClick);
             // 
-            // idCliente
+            // ID
             // 
-            this.idCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.idCliente.HeaderText = "id";
-            this.idCliente.Name = "idCliente";
-            this.idCliente.ReadOnly = true;
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
             // 
             // nombre
             // 
             this.nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.nombre.HeaderText = "Nombre";
+            this.nombre.MinimumWidth = 6;
             this.nombre.Name = "nombre";
             this.nombre.ReadOnly = true;
             // 
@@ -98,6 +101,7 @@
             // 
             this.apellido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.apellido.HeaderText = "A. Paterno";
+            this.apellido.MinimumWidth = 6;
             this.apellido.Name = "apellido";
             this.apellido.ReadOnly = true;
             // 
@@ -105,6 +109,7 @@
             // 
             this.amaterno.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.amaterno.HeaderText = "A. Materno";
+            this.amaterno.MinimumWidth = 6;
             this.amaterno.Name = "amaterno";
             this.amaterno.ReadOnly = true;
             // 
@@ -112,6 +117,7 @@
             // 
             this.sexo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.sexo.HeaderText = "Sexo";
+            this.sexo.MinimumWidth = 6;
             this.sexo.Name = "sexo";
             this.sexo.ReadOnly = true;
             // 
@@ -119,6 +125,7 @@
             // 
             this.Direccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Direccion.HeaderText = "Direccion";
+            this.Direccion.MinimumWidth = 6;
             this.Direccion.Name = "Direccion";
             this.Direccion.ReadOnly = true;
             // 
@@ -126,6 +133,7 @@
             // 
             this.CP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.CP.HeaderText = "Codigo Postal";
+            this.CP.MinimumWidth = 6;
             this.CP.Name = "CP";
             this.CP.ReadOnly = true;
             // 
@@ -133,6 +141,7 @@
             // 
             this.RFC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.RFC.HeaderText = "RFC";
+            this.RFC.MinimumWidth = 6;
             this.RFC.Name = "RFC";
             this.RFC.ReadOnly = true;
             // 
@@ -140,6 +149,7 @@
             // 
             this.Telefono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Telefono.HeaderText = "Telefono";
+            this.Telefono.MinimumWidth = 6;
             this.Telefono.Name = "Telefono";
             this.Telefono.ReadOnly = true;
             // 
@@ -147,6 +157,7 @@
             // 
             this.Email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Email.HeaderText = "Correo";
+            this.Email.MinimumWidth = 6;
             this.Email.Name = "Email";
             this.Email.ReadOnly = true;
             // 
@@ -154,8 +165,16 @@
             // 
             this.IDCiudad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.IDCiudad.HeaderText = "IDCiudad";
+            this.IDCiudad.MinimumWidth = 6;
             this.IDCiudad.Name = "IDCiudad";
             this.IDCiudad.ReadOnly = true;
+            this.IDCiudad.Visible = false;
+            // 
+            // Ciudad
+            // 
+            this.Ciudad.HeaderText = "Ciudad";
+            this.Ciudad.Name = "Ciudad";
+            this.Ciudad.ReadOnly = true;
             // 
             // panel1
             // 
@@ -180,8 +199,8 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.panel4);
-            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Controls.Add(this.btnEliminar);
+            this.panel2.Controls.Add(this.btnNuevo);
             this.panel2.Controls.Add(this.dataGridViewClientes);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -189,62 +208,32 @@
             this.panel2.Size = new System.Drawing.Size(1008, 729);
             this.panel2.TabIndex = 2;
             // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(246)))));
-            this.panel4.Controls.Add(this.btnEliminar);
-            this.panel4.Controls.Add(this.btnEditar);
-            this.panel4.Controls.Add(this.btnNuevo);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(200, 683);
-            this.panel4.TabIndex = 2;
-            // 
             // btnEliminar
             // 
             this.btnEliminar.Image = global::ERP_ventas.Properties.Resources.eliminar2;
             this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminar.Location = new System.Drawing.Point(106, 133);
+            this.btnEliminar.Location = new System.Drawing.Point(115, 80);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(77, 38);
-            this.btnEliminar.TabIndex = 0;
+            this.btnEliminar.TabIndex = 1;
             this.btnEliminar.Text = "Eliminar  ";
             this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEliminar.UseVisualStyleBackColor = true;
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Image = global::ERP_ventas.Properties.Resources.editar2;
-            this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditar.Location = new System.Drawing.Point(22, 133);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(77, 38);
-            this.btnEditar.TabIndex = 0;
-            this.btnEditar.Text = "Editar  ";
-            this.btnEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnNuevo
             // 
             this.btnNuevo.Image = global::ERP_ventas.Properties.Resources.plus;
             this.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevo.Location = new System.Drawing.Point(22, 89);
+            this.btnNuevo.Location = new System.Drawing.Point(31, 80);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(161, 38);
-            this.btnNuevo.TabIndex = 0;
+            this.btnNuevo.Size = new System.Drawing.Size(78, 38);
+            this.btnNuevo.TabIndex = 2;
             this.btnNuevo.Tag = "Agregar nuevo registro";
             this.btnNuevo.Text = "Nuevo";
+            this.btnNuevo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNuevo.UseVisualStyleBackColor = true;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 683);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1008, 46);
-            this.panel3.TabIndex = 1;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click_1);
             // 
             // ClienteIndividualForm
             // 
@@ -261,7 +250,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -272,12 +260,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button btnNuevo;
-        private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Button btnEditar;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idCliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn amaterno;
@@ -288,5 +271,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDCiudad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ciudad;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnNuevo;
     }
 }
