@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using ERP_ventas.Modelo;
 using System.Windows.Forms;
-using Code4Bugs.SimpleDataGridViewPaging;
 using System.Data.SqlClient;
 
 namespace ERP_ventas.Formularios.Clientes
