@@ -1,6 +1,7 @@
 ﻿using ERP_ventas.Modelo;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ERP_ventas.Datos
 {
-    class ClienteTiendaDAO
+    class ClienteTiendaDAO : Paginacion //Necesario heredar de la clase Paginación para funcionar
     {
 
         public List<ClienteTienda> ConsultaGeneral(string sql_where, List<string> parametros, List<object> valores)
@@ -58,6 +59,21 @@ namespace ERP_ventas.Datos
             }
             return clientes;
         }
+
+        public ClienteTiendaDAO()
+        {
+            table = "Clientes_Tienda";  //Nombre de la tabla o vista
+            order_by = "Nombre Tienda"; //Nombre de la columna para ordenar los registros
+            rows_per_page = 3;          //Cantidad de registros por página
+            try
+            {
+               CalculatePages(); //Calcula la cantidad de páginas que se deben emplear
+            }catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 
         public object Registrar(ClienteTienda cte, int ID)
         {

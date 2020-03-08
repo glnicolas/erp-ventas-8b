@@ -63,6 +63,16 @@ namespace ERP_ventas.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap back_32px {
+            get {
+                object obj = ResourceManager.GetObject("back_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap delete_sign_32px {
             get {
                 object obj = ResourceManager.GetObject("delete_sign_32px", resourceCulture);
@@ -146,6 +156,16 @@ namespace ERP_ventas.Properties {
         internal static System.Drawing.Bitmap plus {
             get {
                 object obj = ResourceManager.GetObject("plus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap right_squared_32px {
+            get {
+                object obj = ResourceManager.GetObject("right_squared_32px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

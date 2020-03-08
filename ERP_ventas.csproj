@@ -37,6 +37,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Newtonsoft.Json\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="SimpleDataGridViewPaging">
+      <HintPath>..\..\..\Documents\SimpleDataGridViewPaging.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -51,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Datos\ClienteTiendaDAO.cs" />
+    <Compile Include="Datos\Paginacion.cs" />
     <Compile Include="Formularios\Clientes\ClienteIndividualAgregar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -217,6 +221,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\minus_math_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\right_squared_32px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

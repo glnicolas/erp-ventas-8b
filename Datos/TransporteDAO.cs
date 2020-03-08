@@ -9,8 +9,9 @@ using System.Data;
 
 namespace ERP_ventas.Datos
 {
-    class TransporteDAO
+    class TransporteDAO : Paginacion
     {
+       
         public List<Transporte> ConsultaGeneral(string sql_where, List<string> parametros, List<object> valores)
         {
             List<Transporte> uniTrans = new List<Transporte>();

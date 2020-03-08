@@ -28,39 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnAgregar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridViewClientes = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Contacto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LimiteCredito = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RFC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IDCiudad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paginacionTabla = new System.Windows.Forms.DataGridView();
+            this.siguienteBtn = new System.Windows.Forms.Button();
+            this.anteriorBtn = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.paginaxdey = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paginacionTabla)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.BackColor = System.Drawing.Color.Transparent;
-            this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnAgregar.Image = global::ERP_ventas.Properties.Resources.plus;
-            this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregar.Location = new System.Drawing.Point(18, 80);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(86, 39);
-            this.btnAgregar.TabIndex = 1;
-            this.btnAgregar.Text = "Nuevo";
-            this.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAgregar.UseVisualStyleBackColor = false;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // panel1
             // 
@@ -83,101 +61,46 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Clientes Tienda";
             // 
-            // dataGridViewClientes
+            // paginacionTabla
             // 
-            this.dataGridViewClientes.AllowUserToAddRows = false;
-            this.dataGridViewClientes.AllowUserToDeleteRows = false;
-            this.dataGridViewClientes.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            this.dataGridViewClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.nombre,
-            this.Contacto,
-            this.LimiteCredito,
-            this.Direccion,
-            this.CP,
-            this.RFC,
-            this.Telefono,
-            this.Email,
-            this.IDCiudad});
-            this.dataGridViewClientes.Location = new System.Drawing.Point(0, 125);
-            this.dataGridViewClientes.MultiSelect = false;
-            this.dataGridViewClientes.Name = "dataGridViewClientes";
-            this.dataGridViewClientes.ReadOnly = true;
-            this.dataGridViewClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewClientes.Size = new System.Drawing.Size(927, 487);
-            this.dataGridViewClientes.TabIndex = 3;
-            this.dataGridViewClientes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewClientes_CellDoubleClick);
+            this.paginacionTabla.AllowUserToAddRows = false;
+            this.paginacionTabla.AllowUserToDeleteRows = false;
+            this.paginacionTabla.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.paginacionTabla.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.paginacionTabla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.paginacionTabla.Location = new System.Drawing.Point(0, 125);
+            this.paginacionTabla.MultiSelect = false;
+            this.paginacionTabla.Name = "paginacionTabla";
+            this.paginacionTabla.ReadOnly = true;
+            this.paginacionTabla.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.paginacionTabla.Size = new System.Drawing.Size(927, 426);
+            this.paginacionTabla.TabIndex = 19;
+            this.paginacionTabla.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.paginacionTabla_CellDoubleClick);
+            this.paginacionTabla.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.paginacionTabla_DataBindingComplete);
             // 
-            // ID
+            // siguienteBtn
             // 
-            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
+            this.siguienteBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.siguienteBtn.Image = global::ERP_ventas.Properties.Resources.right_squared_32px;
+            this.siguienteBtn.Location = new System.Drawing.Point(541, 557);
+            this.siguienteBtn.Name = "siguienteBtn";
+            this.siguienteBtn.Size = new System.Drawing.Size(30, 43);
+            this.siguienteBtn.TabIndex = 21;
+            this.siguienteBtn.UseVisualStyleBackColor = true;
+            this.siguienteBtn.Click += new System.EventHandler(this.button3_Click);
             // 
-            // nombre
+            // anteriorBtn
             // 
-            this.nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.Name = "nombre";
-            this.nombre.ReadOnly = true;
-            // 
-            // Contacto
-            // 
-            this.Contacto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Contacto.HeaderText = "Contacto";
-            this.Contacto.Name = "Contacto";
-            this.Contacto.ReadOnly = true;
-            // 
-            // LimiteCredito
-            // 
-            this.LimiteCredito.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.LimiteCredito.HeaderText = "Limite Credito";
-            this.LimiteCredito.Name = "LimiteCredito";
-            this.LimiteCredito.ReadOnly = true;
-            // 
-            // Direccion
-            // 
-            this.Direccion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Direccion.HeaderText = "Direccion";
-            this.Direccion.Name = "Direccion";
-            this.Direccion.ReadOnly = true;
-            // 
-            // CP
-            // 
-            this.CP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CP.HeaderText = "Codigo Postal";
-            this.CP.Name = "CP";
-            this.CP.ReadOnly = true;
-            // 
-            // RFC
-            // 
-            this.RFC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.RFC.HeaderText = "RFC";
-            this.RFC.Name = "RFC";
-            this.RFC.ReadOnly = true;
-            // 
-            // Telefono
-            // 
-            this.Telefono.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Telefono.HeaderText = "Telefono";
-            this.Telefono.Name = "Telefono";
-            this.Telefono.ReadOnly = true;
-            // 
-            // Email
-            // 
-            this.Email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Email.HeaderText = "Correo";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            // 
-            // IDCiudad
-            // 
-            this.IDCiudad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.IDCiudad.HeaderText = "IDCiudad";
-            this.IDCiudad.Name = "IDCiudad";
-            this.IDCiudad.ReadOnly = true;
+            this.anteriorBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.anteriorBtn.Enabled = false;
+            this.anteriorBtn.Image = global::ERP_ventas.Properties.Resources.back_32px;
+            this.anteriorBtn.Location = new System.Drawing.Point(375, 557);
+            this.anteriorBtn.Name = "anteriorBtn";
+            this.anteriorBtn.Size = new System.Drawing.Size(30, 43);
+            this.anteriorBtn.TabIndex = 20;
+            this.anteriorBtn.UseVisualStyleBackColor = true;
+            this.anteriorBtn.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -192,13 +115,41 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // btnAgregar
+            // 
+            this.btnAgregar.BackColor = System.Drawing.Color.Transparent;
+            this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAgregar.Image = global::ERP_ventas.Properties.Resources.plus;
+            this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAgregar.Location = new System.Drawing.Point(18, 80);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(86, 39);
+            this.btnAgregar.TabIndex = 1;
+            this.btnAgregar.Text = "Nuevo";
+            this.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // paginaxdey
+            // 
+            this.paginaxdey.AutoSize = true;
+            this.paginaxdey.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.paginaxdey.Location = new System.Drawing.Point(435, 567);
+            this.paginaxdey.Name = "paginaxdey";
+            this.paginaxdey.Size = new System.Drawing.Size(59, 20);
+            this.paginaxdey.TabIndex = 22;
+            this.paginaxdey.Text = "1 de 2";
+            // 
             // ClienteTiendaGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(927, 612);
+            this.ClientSize = new System.Drawing.Size(927, 607);
+            this.Controls.Add(this.paginaxdey);
+            this.Controls.Add(this.siguienteBtn);
+            this.Controls.Add(this.anteriorBtn);
+            this.Controls.Add(this.paginacionTabla);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridViewClientes);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnAgregar);
             this.Name = "ClienteTiendaGUI";
@@ -206,8 +157,9 @@
             this.Load += new System.EventHandler(this.ClienteTienda_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paginacionTabla)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -215,17 +167,10 @@
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridViewClientes;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Contacto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LimiteCredito;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Direccion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RFC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDCiudad;
+        private System.Windows.Forms.DataGridView paginacionTabla;
+        private System.Windows.Forms.Button anteriorBtn;
+        private System.Windows.Forms.Button siguienteBtn;
+        private System.Windows.Forms.Label paginaxdey;
     }
 }

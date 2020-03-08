@@ -73,7 +73,7 @@ namespace ERP_ventas.Formularios
             if (passtextBox.Text == "Contraseña")
             {
                 passtextBox.Text = "";
-                passtextBox.PasswordChar = '*';
+               // passtextBox.PasswordChar = '*';
             }
         }
 

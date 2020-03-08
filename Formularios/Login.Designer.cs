@@ -77,6 +77,7 @@
             this.passtextBox.TabIndex = 2;
             this.passtextBox.Text = "Contraseña";
             this.passtextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.passtextBox.UseSystemPasswordChar = true;
             // 
             // pictureBox1
             // 
