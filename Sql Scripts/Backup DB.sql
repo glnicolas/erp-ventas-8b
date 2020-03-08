@@ -1,0 +1,8 @@
+Use ERP2020
+GO
+BACKUP DATABASE ERP2020
+TO DISK = 'c:\tmp\ERP2020.bak'
+   WITH FORMAT,
+      MEDIANAME = 'SQLServerBackups',
+      NAME = 'Full Backup of ERP2020';
+GO
