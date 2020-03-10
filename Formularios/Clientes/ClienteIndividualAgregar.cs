@@ -69,9 +69,28 @@ namespace ERP_ventas.Formularios.Clientes
         {
             String mensaje = "";
 
+            String nombre = txtNombre.Text; 
+            String aPaterno = txtAPaterno.Text;
+            String aMaterno = txtAMaterno.Text;
+
             String rfc = txtRFC.Text;
             String telefono = txtTelefono.Text;
             String codigoPostal = txtCodigoPostal.Text;
+
+            if (nombre=="")
+            {
+                mensaje += "\n Rellena el campo de nombre";
+            }
+
+            if (aPaterno == "")
+            {
+                mensaje += "\n Rellena el campo de Apellido Paterno";
+            }
+
+            if (aMaterno == "")
+            {
+                mensaje += "\n Rellena el campo de Apellido Materno";
+            }
 
             bool soloLetras = Regex.IsMatch(rfc, @"^[a-zA-Z][a-z A-Z]+$");
             //RFC Valido
@@ -114,6 +133,28 @@ namespace ERP_ventas.Formularios.Clientes
                 mensaje += "\n Codigo postal Invalido, completar.";
             }
 
+            //email
+            /* Validar que este completo
+             */
+            if (Regex.IsMatch(txtEmail.Text, @"[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+"))
+            {
+                //Es valido
+            }
+            else
+            {
+                mensaje += "\n Email Invalido, completar.";
+            }
+
+            if (txtDireccion.Text == "")
+            {
+                mensaje += "\n Completar dirección.";
+            }
+
+            Ciudad validarCd = (Ciudad)comboBoxCiudad.SelectedItem;
+            if (validarCd==null)
+            {
+                mensaje += "\n Selecciona una ciudad.";
+            }
 
             /*Verificar si existe algun mensaje de error*/
             if (mensaje.Equals(""))

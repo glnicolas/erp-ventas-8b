@@ -46,6 +46,7 @@ namespace ERP_ventas.Clientes
 
         private void llenarTabla(List<Cliente> clientes)
         {
+
             foreach (Cliente cliente in clientes)
             {
                 DataGridViewRow renglon = new DataGridViewRow();
