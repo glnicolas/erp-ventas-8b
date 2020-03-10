@@ -4,6 +4,7 @@ using System.Linq;
 using ERP_ventas.Formularios;
 using System.Windows.Forms;
 using ERP_ventas.Formularios.Clientes;
+using ERP_ventas.Clientes;
 
 namespace ERP_ventas
 {
@@ -19,7 +20,7 @@ namespace ERP_ventas
             Application.SetCompatibleTextRenderingDefault(false);
 
             //Application.Run(new Login());
-            Login loginForm = new Login();
+            ClienteIndividualForm loginForm = new ClienteIndividualForm();
             loginForm.FormClosed += MainForm_Closed;
             loginForm.Show();
             Application.Run();

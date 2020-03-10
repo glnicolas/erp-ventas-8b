@@ -104,6 +104,7 @@
             this.txtNombre.Size = new System.Drawing.Size(134, 20);
             this.txtNombre.TabIndex = 5;
             this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // label4
             // 
@@ -120,6 +121,7 @@
             this.txtAPaterno.Name = "txtAPaterno";
             this.txtAPaterno.Size = new System.Drawing.Size(134, 20);
             this.txtAPaterno.TabIndex = 5;
+            this.txtAPaterno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // label5
             // 
@@ -136,6 +138,7 @@
             this.txtAMaterno.Name = "txtAMaterno";
             this.txtAMaterno.Size = new System.Drawing.Size(134, 20);
             this.txtAMaterno.TabIndex = 5;
+            this.txtAMaterno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // groupBoxSexo
             // 
@@ -294,6 +297,8 @@
             this.modificarBtn.Text = "Modificar";
             this.modificarBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.modificarBtn.UseVisualStyleBackColor = true;
+            this.modificarBtn.Visible = false;
+            this.modificarBtn.Click += new System.EventHandler(this.modificarBtn_Click);
             // 
             // ClienteIndividualAgregar
             // 

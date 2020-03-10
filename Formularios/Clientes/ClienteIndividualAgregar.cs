@@ -33,7 +33,8 @@ namespace ERP_ventas.Formularios.Clientes
             InitializeComponent();
             generarCiudades();
             this.cliente = cliente;
-
+            modificarBtn.Visible = true;
+            btnRegistrar.Visible = false;
         }
 
         private void generarCiudades()
@@ -238,6 +239,16 @@ namespace ERP_ventas.Formularios.Clientes
                     }
                 }
             }
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Utilidades.soloLetras(e);
+        }
+
+        private void modificarBtn_Click(object sender, EventArgs e)
+        {
+            validarEntradas();
         }
     }
 }
