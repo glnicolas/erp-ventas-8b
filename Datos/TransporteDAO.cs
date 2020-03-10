@@ -186,6 +186,21 @@ namespace ERP_ventas.Datos
             return resultado;
         }
 
+        public TransporteDAO()
+        {
+            table = "VUnidadesTransporte";  //Nombre de la tabla o vista
+            order_by = "placas"; //Nombre de la columna para ordenar los registros
+            rows_per_page = 3;          //Cantidad de registros por página
+            try
+            {
+                CalculatePages(); //Calcula la cantidad de páginas que se deben emplear
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 
         public bool Validar(int tipo, Transporte tr)
         {

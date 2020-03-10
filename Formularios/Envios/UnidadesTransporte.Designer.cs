@@ -29,13 +29,6 @@
         private void InitializeComponent()
         {
             this.dataGridViewtransportes = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Placas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Anio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Capacidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
@@ -53,14 +46,6 @@
             this.dataGridViewtransportes.AllowUserToAddRows = false;
             this.dataGridViewtransportes.AllowUserToDeleteRows = false;
             this.dataGridViewtransportes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewtransportes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.Placas,
-            this.Marca,
-            this.Modelo,
-            this.Anio,
-            this.Capacidad,
-            this.Estatus});
             this.dataGridViewtransportes.Location = new System.Drawing.Point(0, 130);
             this.dataGridViewtransportes.MultiSelect = false;
             this.dataGridViewtransportes.Name = "dataGridViewtransportes";
@@ -69,55 +54,6 @@
             this.dataGridViewtransportes.Size = new System.Drawing.Size(856, 297);
             this.dataGridViewtransportes.TabIndex = 13;
             this.dataGridViewtransportes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewtransportes_CellDoubleClick);
-            // 
-            // ID
-            // 
-            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // Placas
-            // 
-            this.Placas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Placas.HeaderText = "Placas";
-            this.Placas.Name = "Placas";
-            this.Placas.ReadOnly = true;
-            // 
-            // Marca
-            // 
-            this.Marca.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Marca.HeaderText = "Marca";
-            this.Marca.Name = "Marca";
-            this.Marca.ReadOnly = true;
-            // 
-            // Modelo
-            // 
-            this.Modelo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Modelo.HeaderText = "Modelo";
-            this.Modelo.Name = "Modelo";
-            this.Modelo.ReadOnly = true;
-            // 
-            // Anio
-            // 
-            this.Anio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Anio.HeaderText = "Año";
-            this.Anio.Name = "Anio";
-            this.Anio.ReadOnly = true;
-            // 
-            // Capacidad
-            // 
-            this.Capacidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Capacidad.HeaderText = "Capacidad";
-            this.Capacidad.Name = "Capacidad";
-            this.Capacidad.ReadOnly = true;
-            // 
-            // Estatus
-            // 
-            this.Estatus.HeaderText = "Estatus";
-            this.Estatus.Name = "Estatus";
-            this.Estatus.ReadOnly = true;
-            this.Estatus.Visible = false;
             // 
             // label7
             // 
@@ -240,13 +176,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnNuevo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Placas;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Modelo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Anio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Capacidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Estatus;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label paginaxdey;
         private System.Windows.Forms.Button siguienteBtn;
