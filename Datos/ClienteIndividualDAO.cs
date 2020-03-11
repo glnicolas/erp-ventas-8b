@@ -8,8 +8,23 @@ using System.Threading.Tasks;
 
 namespace ERP_ventas.Datos
 {
-    class ClienteIndividualDAO
+    class ClienteIndividualDAO : Paginacion //Necesario heredar de la clase Paginación para funcionar
     {
+
+        public ClienteIndividualDAO()
+        {
+            table = "Clientes_Individuales";  //Nombre de la tabla o vista
+            order_by = "Nombre"; //Nombre de la columna para ordenar los registros
+            rows_per_page = 3;          //Cantidad de registros por página
+            try
+            {
+                CalculatePages(); //Calcula la cantidad de páginas que se deben emplear
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         public List<ClienteIndividual> ConsultaGeneral(string sql_where, List<string> parametros, List<object> valores)
         {

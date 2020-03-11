@@ -215,7 +215,7 @@ namespace ERP_ventas.Datos
             {
                 using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion))
                 {
-                    string cadena_sql = "select idcliente from Clientes where rfc= @rfc or telefono= @tel or email= @email";
+                    string cadena_sql = "select count(idcliente) from Clientes where (rfc= @rfc or telefono= @tel or email= @email)";
                     
                     SqlCommand comando = new SqlCommand(cadena_sql, conexion);
                     comando.Parameters.AddWithValue("@rfc", cte.RFC);
@@ -223,17 +223,16 @@ namespace ERP_ventas.Datos
                     comando.Parameters.AddWithValue("@email", cte.Email);
                     if (tipo == 1)
                     {
-                        cadena_sql += " and idcliente!=@id";
+                        comando.CommandText+= " and idcliente!=@id";
                         comando.Parameters.AddWithValue("@id", cte.ID);
                     }
                     conexion.Open();
 
-                    SqlDataReader lector = comando.ExecuteReader();
-                    if (lector.HasRows)
+                    int registros = (int)comando.ExecuteScalar();
+                    if (registros!=0)
                         return false;
                     else
                         return true;
-
                 }
             }
             catch (SqlException ex)
@@ -247,7 +246,7 @@ namespace ERP_ventas.Datos
             object resultado = new object();
             try
             {
-                if (Validar(0, cte))
+                if (Validar(1, cte))
                 {
                     using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion))
                     {
@@ -270,7 +269,7 @@ namespace ERP_ventas.Datos
                         conexion.Close();
                         if (cant_registros == 1)
                         {
-                            cte.ID = getID(cte);
+                            //cte.ID = getID(cte);
 
                             if (cte.Tipo == 'T')
                             {
@@ -309,7 +308,7 @@ namespace ERP_ventas.Datos
                 }
                 else
                 {
-                    resultado = "Error: Ya existe una unidad con datos en común";
+                    resultado = "Error: Ya existe un cliente de tienda con datos en común";
                 }
             }
             catch (SqlException ex)
@@ -364,6 +363,57 @@ namespace ERP_ventas.Datos
                 throw new Exception("Error relacionado con la BD. [ClienteIndividualDAO] \n Anota este error y contacta al administrador.\n" + ex.Message);
             }
             return ciudades;
+        }
+        public List<Estado> ConsultaEstados(string sql_where, List<string> parametros, List<object> valores)
+        {
+            List<Estado> estados = new List<Estado>();
+            try
+            {
+                using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion))
+                {
+                    string cadena_sql = "select * from Estado " + sql_where;
+                    
+
+                    SqlCommand comando = new SqlCommand(cadena_sql, conexion);
+
+                    conexion.Open();
+                    for (int i = 0; i < parametros.Count; i++)
+                    {
+                        comando.Parameters.AddWithValue(parametros[i], valores[i]);
+                    }
+
+                    SqlDataReader lector = comando.ExecuteReader();
+                    if (lector.HasRows)
+                    {
+                        while (lector.Read())
+                        {
+                            Estado edo = new Estado(
+                                 (int)lector["idEstado"],
+                                 (string)lector["nombre"]
+                                 );
+                            parametros.Clear();
+                            parametros.Add("@id");
+                            valores.Clear();
+                            valores.Add(edo.ID);
+                            edo.Ciudades = ConsultaCiudades(" where Estado_idEstado=@id", parametros, valores);
+                            estados.Add(edo);
+                        }
+                        lector.Close();
+                        conexion.Close();
+                    }
+                    else
+                    {
+                        lector.Close();
+                        conexion.Close();
+                    }
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error relacionado con la BD. [ClienteIndividualDAO] \n Anota este error y contacta al administrador.\n" + ex.Message);
+            }
+            return estados;
         }
     }
 }

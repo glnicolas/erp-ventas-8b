@@ -4,6 +4,7 @@ using System.Linq;
 using ERP_ventas.Formularios;
 using System.Windows.Forms;
 using ERP_ventas.Formularios.Clientes;
+using ERP_ventas.Clientes;
 
 namespace ERP_ventas
 {

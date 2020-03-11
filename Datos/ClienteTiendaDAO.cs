@@ -169,10 +169,10 @@ namespace ERP_ventas.Datos
                 {
                     string cadena_sql = "";
                     if (tipo == 0)
-                        cadena_sql = "select idcliente from ClienteTienda where nombre=@nombre and contacto=@contacto";
+                        cadena_sql = "select count(idcliente) from ClienteTienda where nombre=@nombre or contacto=@contacto";
 
                     else
-                        cadena_sql = "select idcliente from ClienteTienda where nombre=@nombre and contacto=@contacto and idcliente!=@id";
+                        cadena_sql = "select count(idcliente) from ClienteTienda where (nombre=@nombre or contacto=@contacto) and idcliente!=@id";
 
                     SqlCommand comando = new SqlCommand(cadena_sql, conexion);
                     comando.Parameters.AddWithValue("@nombre", cte.Nombre);
@@ -181,19 +181,11 @@ namespace ERP_ventas.Datos
                         comando.Parameters.AddWithValue("@id", ID);
                     conexion.Open();
 
-                    SqlDataReader lector = comando.ExecuteReader();
-
-                    if (lector.HasRows)
-                    {
-                        conexion.Close();
+                    int registros = (int)comando.ExecuteScalar();
+                    if (registros != 0)
                         return false;
-                    }
                     else
-                    {
-                        conexion.Close();
                         return true;
-                    }
-
                 }
             }
             catch (SqlException ex)
