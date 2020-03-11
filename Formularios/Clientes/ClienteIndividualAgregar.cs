@@ -223,17 +223,17 @@ namespace ERP_ventas.Formularios.Clientes
             {
                 txtNombre.Text = ((ClienteIndividual)cliente.InfoCliente).Nombre;
                 txtAPaterno.Text = ((ClienteIndividual)cliente.InfoCliente).Apaterno;
-                txtNombre.Text = ((ClienteIndividual)cliente.InfoCliente).Nombre;
+                txtAMaterno.Text = ((ClienteIndividual)cliente.InfoCliente).Amaterno;
                 txtDireccion.Text = cliente.Direccion;
                 txtCodigoPostal.Text = cliente.CP;
                 txtEmail.Text = cliente.Email;
                 txtTelefono.Text = cliente.Telefono;
                 txtRFC.Text = cliente.RFC;
-
+                
                 var ciudades = comboBoxCiudad.Items;
                 foreach(Ciudad ciudad in ciudades)
                 {
-                    if (ciudad.ID == cliente.ID)
+                    if (ciudad.ID == cliente.IDCiudad)
                     {
                         comboBoxCiudad.SelectedItem = ciudad;
                     }
