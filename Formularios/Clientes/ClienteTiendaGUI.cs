@@ -33,7 +33,6 @@ namespace ERP_ventas.Formularios.Clientes
 
         private void ClienteTienda_Load(object sender, EventArgs e)
         {
-            //actualizarTabla(); //obsoleto
             try
             {
                 paginacionTabla.DataSource = clienteTiendaDAO.getNextPage();

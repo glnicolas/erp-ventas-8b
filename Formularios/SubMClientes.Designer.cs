@@ -117,6 +117,7 @@
             this.Controls.Add(this.btnClienteTienda);
             this.Controls.Add(this.panel1);
             this.Name = "SubMClientes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "SubMClientes";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

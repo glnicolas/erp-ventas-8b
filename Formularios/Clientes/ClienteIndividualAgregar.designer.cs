@@ -329,6 +329,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
             this.Name = "ClienteIndividualAgregar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ClienteIndividualAgregar";
             this.Load += new System.EventHandler(this.ClienteIndividualAgregar_Load);
             this.panel1.ResumeLayout(false);

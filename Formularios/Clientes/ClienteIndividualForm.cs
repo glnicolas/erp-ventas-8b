@@ -50,17 +50,12 @@ namespace ERP_ventas.Clientes
 
         private void actualizarTabla()
         {
-            string sql_where = " where estatus=@estatus and tipo=@tipo";
-            List<string> parametros = new List<string>();
-            List<object> valores = new List<object>();
-
-            parametros.Add("@estatus");
-            valores.Add('A');
-
-            parametros.Add("@tipo");
-            valores.Add('I');
-
-            llenarTabla(clienteDAO.ConsultaGeneral(sql_where, parametros, valores));
+            clienteIndividual.actual_page = 0;
+            clienteIndividual.CalculatePages();
+            anteriorBtn.Enabled = false;
+            siguienteBtn.Enabled = true;
+            dataGridViewClientes.DataSource = clienteIndividual.getNextPage();
+            paginaxdey.Text = clienteIndividual.actual_page + "  de  " + clienteIndividual.pages;
         }
 
         private void llenarTabla(List<Cliente> clientes)

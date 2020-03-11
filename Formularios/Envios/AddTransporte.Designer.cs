@@ -221,6 +221,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
             this.Name = "AddTransporte";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AddTransporte";
             this.Load += new System.EventHandler(this.AddTransporte_Load);
             this.panel1.ResumeLayout(false);

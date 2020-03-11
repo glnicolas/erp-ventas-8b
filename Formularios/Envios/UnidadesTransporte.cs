@@ -32,7 +32,6 @@ namespace ERP_ventas.Formularios.Envios
 
         private void UnidadesTransporte_Load(object sender, EventArgs e)
         {
-            //actualizarTabla();
             try
             {
                 dataGridViewtransportes.DataSource = transporteDAO.getNextPage();
@@ -45,14 +44,12 @@ namespace ERP_ventas.Formularios.Envios
 
         private void actualizarTabla()
         {
-            //dataGridViewtransportes.Rows.Clear();
-            //string sql_where = " where estatus=@estatus";
-            //List<string> parametros = new List<string>();
-            //List<object> valores = new List<object>();
-
-            //parametros.Add("@estatus");
-            //valores.Add('A');
-            //llenarTabla(transporteDAO.ConsultaGeneral(sql_where, parametros, valores));
+            transporteDAO.actual_page = 0;
+            transporteDAO.CalculatePages();
+            anteriorBtn.Enabled = false;
+            siguienteBtn.Enabled = true;
+            dataGridViewtransportes.DataSource = transporteDAO.getNextPage();
+            paginaxdey.Text = transporteDAO.actual_page + "  de  " + transporteDAO.pages;
         }
 
         private void llenarTabla(List<Transporte> transportes)
@@ -119,7 +116,7 @@ namespace ERP_ventas.Formularios.Envios
             //    Mensajes.Error("Selecciona un registro");
             //}
 
-            if (e.RowIndex != 1)
+            if (e.RowIndex != -1)
             {
                 DataGridViewRow Renglon = dataGridViewtransportes.Rows[e.RowIndex];
                 string sql_where = "where idUnidadTransporte=@id";

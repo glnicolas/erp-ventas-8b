@@ -160,6 +160,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.dataGridViewtransportes);
             this.Name = "UnidadesTransporte";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Unidades de Transporte";
             this.Load += new System.EventHandler(this.UnidadesTransporte_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewtransportes)).EndInit();

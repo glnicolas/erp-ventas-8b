@@ -153,6 +153,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnAgregar);
             this.Name = "ClienteTiendaGUI";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ClienteTienda";
             this.Load += new System.EventHandler(this.ClienteTienda_Load);
             this.panel1.ResumeLayout(false);
