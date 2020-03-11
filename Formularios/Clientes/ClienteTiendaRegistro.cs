@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -35,6 +36,7 @@ namespace ERP_ventas.Formularios.Clientes
 
         private void ClienteTiendaRegistro_Load(object sender, EventArgs e)
         {
+            comboBoxCiudad.Items.AddRange((new ClienteDAO().ConsultaCiudades("", new List<string>(), new List<object>())).ToArray());
             if (cliente != null)
             {
                 MtxtNombre.Text = ((ClienteTienda)cliente.InfoCliente).Nombre;
@@ -45,7 +47,12 @@ namespace ERP_ventas.Formularios.Clientes
                 MtxtRFC.Text = cliente.RFC;
                 MtxtTelefono.Text = cliente.Telefono;
                 MtxtEmail.Text = cliente.Email;
-                
+
+                foreach (Ciudad ciudad in comboBoxCiudad.Items)
+                {
+                    if (ciudad.ID == cliente.IDCiudad)
+                        comboBoxCiudad.SelectedItem = ciudad;
+                }
             }
         }
 
@@ -57,15 +64,23 @@ namespace ERP_ventas.Formularios.Clientes
                 {
                     if (!string.IsNullOrWhiteSpace(MtxtDireccion.Text))
                     {
-                        if (!string.IsNullOrWhiteSpace(MtxtCodigoPostal.Text))
+                        if (MtxtCodigoPostal.MaskCompleted)
                         {
-                            if (!string.IsNullOrWhiteSpace(MtxtRFC.Text))
+                            if (MtxtRFC.MaskCompleted)
                             {
-                                if (!string.IsNullOrWhiteSpace(MtxtTelefono.Text))
+                                if (MtxtTelefono.MaskCompleted)
                                 {
                                     if (!string.IsNullOrWhiteSpace(MtxtEmail.Text))
                                     {
-                                        return true;
+                                        if (comboBoxCiudad.SelectedIndex >= 0)
+                                        {
+                                            return true;
+                                        }
+                                        else
+                                        {
+                                            Mensajes.Info("Selecciona una ciudad");
+                                            return false;
+                                        }
                                     }
                                     else
                                     {
@@ -118,7 +133,7 @@ namespace ERP_ventas.Formularios.Clientes
                 try
                 {
                     ClienteTienda ctetda = new ClienteTienda(MtxtNombre.Text, MtxtContacto.Text, NumCredito.Value);
-                    Cliente cte = new Cliente(0, MtxtDireccion.Text, MtxtCodigoPostal.Text, MtxtRFC.Text, MtxtTelefono.Text, MtxtEmail.Text, 'T', 'A', 1);
+                    Cliente cte = new Cliente(0, MtxtDireccion.Text, MtxtCodigoPostal.Text, MtxtRFC.Text, MtxtTelefono.Text, MtxtEmail.Text, 'T', 'A', ((Ciudad)comboBoxCiudad.SelectedItem).ID);
                     cte.InfoCliente = ctetda;
 
                     var resultado = new ClienteDAO().Registrar(cte);
@@ -131,7 +146,7 @@ namespace ERP_ventas.Formularios.Clientes
                     else
                     {
                         Mensajes.Info("Registro exitoso.");
-                        this.Close();
+                        Close();
                     }
 
                 }
@@ -149,7 +164,7 @@ namespace ERP_ventas.Formularios.Clientes
                 try
                 {
                     ClienteTienda ctetda = new ClienteTienda(MtxtNombre.Text, MtxtContacto.Text, NumCredito.Value);
-                    Cliente cte = new Cliente(cliente.ID, MtxtDireccion.Text, MtxtCodigoPostal.Text, MtxtRFC.Text, MtxtTelefono.Text, MtxtEmail.Text, 'T', 'A', 1);
+                    Cliente cte = new Cliente(cliente.ID, MtxtDireccion.Text, MtxtCodigoPostal.Text, MtxtRFC.Text, MtxtTelefono.Text, MtxtEmail.Text, 'T', 'A', ((Ciudad)comboBoxCiudad.SelectedItem).ID);
                     cte.InfoCliente = ctetda;
 
                     var resultado = new ClienteDAO().Editar(cte);
@@ -162,7 +177,7 @@ namespace ERP_ventas.Formularios.Clientes
                     else
                     {
                         Mensajes.Info("Modificación exitosa.");
-                        this.Close();
+                        Close();
                     }
 
                 }
@@ -171,6 +186,34 @@ namespace ERP_ventas.Formularios.Clientes
                     Mensajes.Error(ex.Message);
                 }
             }
+        }
+
+        private void MtxtRFC_Leave(object sender, EventArgs e)
+        {
+            //if (!Regex.IsMatch(MtxtRFC.Text, @"^[a-zA-Z][a-zA-Z][a-zA-Z][0-9][0-9][0-9][0-9][0-9][0-9][a-zA-Z0-9][a-zA-Z0-9][a-zA-Z0-9]$"))
+            //{
+            //    Mensajes.Info("El RFC no es válido");
+            //    MtxtRFC.Focus();
+            //}
+        }
+
+        private void MtxtContacto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Utilidades.soloLetras(e);
+        }
+
+        private void MtxtEmail_Leave(object sender, EventArgs e)
+        {
+            if (!Utilidades.IsValidEmail(MtxtEmail.Text))
+            {
+                Mensajes.Info("El correo no es válido");
+                MtxtEmail.Focus();
+            }
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

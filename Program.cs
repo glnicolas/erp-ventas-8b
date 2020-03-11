@@ -19,7 +19,7 @@ namespace ERP_ventas
             Application.SetCompatibleTextRenderingDefault(false);
 
             //Application.Run(new Login());
-            Login loginForm = new Login();
+            ClienteTiendaGUI loginForm = new ClienteTiendaGUI();
             loginForm.FormClosed += MainForm_Closed;
             loginForm.Show();
             Application.Run();

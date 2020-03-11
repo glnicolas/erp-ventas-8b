@@ -12,5 +12,11 @@ namespace ERP_ventas.Modelo
         public string Nombre { get; set; }
 
         public List<Ciudad> Ciudades = new List<Ciudad>();
+
+        public Estado(int id, string nombre)
+        {
+            Nombre = nombre;
+            ID = id;
+        }
     }
 }

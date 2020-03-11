@@ -19,7 +19,7 @@ namespace ERP_ventas.Datos
         /// <summary>
         /// Calcula la cantidad de paginas
         /// </summary>
-        protected void CalculatePages()
+        public void CalculatePages()
         {
             try
             {
@@ -31,6 +31,7 @@ namespace ERP_ventas.Datos
                     conexion.Close();
                     pages = Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(rows) / rows_per_page));
                 }
+
             }
             catch (SqlException ex)
             {

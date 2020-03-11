@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace ERP_ventas
@@ -22,7 +23,6 @@ namespace ERP_ventas
             else
                 e.Handled = true;
         }
-
         public static void soloNumeros(KeyPressEventArgs e)
         {
             if (char.IsDigit(e.KeyChar))
@@ -59,7 +59,9 @@ namespace ERP_ventas
             else
                 e.Handled = true;
         }
-
-
+        public static bool IsValidEmail(string email)
+        {
+            return Regex.IsMatch(email, @"[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+");
+        }
     }
 }

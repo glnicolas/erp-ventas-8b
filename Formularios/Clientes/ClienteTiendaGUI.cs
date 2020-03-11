@@ -47,7 +47,12 @@ namespace ERP_ventas.Formularios.Clientes
 
         private void actualizarTabla()
         {
-            
+            clienteTiendaDAO.actual_page = 0;
+            clienteTiendaDAO.CalculatePages();
+            anteriorBtn.Enabled = false;
+            siguienteBtn.Enabled = true;
+            paginacionTabla.DataSource = clienteTiendaDAO.getNextPage();
+            paginaxdey.Text = clienteTiendaDAO.actual_page + "  de  " + clienteTiendaDAO.pages;
         }
 
         private void llenarTabla(List<Cliente> clientes)
