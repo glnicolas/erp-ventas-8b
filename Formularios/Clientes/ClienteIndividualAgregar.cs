@@ -33,7 +33,8 @@ namespace ERP_ventas.Formularios.Clientes
             InitializeComponent();
             generarCiudades();
             this.cliente = cliente;
-
+            modificarBtn.Visible = true;
+            btnRegistrar.Visible = false;
         }
 
         private void generarCiudades()
@@ -69,9 +70,28 @@ namespace ERP_ventas.Formularios.Clientes
         {
             String mensaje = "";
 
+            String nombre = txtNombre.Text; 
+            String aPaterno = txtAPaterno.Text;
+            String aMaterno = txtAMaterno.Text;
+
             String rfc = txtRFC.Text;
             String telefono = txtTelefono.Text;
             String codigoPostal = txtCodigoPostal.Text;
+
+            if (nombre=="")
+            {
+                mensaje += "\n Rellena el campo de nombre";
+            }
+
+            if (aPaterno == "")
+            {
+                mensaje += "\n Rellena el campo de Apellido Paterno";
+            }
+
+            if (aMaterno == "")
+            {
+                mensaje += "\n Rellena el campo de Apellido Materno";
+            }
 
             bool soloLetras = Regex.IsMatch(rfc, @"^[a-zA-Z][a-z A-Z]+$");
             //RFC Valido
@@ -114,6 +134,28 @@ namespace ERP_ventas.Formularios.Clientes
                 mensaje += "\n Codigo postal Invalido, completar.";
             }
 
+            //email
+            /* Validar que este completo
+             */
+            if (Regex.IsMatch(txtEmail.Text, @"[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+"))
+            {
+                //Es valido
+            }
+            else
+            {
+                mensaje += "\n Email Invalido, completar.";
+            }
+
+            if (txtDireccion.Text == "")
+            {
+                mensaje += "\n Completar dirección.";
+            }
+
+            Ciudad validarCd = (Ciudad)comboBoxCiudad.SelectedItem;
+            if (validarCd==null)
+            {
+                mensaje += "\n Selecciona una ciudad.";
+            }
 
             /*Verificar si existe algun mensaje de error*/
             if (mensaje.Equals(""))
@@ -181,22 +223,32 @@ namespace ERP_ventas.Formularios.Clientes
             {
                 txtNombre.Text = ((ClienteIndividual)cliente.InfoCliente).Nombre;
                 txtAPaterno.Text = ((ClienteIndividual)cliente.InfoCliente).Apaterno;
-                txtNombre.Text = ((ClienteIndividual)cliente.InfoCliente).Nombre;
+                txtAMaterno.Text = ((ClienteIndividual)cliente.InfoCliente).Amaterno;
                 txtDireccion.Text = cliente.Direccion;
                 txtCodigoPostal.Text = cliente.CP;
                 txtEmail.Text = cliente.Email;
                 txtTelefono.Text = cliente.Telefono;
                 txtRFC.Text = cliente.RFC;
-
+                
                 var ciudades = comboBoxCiudad.Items;
                 foreach(Ciudad ciudad in ciudades)
                 {
-                    if (ciudad.ID == cliente.ID)
+                    if (ciudad.ID == cliente.IDCiudad)
                     {
                         comboBoxCiudad.SelectedItem = ciudad;
                     }
                 }
             }
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Utilidades.soloLetras(e);
+        }
+
+        private void modificarBtn_Click(object sender, EventArgs e)
+        {
+            validarEntradas();
         }
     }
 }
