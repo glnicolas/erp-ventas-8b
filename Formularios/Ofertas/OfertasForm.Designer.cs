@@ -1,6 +1,6 @@
 ﻿namespace ERP_ventas.Formularios.Ofertas
 {
-    partial class Ofertas
+    partial class OfertasForm
     {
         /// <summary>
         /// Required designer variable.
@@ -36,10 +36,10 @@
             this.paginaxdey = new System.Windows.Forms.Label();
             this.siguienteBtn = new System.Windows.Forms.Button();
             this.anteriorBtn = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataOfertas = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataOfertas)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -135,21 +135,21 @@
             this.anteriorBtn.TabIndex = 27;
             this.anteriorBtn.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dataOfertas
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 124);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1018, 377);
-            this.dataGridView1.TabIndex = 26;
+            this.dataOfertas.AllowUserToAddRows = false;
+            this.dataOfertas.AllowUserToDeleteRows = false;
+            this.dataOfertas.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.dataOfertas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataOfertas.Location = new System.Drawing.Point(0, 124);
+            this.dataOfertas.MultiSelect = false;
+            this.dataOfertas.Name = "dataOfertas";
+            this.dataOfertas.ReadOnly = true;
+            this.dataOfertas.RowHeadersVisible = false;
+            this.dataOfertas.RowHeadersWidth = 51;
+            this.dataOfertas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataOfertas.Size = new System.Drawing.Size(1018, 377);
+            this.dataOfertas.TabIndex = 26;
             // 
             // Ofertas
             // 
@@ -159,17 +159,18 @@
             this.Controls.Add(this.paginaxdey);
             this.Controls.Add(this.siguienteBtn);
             this.Controls.Add(this.anteriorBtn);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataOfertas);
             this.Controls.Add(this.dataGridViewClientes);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.panel1);
             this.Name = "Ofertas";
             this.Text = "Ofertas";
+            this.Load += new System.EventHandler(this.Ofertas_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataOfertas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,6 +186,6 @@
         private System.Windows.Forms.Label paginaxdey;
         private System.Windows.Forms.Button siguienteBtn;
         private System.Windows.Forms.Button anteriorBtn;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataOfertas;
     }
 }

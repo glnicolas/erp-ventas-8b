@@ -14,7 +14,7 @@ using System.Data.SqlClient;
 using System.IO;
 using ERP_ventas.Datos;
 using ERP_ventas.Formularios;
-
+using ERP_ventas.Formularios.Ofertas;
 
 namespace ERP_ventas
 {
@@ -34,8 +34,8 @@ namespace ERP_ventas
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ClienteIndividualForm cli = new ClienteIndividualForm();
-            cli.ShowDialog();
+            OfertasForm of = new OfertasForm();
+            of.ShowDialog();
             
         }
 
