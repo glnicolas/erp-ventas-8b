@@ -11,8 +11,9 @@ namespace ERP_ventas.Datos
     class OfertasDAO : Paginacion
     {
         public OfertasDAO()
-        {   /*
-            table = "Clientes_Individuales";  //Nombre de la tabla o vista
+        {
+
+            table = "Ofertas_General";  //Nombre de la tabla o vista
             order_by = "Nombre"; //Nombre de la columna para ordenar los registros
             rows_per_page = 3;          //Cantidad de registros por página
             try
@@ -23,7 +24,6 @@ namespace ERP_ventas.Datos
             {
                 throw ex;
             }
-            */
         }
 
         public List<Oferta> ConsultaGeneral(string sql_where, List<string> parametros, List<object> valores) {

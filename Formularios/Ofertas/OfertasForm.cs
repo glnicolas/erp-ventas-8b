@@ -16,6 +16,7 @@ namespace ERP_ventas.Formularios.Ofertas
         OfertasDAO ofertasDAO;
         public OfertasForm()
         {
+            ofertasDAO = new OfertasDAO();
             InitializeComponent();
         }
 
@@ -28,8 +29,17 @@ namespace ERP_ventas.Formularios.Ofertas
             }
             catch (Exception ex)
             {
-                Mensajes.Error(ex.Message);
+                Mensajes.Error("ERROR:: "+ex.Message);
             }
+        }
+
+        private void dataOfertas_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            foreach (DataGridViewColumn i in dataOfertas.Columns)
+            {
+                i.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+            dataOfertas.AutoResizeColumns();
         }
     }
 }

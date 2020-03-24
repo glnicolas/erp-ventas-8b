@@ -5,6 +5,7 @@ using ERP_ventas.Formularios;
 using System.Windows.Forms;
 using ERP_ventas.Formularios.Clientes;
 using ERP_ventas.Clientes;
+using ERP_ventas.Formularios.Ofertas;
 
 namespace ERP_ventas
 {
@@ -20,9 +21,10 @@ namespace ERP_ventas
             Application.SetCompatibleTextRenderingDefault(false);
 
             //Application.Run(new Login());
-            Login loginForm = new Login();
-            loginForm.FormClosed += MainForm_Closed;
-            loginForm.Show();
+            //Login loginForm = new Login();
+            OfertasForm ofertasForm = new OfertasForm();
+            ofertasForm.FormClosed += MainForm_Closed;
+            ofertasForm.Show();
             Application.Run();
         }
 

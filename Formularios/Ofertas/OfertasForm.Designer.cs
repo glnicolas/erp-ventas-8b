@@ -150,8 +150,9 @@
             this.dataOfertas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataOfertas.Size = new System.Drawing.Size(1018, 377);
             this.dataOfertas.TabIndex = 26;
+            this.dataOfertas.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataOfertas_DataBindingComplete);
             // 
-            // Ofertas
+            // OfertasForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -164,7 +165,7 @@
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.panel1);
-            this.Name = "Ofertas";
+            this.Name = "OfertasForm";
             this.Text = "Ofertas";
             this.Load += new System.EventHandler(this.Ofertas_Load);
             this.panel1.ResumeLayout(false);
