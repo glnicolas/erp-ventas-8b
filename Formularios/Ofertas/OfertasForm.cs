@@ -41,5 +41,11 @@ namespace ERP_ventas.Formularios.Ofertas
             }
             dataOfertas.AutoResizeColumns();
         }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            OfertasAgregar ofertasAgregar = new OfertasAgregar();
+            ofertasAgregar.ShowDialog();
+        }
     }
 }

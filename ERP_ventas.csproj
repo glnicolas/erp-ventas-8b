@@ -71,6 +71,12 @@
     <Compile Include="Formularios\Clientes\ClienteTiendaRegistro.Designer.cs">
       <DependentUpon>ClienteTiendaRegistro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Ofertas\OfertasAgregar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Ofertas\OfertasAgregar.Designer.cs">
+      <DependentUpon>OfertasAgregar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Ofertas\OfertasForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Ofertas\OfertasAgregar.resx">
+      <DependentUpon>OfertasAgregar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Ofertas\OfertasForm.resx">
       <DependentUpon>OfertasForm.cs</DependentUpon>

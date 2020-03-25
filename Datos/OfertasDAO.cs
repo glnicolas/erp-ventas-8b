@@ -80,5 +80,50 @@ namespace ERP_ventas.Datos
             return ofertas;
         }
 
+        public object Registrar(Oferta of)
+        {
+            object resultado = new object();
+            try
+            {
+                // tipo 0 -> insert ; 1 -> update
+                //Validar(0, tr)
+                if (true)
+                {
+                    using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion))
+                    {
+                        string cadena_sql = "insert into UnidadesTransporte values (@placas, @marca, @modelo, @anio, @cap, @est)";
+
+                        SqlCommand comando = new SqlCommand(cadena_sql, conexion);
+                        //comando.Parameters.AddWithValue("@placas", tr.Placas);
+                        //comando.Parameters.AddWithValue("@marca", tr.Marca);
+                        //comando.Parameters.AddWithValue("@modelo", tr.Modelo);
+                        //comando.Parameters.AddWithValue("@anio", tr.Anio);
+                        //comando.Parameters.AddWithValue("@cap", tr.Capacidad);
+                        //comando.Parameters.AddWithValue("@est", tr.Estatus);
+                        conexion.Open();
+
+                        int cant_registros = (int)comando.ExecuteNonQuery();
+                        conexion.Close();
+                        if (cant_registros == 1)
+                        {
+                            resultado = true;
+                        }
+                        else
+                        {
+                            resultado = "Se ha generado un error no especificado";
+                        }
+                    }
+                }
+                else
+                {
+                    resultado = "Error: Ya existe una unidad con datos en común";
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error relacionado con la BD. [ClienteIndividualDAO.R] \n Anota este error y contacta al administrador.\n" + ex.Message);
+            }
+            return resultado;
+        }
     }
 }

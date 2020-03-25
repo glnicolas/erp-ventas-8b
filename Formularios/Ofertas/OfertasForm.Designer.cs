@@ -59,9 +59,9 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Location = new System.Drawing.Point(12, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(285, 31);
+            this.label1.Size = new System.Drawing.Size(111, 31);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Clientes Individuales";
+            this.label1.Text = "Ofertas";
             // 
             // btnEliminar
             // 
@@ -87,6 +87,7 @@
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // dataGridViewClientes
             // 
