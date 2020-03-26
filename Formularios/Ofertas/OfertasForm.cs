@@ -46,6 +46,17 @@ namespace ERP_ventas.Formularios.Ofertas
         {
             OfertasAgregar ofertasAgregar = new OfertasAgregar();
             ofertasAgregar.ShowDialog();
+            actualizarTabla();
+        }
+
+        private void actualizarTabla()
+        {
+            ofertasDAO.actual_page = 0;
+            ofertasDAO.CalculatePages();
+            anteriorBtn.Enabled = false;
+            siguienteBtn.Enabled = true;
+            dataOfertas.DataSource = ofertasDAO.getNextPage();
+            paginaxdey.Text = ofertasDAO.actual_page + "  de  " + ofertasDAO.pages;
         }
     }
 }

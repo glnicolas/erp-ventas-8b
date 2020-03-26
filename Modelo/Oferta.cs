@@ -11,13 +11,13 @@ namespace ERP_ventas.Modelo
         public int idOferta  { get; set; }
         public String nombre  { get; set; }
         public String descripcion  { get; set; } 
-        public float porDescuento  { get; set; } 
+        public double porDescuento  { get; set; } 
         public String fechaInicio  { get; set; } 
         public String fechaFin  { get; set; } 
         public int canMinProducto  { get; set; } 
         public String estatus  { get; set; }
 
-        public Oferta(int idOferta, string nombre, string descripcion, float porDescuento, string fechaInicio, string fechaFin, int canMinProducto, string estatus)
+        public Oferta(int idOferta, string nombre, string descripcion, double porDescuento, string fechaInicio, string fechaFin, int canMinProducto, string estatus)
         {
             this.idOferta = idOferta;
             this.nombre = nombre;

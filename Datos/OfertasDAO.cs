@@ -91,15 +91,15 @@ namespace ERP_ventas.Datos
                 {
                     using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion))
                     {
-                        string cadena_sql = "insert into UnidadesTransporte values (@placas, @marca, @modelo, @anio, @cap, @est)";
+                        string cadena_sql = "insert into Ofertas values(@nombre,@descripcion,@descuento,@fInicio,@fFin,@cantMinProd,'A')";
 
                         SqlCommand comando = new SqlCommand(cadena_sql, conexion);
-                        //comando.Parameters.AddWithValue("@placas", tr.Placas);
-                        //comando.Parameters.AddWithValue("@marca", tr.Marca);
-                        //comando.Parameters.AddWithValue("@modelo", tr.Modelo);
-                        //comando.Parameters.AddWithValue("@anio", tr.Anio);
-                        //comando.Parameters.AddWithValue("@cap", tr.Capacidad);
-                        //comando.Parameters.AddWithValue("@est", tr.Estatus);
+                        comando.Parameters.AddWithValue("@nombre", of.nombre);
+                        comando.Parameters.AddWithValue("@descripcion", of.descripcion);
+                        comando.Parameters.AddWithValue("@descuento", of.porDescuento);
+                        comando.Parameters.AddWithValue("@fInicio", of.fechaInicio);
+                        comando.Parameters.AddWithValue("@fFin", of.fechaFin);
+                        comando.Parameters.AddWithValue("@cantMinProd", of.canMinProducto);
                         conexion.Open();
 
                         int cant_registros = (int)comando.ExecuteNonQuery();
