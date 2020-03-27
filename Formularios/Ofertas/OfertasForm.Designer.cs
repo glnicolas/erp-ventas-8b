@@ -74,6 +74,7 @@
             this.btnEliminar.Text = "Eliminar  ";
             this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnNuevo
             // 
@@ -124,6 +125,7 @@
             this.siguienteBtn.Size = new System.Drawing.Size(30, 43);
             this.siguienteBtn.TabIndex = 28;
             this.siguienteBtn.UseVisualStyleBackColor = true;
+            this.siguienteBtn.Click += new System.EventHandler(this.siguienteBtn_Click);
             // 
             // anteriorBtn
             // 
@@ -135,6 +137,7 @@
             this.anteriorBtn.Size = new System.Drawing.Size(30, 43);
             this.anteriorBtn.TabIndex = 27;
             this.anteriorBtn.UseVisualStyleBackColor = true;
+            this.anteriorBtn.Click += new System.EventHandler(this.anteriorBtn_Click);
             // 
             // dataOfertas
             // 
@@ -151,6 +154,7 @@
             this.dataOfertas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataOfertas.Size = new System.Drawing.Size(1018, 377);
             this.dataOfertas.TabIndex = 26;
+            this.dataOfertas.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataOfertas_CellContentDoubleClick);
             this.dataOfertas.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataOfertas_DataBindingComplete);
             // 
             // OfertasForm

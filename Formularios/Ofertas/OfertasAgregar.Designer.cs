@@ -248,6 +248,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "OfertasAgregar";
             this.Text = "OfertasAgregar";
+            this.Load += new System.EventHandler(this.OfertasAgregar_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUDDescuento)).EndInit();

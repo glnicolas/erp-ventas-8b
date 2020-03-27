@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,11 +15,21 @@ namespace ERP_ventas.Formularios.Ofertas
 {
     public partial class OfertasAgregar : Form
     {
+        Oferta oferta;
         public OfertasAgregar()
         {
             InitializeComponent();
             modificarBtn.Visible = false;
             btnRegistrar.Visible = true;
+        }
+
+        public OfertasAgregar(Oferta oferta)
+        {
+            InitializeComponent();
+            this.oferta = oferta;
+            label1.Text = "Editar oferta";
+            modificarBtn.Visible = true;
+            btnRegistrar.Visible = false;
         }
 
         private void btnRegistrar_Click(object sender, EventArgs e)
@@ -87,6 +98,19 @@ namespace ERP_ventas.Formularios.Ofertas
             if (dateFechaInicio.Value.Date > dateFechaFin.Value.Date)
             {
                 dateFechaFin.Value = dateFechaInicio.Value;
+            }
+        }
+
+        private void OfertasAgregar_Load(object sender, EventArgs e)
+        {
+            if (oferta!=null)
+            {
+                txtNombre.Text = oferta.nombre;
+                txtDescripcion.Text = oferta.descripcion;
+                numUDDescuento.Value = (int)(oferta.porDescuento * 100);
+                numUDCantMinProd.Value = oferta.canMinProducto;
+                dateFechaInicio.Value = DateTime.ParseExact(oferta.fechaInicio, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                dateFechaFin.Value = DateTime.ParseExact(oferta.fechaFin, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             }
         }
     }

@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ERP_ventas.Datos
 {
@@ -33,7 +34,7 @@ namespace ERP_ventas.Datos
             {
                 using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion))
                 {
-                    string cadena_sql = "select * from ofertas " + sql_where;
+                    string cadena_sql = "SELECT idOferta, nombre, descripcion, porDescuento, CONVERT(varchar,fechaInicio,103) as fechaInicio, CONVERT(varchar,fechaFin,103) as fechaFin, canMinProducto, estatus FROM Ofertas " + sql_where;
                     // idOferta nombre  descripcion porDescuento    fechaInicio fechaFin    canMinProducto estatus
 
                     SqlCommand comando = new SqlCommand(cadena_sql, conexion);
@@ -49,11 +50,12 @@ namespace ERP_ventas.Datos
                     {
                         while (lector.Read())
                         {
+                            //MessageBox.Show(" s"+((double)lector["porDescuento"]), "f");
                              Oferta oferta = new Oferta(
                                  (int)lector["idOferta"],
                                  (string)lector["nombre"],
                                  (string)lector["descripcion"],
-                                 (float)lector["porDescuento"],
+                                 (double)lector["porDescuento"],
                                  (string)lector["fechaInicio"],
                                  (string)lector["fechaFin"],
                                  (int)lector["canMinProducto"],
@@ -124,6 +126,27 @@ namespace ERP_ventas.Datos
                 throw new Exception("Error relacionado con la BD. [ClienteIndividualDAO.R] \n Anota este error y contacta al administrador.\n" + ex.Message);
             }
             return resultado;
+        }
+
+        internal void Eliminar(int ID)
+        {
+            try
+            {
+                using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion))
+                {
+                    string cadena_sql = "update Ofertas set estatus= 'I' where idOferta=@id";
+
+                    SqlCommand comando = new SqlCommand(cadena_sql, conexion);
+                    comando.Parameters.AddWithValue("@id", ID);
+                    conexion.Open();
+                    comando.ExecuteNonQuery();
+                    conexion.Close();
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error relacionado con la BD. [ClienteDAO.E] \n Anota este error y contacta al administrador.\n" + ex.Message);
+            }
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ERP_ventas.Modelo
 {
-    class Oferta
+    public class Oferta
     {
         public int idOferta  { get; set; }
         public String nombre  { get; set; }
