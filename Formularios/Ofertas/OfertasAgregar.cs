@@ -46,7 +46,7 @@ namespace ERP_ventas.Formularios.Ofertas
                 }
                 else
                 {
-                    Mensajes.Info("Actualización exitosa.");
+                    Mensajes.Info("Registro exitoso.");
                     Close();
                 }
             }   
