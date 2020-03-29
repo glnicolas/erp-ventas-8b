@@ -82,6 +82,48 @@ namespace ERP_ventas.Datos
             return ofertas;
         }
 
+        public bool Validar(int tipo, Oferta oferta)
+        {
+            // tipo 0 -> insert ; 1 -> update
+
+            try
+            {
+                using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion))
+                {
+                    string cadena_sql = "";
+                    if (tipo == 0)
+                        cadena_sql = "select idOferta from Ofertas where nombre=@nombre ";
+
+                    else
+                        cadena_sql = "select idOferta from Ofertas where idOferta!=@idOferta and nombre=@nombre ";
+
+                    SqlCommand comando = new SqlCommand(cadena_sql, conexion);
+                    comando.Parameters.AddWithValue("@nombre", oferta.nombre);
+                    if (tipo == 1)
+                        comando.Parameters.AddWithValue("@idOferta", oferta.idOferta);
+                    conexion.Open();
+
+                    SqlDataReader lector = comando.ExecuteReader();
+
+                    if (lector.HasRows)
+                    {
+                        conexion.Close();
+                        return false;
+                    }
+                    else
+                    {
+                        conexion.Close();
+                        return true;
+                    }
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error relacionado con la BD. [OfertaDAO.V] \n Anota este error y contacta al administrador.\n" + ex.Message);
+            }
+        }
+
         public object Registrar(Oferta of)
         {
             object resultado = new object();
@@ -89,7 +131,7 @@ namespace ERP_ventas.Datos
             {
                 // tipo 0 -> insert ; 1 -> update
                 //Validar(0, tr)
-                if (true)
+                if (Validar(0, of))
                 {
                     using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion))
                     {
@@ -102,6 +144,54 @@ namespace ERP_ventas.Datos
                         comando.Parameters.AddWithValue("@fInicio", of.fechaInicio);
                         comando.Parameters.AddWithValue("@fFin", of.fechaFin);
                         comando.Parameters.AddWithValue("@cantMinProd", of.canMinProducto);
+                        conexion.Open();
+
+                        int cant_registros = (int)comando.ExecuteNonQuery();
+                        conexion.Close();
+                        if (cant_registros == 1)
+                        {
+                            resultado = true;
+                        }
+                        else
+                        {
+                            resultado = "Se ha generado un error no especificado";
+                        }
+                    }
+                }
+                else
+                {
+                    resultado = "Error: Ya existe una unidad con datos en común";
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error relacionado con la BD. [ClienteIndividualDAO.R] \n Anota este error y contacta al administrador.\n" + ex.Message);
+            }
+            return resultado;
+        }
+
+        public object Editar(Oferta of)
+        {
+            object resultado = new object();
+            try
+            {
+                // tipo 0 -> insert ; 1 -> update
+                //Validar(0, tr)
+                if (Validar(1, of))
+                {
+                    using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion))
+                    {
+                        string cadena_sql = "update Ofertas set	nombre=@nombre, descripcion=@descripcion, porDescuento=@porDescuento, " +
+                            "fechaInicio=@fechaInicio, fechaFin=@fechaFin, canMinProducto=@canMinProducto where idOferta=@idOferta ";
+
+                        SqlCommand comando = new SqlCommand(cadena_sql, conexion);
+                        comando.Parameters.AddWithValue("@idOferta", of.idOferta);
+                        comando.Parameters.AddWithValue("@nombre", of.nombre);
+                        comando.Parameters.AddWithValue("@descripcion", of.descripcion);
+                        comando.Parameters.AddWithValue("@porDescuento", of.porDescuento);
+                        comando.Parameters.AddWithValue("@fechaInicio", of.fechaInicio);
+                        comando.Parameters.AddWithValue("@fechaFin", of.fechaFin);
+                        comando.Parameters.AddWithValue("@canMinProducto", of.canMinProducto);
                         conexion.Open();
 
                         int cant_registros = (int)comando.ExecuteNonQuery();

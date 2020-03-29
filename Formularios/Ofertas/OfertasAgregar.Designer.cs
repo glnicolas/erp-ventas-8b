@@ -211,6 +211,7 @@
             this.modificarBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.modificarBtn.UseVisualStyleBackColor = true;
             this.modificarBtn.Visible = false;
+            this.modificarBtn.Click += new System.EventHandler(this.modificarBtn_Click);
             // 
             // btnRegistrar
             // 

@@ -16,6 +16,7 @@ namespace ERP_ventas.Formularios.Ofertas
     public partial class OfertasAgregar : Form
     {
         Oferta oferta;
+        int accion = 0; //0= agregar, 1 = editar
         public OfertasAgregar()
         {
             InitializeComponent();
@@ -34,10 +35,24 @@ namespace ERP_ventas.Formularios.Ofertas
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            validarOferta();
+            if (validarOferta())
+            {
+                var resultado = new OfertasDAO().Registrar(oferta);
+                Type resultado_tipo = resultado.GetType();
+
+                if (resultado_tipo.Equals(typeof(string)))
+                {
+                    Mensajes.Error(resultado.ToString());
+                }
+                else
+                {
+                    Mensajes.Info("Actualización exitosa.");
+                    Close();
+                }
+            }   
         }
 
-        private void validarOferta()
+        private Boolean validarOferta()
         {
             String errores = "";
 
@@ -62,26 +77,21 @@ namespace ERP_ventas.Formularios.Ofertas
       
             if (!(errores.Length>0))
             {
-                Oferta oferta = new Oferta(0,nombre,descripcion,descuento,fInicio,fFin,cantMinProd,"A");
-                var resultado = new OfertasDAO().Registrar(oferta);
-                Type resultado_tipo = resultado.GetType();
-
-                if (resultado_tipo.Equals(typeof(string)))
+                if (oferta!=null) //Accion es editar
                 {
-                    Mensajes.Error(resultado.ToString());
+                    oferta = new Oferta(oferta.idOferta, nombre, descripcion, descuento, fInicio, fFin, cantMinProd, "A");
                 }
-                else
+                else //Accion es agregar
                 {
-                    Mensajes.Info("Actualización exitosa.");
-                    Close();
+                    oferta = new Oferta(0, nombre, descripcion, descuento, fInicio, fFin, cantMinProd, "A");
                 }
+                return true;
             }
             else
             {
                 Mensajes.Info(errores);
+                return false;
             }
-
-    
         }
 
         private void dateFechaFin_ValueChanged(object sender, EventArgs e)
@@ -111,6 +121,25 @@ namespace ERP_ventas.Formularios.Ofertas
                 numUDCantMinProd.Value = oferta.canMinProducto;
                 dateFechaInicio.Value = DateTime.ParseExact(oferta.fechaInicio, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 dateFechaFin.Value = DateTime.ParseExact(oferta.fechaFin, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            }
+        }
+
+        private void modificarBtn_Click(object sender, EventArgs e)
+        {
+            if (validarOferta())
+            {
+                var resultado = new OfertasDAO().Editar(oferta);
+                Type resultado_tipo = resultado.GetType();
+
+                if (resultado_tipo.Equals(typeof(string)))
+                {
+                    Mensajes.Error(resultado.ToString());
+                }
+                else
+                {
+                    Mensajes.Info("Actualización exitosa.");
+                    Close();
+                }
             }
         }
     }
