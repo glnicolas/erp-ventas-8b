@@ -73,6 +73,16 @@ namespace ERP_ventas.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap broom_32px {
+            get {
+                object obj = ResourceManager.GetObject("broom_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap delete_sign_32px {
             get {
                 object obj = ResourceManager.GetObject("delete_sign_32px", resourceCulture);
@@ -133,6 +143,16 @@ namespace ERP_ventas.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap image_not_available {
+            get {
+                object obj = ResourceManager.GetObject("image_not_available", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap minus_math_32px {
             get {
                 object obj = ResourceManager.GetObject("minus_math_32px", resourceCulture);
@@ -183,6 +203,16 @@ namespace ERP_ventas.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap search_32px {
+            get {
+                object obj = ResourceManager.GetObject("search_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Sector_1 {
             get {
                 object obj = ResourceManager.GetObject("Sector 1", resourceCulture);
@@ -226,6 +256,16 @@ namespace ERP_ventas.Properties {
         internal static System.Drawing.Bitmap Sector_5 {
             get {
                 object obj = ResourceManager.GetObject("Sector 5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sneakers_32px {
+            get {
+                object obj = ResourceManager.GetObject("sneakers_32px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

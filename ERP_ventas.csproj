@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -53,6 +68,8 @@
     <Compile Include="Datos\ClienteTiendaDAO.cs" />
     <Compile Include="Datos\OfertasDAO.cs" />
     <Compile Include="Datos\Paginacion.cs" />
+    <Compile Include="Datos\ProductoDAO.cs" />
+    <Compile Include="Datos\ProductosOfertaDAO.cs" />
     <Compile Include="Formularios\Clientes\ClienteIndividualAgregar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +88,8 @@
     <Compile Include="Formularios\Clientes\ClienteTiendaRegistro.Designer.cs">
       <DependentUpon>ClienteTiendaRegistro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Ofertas\ComboBoxTools.cs" />
+    <Compile Include="Modelo\Producto.cs" />
     <Compile Include="Formularios\Ofertas\OfertasAgregar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +101,12 @@
     </Compile>
     <Compile Include="Formularios\Ofertas\OfertasForm.Designer.cs">
       <DependentUpon>OfertasForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Ofertas\ProductosOfertaGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Ofertas\ProductosOfertaGUI.Designer.cs">
+      <DependentUpon>ProductosOfertaGUI.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Ciudad.cs" />
     <Compile Include="Modelo\Cliente.cs" />
@@ -167,6 +192,9 @@
     <EmbeddedResource Include="Formularios\Ofertas\OfertasForm.resx">
       <DependentUpon>OfertasForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Ofertas\ProductosOfertaGUI.resx">
+      <DependentUpon>ProductosOfertaGUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\SubMClientes.resx">
       <DependentUpon>SubMClientes.cs</DependentUpon>
     </EmbeddedResource>
@@ -243,6 +271,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\right_squared_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img_not_available.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ina.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\broom_32px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

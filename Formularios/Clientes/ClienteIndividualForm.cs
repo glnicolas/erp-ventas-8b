@@ -35,51 +35,25 @@ namespace ERP_ventas.Clientes
 
         private void ClienteIndividual_Load(object sender, EventArgs e)
         {
-            //actualizarTabla(); //obsoleto
-            try
-            {
-                dataGridViewClientes.DataSource = clienteIndividual.getNextPage();
-            }
-            catch (Exception ex)
-            {
-                Mensajes.Error(ex.Message);
-            }
+            elementosPaginacionCmb.SelectedIndex = 0;
         }
-
-
 
         private void actualizarTabla()
         {
             clienteIndividual.actual_page = 0;
             clienteIndividual.CalculatePages();
-            anteriorBtn.Enabled = false;
-            siguienteBtn.Enabled = true;
+            if (clienteIndividual.pages > 1)
+            {
+                anteriorBtn.Enabled = false;
+                siguienteBtn.Enabled = true;
+            }
+            else
+            {
+                anteriorBtn.Enabled = false;
+                siguienteBtn.Enabled = false;
+            }
             dataGridViewClientes.DataSource = clienteIndividual.getNextPage();
             paginaxdey.Text = clienteIndividual.actual_page + "  de  " + clienteIndividual.pages;
-        }
-
-        private void llenarTabla(List<Cliente> clientes)
-        {
-
-            //foreach (Cliente cliente in clientes)
-            //{
-            //    DataGridViewRow renglon = new DataGridViewRow();
-            //    renglon.CreateCells(dataGridViewClientes);
-
-            //    renglon.Cells[0].Value = cliente.ID;
-            //    renglon.Cells[1].Value = ((ClienteIndividual)cliente.InfoCliente).Nombre;
-            //    renglon.Cells[2].Value = ((ClienteIndividual)cliente.InfoCliente).Apaterno;
-            //    renglon.Cells[3].Value = ((ClienteIndividual)cliente.InfoCliente).Amaterno;
-            //    renglon.Cells[4].Value = ((ClienteIndividual)cliente.InfoCliente).Sexo;
-            //    renglon.Cells[5].Value = cliente.Direccion;
-            //    renglon.Cells[6].Value = cliente.CP;
-            //    renglon.Cells[7].Value = cliente.RFC;
-            //    renglon.Cells[8].Value = cliente.Telefono;
-            //    renglon.Cells[9].Value = cliente.Email;
-            //    renglon.Cells[10].Value = cliente.IDCiudad;
-
-            //    dataGridViewClientes.Rows.Add(renglon);
-            //}
         }
 
         private void dataGridViewClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -172,6 +146,19 @@ namespace ERP_ventas.Clientes
                 siguienteBtn.Enabled = false; //Deshabilita siguiente porque está en la última página
             }
             paginaxdey.Text = clienteIndividual.actual_page + "  de  " + clienteIndividual.pages;
+        }
+
+        private void elementosPaginacionCmb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                clienteIndividual.rows_per_page = Convert.ToInt32(elementosPaginacionCmb.SelectedItem);
+                actualizarTabla();
+            }
+            catch (Exception ex)
+            {
+                Mensajes.Error("Ha ocurrido un error. Contacta al administrador. \n" + ex.Message);
+            }
         }
     }
 }

@@ -20,7 +20,7 @@ namespace ERP_ventas.Formularios.Clientes
         public ClienteTiendaGUI()
         {
             InitializeComponent();
-            clienteDAO = new ClienteDAO(); 
+            clienteDAO = new ClienteDAO();
             try
             {
                 clienteTiendaDAO = new ClienteTiendaDAO();
@@ -33,49 +33,28 @@ namespace ERP_ventas.Formularios.Clientes
 
         private void ClienteTienda_Load(object sender, EventArgs e)
         {
-            try
-            {
-                paginacionTabla.DataSource = clienteTiendaDAO.getNextPage();
-            }
-            catch (Exception ex)
-            {
-                Mensajes.Error(ex.Message);
-            }
-
+            elementosPaginacionCmb.SelectedIndex = 0;
         }
 
         private void actualizarTabla()
         {
             clienteTiendaDAO.actual_page = 0;
             clienteTiendaDAO.CalculatePages();
-            anteriorBtn.Enabled = false;
-            siguienteBtn.Enabled = true;
+
+            if (clienteTiendaDAO.pages > 1)
+            {
+                anteriorBtn.Enabled = false;
+                siguienteBtn.Enabled = true;
+            }
+            else
+            {
+                anteriorBtn.Enabled = false;
+                siguienteBtn.Enabled = false;
+            }
             paginacionTabla.DataSource = clienteTiendaDAO.getNextPage();
+
             paginaxdey.Text = clienteTiendaDAO.actual_page + "  de  " + clienteTiendaDAO.pages;
         }
-
-        private void llenarTabla(List<Cliente> clientes)
-        {
-            //dataGridViewClientes.Rows.Clear();
-            //foreach (Cliente cliente in clientes)
-            //{
-            //    DataGridViewRow renglon = new DataGridViewRow();
-            //    renglon.CreateCells(dataGridViewClientes);
-            //    renglon.Cells[0].Value = cliente.ID;
-            //    renglon.Cells[1].Value = ((ClienteTienda)cliente.InfoCliente).Nombre;
-            //    renglon.Cells[2].Value = ((ClienteTienda)cliente.InfoCliente).Contacto;
-            //    renglon.Cells[3].Value = ((ClienteTienda)cliente.InfoCliente).Limite;
-            //    renglon.Cells[4].Value = cliente.Direccion;
-            //    renglon.Cells[5].Value = cliente.CP;
-            //    renglon.Cells[6].Value = cliente.RFC;
-            //    renglon.Cells[7].Value = cliente.Telefono;
-            //    renglon.Cells[8].Value = cliente.Email;
-            //    renglon.Cells[9].Value = cliente.IDCiudad;
-
-            //    dataGridViewClientes.Rows.Add(renglon);
-            //}
-        }
-
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -83,30 +62,6 @@ namespace ERP_ventas.Formularios.Clientes
             clienteTiendaRegistro.ShowDialog();
             actualizarTabla();
         }
-
-        private void dataGridViewClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //if (e.RowIndex != -1)
-            //{
-            //    DataGridViewRow renglon = dataGridViewClientes.Rows[e.RowIndex];
-            //    string sql_where = " where idcliente=@id";
-            //    List<string> parametros = new List<string>();
-            //    List<object> valores = new List<object>();
-
-            //    parametros.Add("@id");
-            //    valores.Add(renglon.Cells["ID"].Value);
-
-            //    Cliente cliente = clienteDAO.ConsultaGeneral(sql_where, parametros, valores)[0];
-            //    ClienteTiendaRegistro clienteTiendaRegistro = new ClienteTiendaRegistro(cliente);
-            //    clienteTiendaRegistro.ShowDialog();
-            //    actualizarTabla();
-            //}
-            //else
-            //{
-            //    Mensajes.Error("Selecciona un registro");
-            //}
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             if (paginacionTabla.SelectedRows.Count != 0)
@@ -127,43 +82,6 @@ namespace ERP_ventas.Formularios.Clientes
                     }
                 }
             }
-        }
-        /// <summary>
-        /// Evento que obtiene la página anterior en la tabla
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void button2_Click(object sender, EventArgs e)
-        {
-            siguienteBtn.Enabled = true; //Al presionar sobre anterior, se habilita siguiente
-            if (clienteTiendaDAO.actual_page > 1)
-            {
-                paginacionTabla.DataSource = clienteTiendaDAO.getPreviousPage();
-            }
-            if (clienteTiendaDAO.actual_page == 1)
-            {
-                anteriorBtn.Enabled = false; //Deshabilita anterior porque está en la primer página
-            }
-            paginaxdey.Text = clienteTiendaDAO.actual_page + "  de  " + clienteTiendaDAO.pages;
-        }
-
-        /// <summary>
-        /// Evento que obtiene la página siguiente en la tabla
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void button3_Click(object sender, EventArgs e)
-        {
-            anteriorBtn.Enabled = true; //Al presionar sobre siguiente, se habilita anterior
-            if (clienteTiendaDAO.actual_page < clienteTiendaDAO.pages)
-            {
-                paginacionTabla.DataSource = clienteTiendaDAO.getNextPage();
-            }
-            if (clienteTiendaDAO.actual_page == clienteTiendaDAO.pages)
-            {
-                siguienteBtn.Enabled = false; //Deshabilita siguiente porque está en la última página
-            }
-            paginaxdey.Text = clienteTiendaDAO.actual_page + "  de  " + clienteTiendaDAO.pages;
         }
 
         /// <summary>
@@ -205,5 +123,58 @@ namespace ERP_ventas.Formularios.Clientes
                 Mensajes.Error("Selecciona un registro");
             }
         }
+
+        private void elementosPaginacionCmb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                clienteTiendaDAO.rows_per_page = Convert.ToInt32(elementosPaginacionCmb.SelectedItem);
+                actualizarTabla();
+            }
+            catch (Exception ex)
+            {
+                Mensajes.Error("Ha ocurrido un error. Contacta al administrador. \n" + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Evento que obtiene la página anterior en la tabla
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void anteriorBtn_Click(object sender, EventArgs e)
+        {
+            siguienteBtn.Enabled = true; //Al presionar sobre anterior, se habilita siguiente
+            if (clienteTiendaDAO.actual_page > 1)
+            {
+                paginacionTabla.DataSource = clienteTiendaDAO.getPreviousPage();
+            }
+            if (clienteTiendaDAO.actual_page == 1)
+            {
+                anteriorBtn.Enabled = false; //Deshabilita anterior porque está en la primer página
+            }
+            paginaxdey.Text = clienteTiendaDAO.actual_page + "  de  " + clienteTiendaDAO.pages;
+        }
+
+        /// <summary>
+        /// Evento que obtiene la página siguiente en la tabla
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void siguienteBtn_Click(object sender, EventArgs e)
+        {
+            anteriorBtn.Enabled = true; //Al presionar sobre siguiente, se habilita anterior
+            if (clienteTiendaDAO.actual_page < clienteTiendaDAO.pages)
+            {
+                paginacionTabla.DataSource = clienteTiendaDAO.getNextPage();
+            }
+            if (clienteTiendaDAO.actual_page == clienteTiendaDAO.pages)
+            {
+                siguienteBtn.Enabled = false; //Deshabilita siguiente porque está en la última página
+            }
+            paginaxdey.Text = clienteTiendaDAO.actual_page + "  de  " + clienteTiendaDAO.pages;
+        }
+
+
     }
 }

@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="IDUsuario" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="cadenaConexion" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Data Source=localhost;Initial Catalog=ERP2020;Persist Security Info=True;User ID=sa; Password=Hola.123_</Value>
+      <Value Profile="(Default)">Data Source=localhost;Initial Catalog=ERP2020;Persist Security Info=True;User ID=Nico; Password=hola.123</Value>
     </Setting>
   </Settings>
 </SettingsFile>

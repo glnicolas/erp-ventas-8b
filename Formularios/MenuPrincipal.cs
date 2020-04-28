@@ -27,16 +27,10 @@ namespace ERP_ventas
             timer1.Start();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
-            OfertasForm of = new OfertasForm();
-            of.ShowDialog();
-            
+            OfertasForm ofertasForm = new OfertasForm();
+            ofertasForm.ShowDialog();
         }
 
         private void MenuPrincipal_Load(object sender, EventArgs e)

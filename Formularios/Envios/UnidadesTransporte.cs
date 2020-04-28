@@ -32,22 +32,23 @@ namespace ERP_ventas.Formularios.Envios
 
         private void UnidadesTransporte_Load(object sender, EventArgs e)
         {
-            try
-            {
-                dataGridViewtransportes.DataSource = transporteDAO.getNextPage();
-            }
-            catch (Exception ex)
-            {
-                Mensajes.Error(ex.Message);
-            }
+            elementosPaginacionCmb.SelectedIndex = 0;
         }
 
         private void actualizarTabla()
         {
             transporteDAO.actual_page = 0;
             transporteDAO.CalculatePages();
-            anteriorBtn.Enabled = false;
-            siguienteBtn.Enabled = true;
+            if (transporteDAO.pages > 1)
+            {
+                anteriorBtn.Enabled = false;
+                siguienteBtn.Enabled = true;
+            }
+            else
+            {
+                anteriorBtn.Enabled = false;
+                siguienteBtn.Enabled = false;
+            }
             dataGridViewtransportes.DataSource = transporteDAO.getNextPage();
             paginaxdey.Text = transporteDAO.actual_page + "  de  " + transporteDAO.pages;
         }
@@ -166,6 +167,28 @@ namespace ERP_ventas.Formularios.Envios
                 anteriorBtn.Enabled = false;
             }
             paginaxdey.Text = transporteDAO.actual_page + " de " + transporteDAO.pages;
+        }
+
+        private void elementosPaginacionCmb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                transporteDAO.rows_per_page = Convert.ToInt32(elementosPaginacionCmb.SelectedItem);
+                actualizarTabla();
+            }
+            catch (Exception ex)
+            {
+                Mensajes.Error("Ha ocurrido un error. Contacta al administrador. \n" + ex.Message);
+            }
+        }
+
+        private void dataGridViewtransportes_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            foreach (DataGridViewColumn i in dataGridViewtransportes.Columns)
+            {
+                i.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+            dataGridViewtransportes.AutoResizeColumns();
         }
     }
 }

@@ -17,21 +17,20 @@ namespace ERP_ventas.Formularios.Ofertas
         OfertasDAO ofertasDAO;
         public OfertasForm()
         {
-            ofertasDAO = new OfertasDAO();
             InitializeComponent();
+            try
+            {
+                ofertasDAO = new OfertasDAO();
+            }
+            catch (Exception ex)
+            {
+                Mensajes.Error(ex.Message);
+            }
         }
 
         private void Ofertas_Load(object sender, EventArgs e)
         {
-            //actualizarTabla(); //obsoleto
-            try
-            {
-                dataOfertas.DataSource = ofertasDAO.getNextPage();
-            }
-            catch (Exception ex)
-            {
-                Mensajes.Error("ERROR:: "+ex.Message);
-            }
+            elementosPaginacionCmb.SelectedIndex = 0;
         }
 
         private void dataOfertas_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -54,8 +53,16 @@ namespace ERP_ventas.Formularios.Ofertas
         {
             ofertasDAO.actual_page = 0;
             ofertasDAO.CalculatePages();
-            anteriorBtn.Enabled = false;
-            siguienteBtn.Enabled = true;
+            if (ofertasDAO.pages > 1)
+            {
+                anteriorBtn.Enabled = false;
+                siguienteBtn.Enabled = true;
+            }
+            else
+            {
+                anteriorBtn.Enabled = false;
+                siguienteBtn.Enabled = false;
+            }
             dataOfertas.DataSource = ofertasDAO.getNextPage();
             paginaxdey.Text = ofertasDAO.actual_page + "  de  " + ofertasDAO.pages;
         }
@@ -128,6 +135,34 @@ namespace ERP_ventas.Formularios.Ofertas
             else
             {
                 Mensajes.Error("Selecciona un registro");
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (dataOfertas.SelectedRows.Count != 0)
+            {
+                DataGridViewRow renglon = dataOfertas.SelectedRows[0];
+                ProductosOfertaGUI productosOfertaGUI = new ProductosOfertaGUI((int)renglon.Cells["ID"].Value, (string)renglon.Cells["nombre"].Value);
+                productosOfertaGUI.ShowDialog();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                ofertasDAO.rows_per_page = Convert.ToInt32(elementosPaginacionCmb.SelectedItem);
+                actualizarTabla();
+            }
+            catch(Exception ex)
+            {
+                Mensajes.Error("Ha ocurrido un error. Contacta al administrador. \n" + ex.Message);
             }
         }
     }

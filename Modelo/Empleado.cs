@@ -13,7 +13,7 @@ namespace ERP_ventas.Modelo
         public string Nombre { get; set; }
         public string Apaterno { get; set; }
         public string Amaterno { get; set; }
-        public System.Drawing.Bitmap Fotografia { get; set; }
+        public Bitmap Fotografia { get; set; }
         public int idDepartamento { get; set; }
         public int idPuesto { get; set; }
 

@@ -13,7 +13,6 @@ namespace ERP_ventas.Datos
     {
         public OfertasDAO()
         {
-
             table = "Ofertas_General";  //Nombre de la tabla o vista
             order_by = "Nombre"; //Nombre de la columna para ordenar los registros
             rows_per_page = 3;          //Cantidad de registros por página
@@ -238,5 +237,7 @@ namespace ERP_ventas.Datos
                 throw new Exception("Error relacionado con la BD. [ClienteDAO.E] \n Anota este error y contacta al administrador.\n" + ex.Message);
             }
         }
+
+
     }
 }
