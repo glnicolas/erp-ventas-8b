@@ -62,5 +62,10 @@ namespace ERP_ventas
             SubMClientes subClientes = new SubMClientes();
             subClientes.ShowDialog();
         }
+
+        private void btnEnvios_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

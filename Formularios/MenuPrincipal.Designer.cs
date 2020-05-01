@@ -145,6 +145,7 @@
             this.btnEnvios.TabIndex = 7;
             this.btnEnvios.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEnvios.UseVisualStyleBackColor = false;
+            this.btnEnvios.Click += new System.EventHandler(this.btnEnvios_Click);
             // 
             // btnTransporte
             // 

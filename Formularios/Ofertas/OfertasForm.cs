@@ -165,5 +165,15 @@ namespace ERP_ventas.Formularios.Ofertas
                 Mensajes.Error("Ha ocurrido un error. Contacta al administrador. \n" + ex.Message);
             }
         }
+
+        private void dataOfertas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

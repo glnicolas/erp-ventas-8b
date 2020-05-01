@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -70,6 +70,7 @@
     <Compile Include="Datos\Paginacion.cs" />
     <Compile Include="Datos\ProductoDAO.cs" />
     <Compile Include="Datos\ProductosOfertaDAO.cs" />
+    <Compile Include="Datos\TripulacionDAO.cs" />
     <Compile Include="Formularios\Clientes\ClienteIndividualAgregar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +90,15 @@
       <DependentUpon>ClienteTiendaRegistro.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Ofertas\ComboBoxTools.cs" />
+    <Compile Include="Formularios\Tripulacion\AddTripulacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Tripulacion\Tripulacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Tripulacion\Tripulacion.Designer.cs">
+      <DependentUpon>Tripulacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modelo\Producto.cs" />
     <Compile Include="Formularios\Ofertas\OfertasAgregar.cs">
       <SubType>Form</SubType>
@@ -158,6 +168,7 @@
     <Compile Include="Modelo\Estado.cs" />
     <Compile Include="Modelo\Oferta.cs" />
     <Compile Include="Modelo\Transporte.cs" />
+    <Compile Include="Modelo\Tripulacion.cs" />
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -197,6 +208,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\SubMClientes.resx">
       <DependentUpon>SubMClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Tripulacion\AddTripulacion.resx">
+      <DependentUpon>AddTripulacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Tripulacion\Tripulacion.resx">
+      <DependentUpon>Tripulacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -284,7 +301,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 y x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
