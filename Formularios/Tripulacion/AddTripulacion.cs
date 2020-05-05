@@ -150,14 +150,14 @@ namespace ERP_ventas.Formularios.Tripulacion
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            if ()
-            {
+            //if ()
+            //{
 
-            }
-            else 
-            {
+            //}
+            //else 
+            //{
 
-            }
+            //}
         }
     }
 }

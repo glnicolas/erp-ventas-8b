@@ -160,5 +160,41 @@ namespace ERP_ventas.Clientes
                 Mensajes.Error("Ha ocurrido un error. Contacta al administrador. \n" + ex.Message);
             }
         }
+
+        private void buscartextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                var dataTable = (DataTable)dataGridViewClientes.DataSource;
+                var rows = dataTable.Select(string.Format("[Nombre] LIKE '%{0}%' OR " +
+                                                          "[A. Paterno] LIKE '%{0}%' OR" +
+                                                          "[A. Materno] LIKE '%{0}%' OR" +
+                                                          "[Sexo] LIKE '%{0}%' OR" +
+                                                          "[Dirección] LIKE '%{0}%' OR" +
+                                                          "[Códifo Postal] LIKE '%{0}%' OR" +
+                                                          "[Códifo Postal] LIKE '%{0}%' OR" +
+                                                          "[RFC] LIKE '%{0}%' OR" +
+                                                          "[Teléfono] LIKE '%{0}%' OR" +
+                                                          "[email] LIKE '%{0}%' OR" +
+                                                          "[Ciudad] LIKE '%{0}%' ",
+                                                          buscartextBox.Text));
+                if (rows.Count() != 0)
+                    dataGridViewClientes.DataSource = rows.CopyToDataTable();
+                else
+                    Mensajes.Info("No se han encontrado resultados");
+                dataGridViewClientes.Refresh();
+
+            }
+            catch (Exception ex)
+            {
+                Mensajes.Error(ex.Message);
+            }
+        }
+
+        private void limpiarbutton_Click(object sender, EventArgs e)
+        {
+            buscartextBox.Text = "";
+            actualizarTabla();
+        }
     }
 }

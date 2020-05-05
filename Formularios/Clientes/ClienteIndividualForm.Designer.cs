@@ -42,6 +42,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
+            this.buscartextBox = new System.Windows.Forms.TextBox();
+            this.limpiarbutton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientes)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -91,6 +93,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.buscartextBox);
+            this.panel2.Controls.Add(this.limpiarbutton);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.btnEliminar);
             this.panel2.Controls.Add(this.btnNuevo);
@@ -228,6 +232,26 @@
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click_1);
             // 
+            // buscartextBox
+            // 
+            this.buscartextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buscartextBox.Location = new System.Drawing.Point(618, 91);
+            this.buscartextBox.Name = "buscartextBox";
+            this.buscartextBox.Size = new System.Drawing.Size(329, 29);
+            this.buscartextBox.TabIndex = 39;
+            this.buscartextBox.TextChanged += new System.EventHandler(this.buscartextBox_TextChanged);
+            // 
+            // limpiarbutton
+            // 
+            this.limpiarbutton.Image = global::ERP_ventas.Properties.Resources.broom_32px;
+            this.limpiarbutton.Location = new System.Drawing.Point(953, 89);
+            this.limpiarbutton.Name = "limpiarbutton";
+            this.limpiarbutton.Size = new System.Drawing.Size(43, 38);
+            this.limpiarbutton.TabIndex = 38;
+            this.limpiarbutton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.limpiarbutton.UseVisualStyleBackColor = true;
+            this.limpiarbutton.Click += new System.EventHandler(this.limpiarbutton_Click);
+            // 
             // ClienteIndividualForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -243,6 +267,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -268,5 +293,7 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.ComboBox elementosPaginacionCmb;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox buscartextBox;
+        private System.Windows.Forms.Button limpiarbutton;
     }
 }

@@ -175,6 +175,38 @@ namespace ERP_ventas.Formularios.Clientes
             paginaxdey.Text = clienteTiendaDAO.actual_page + "  de  " + clienteTiendaDAO.pages;
         }
 
+        private void buscartextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                var dataTable = (DataTable)paginacionTabla.DataSource;
+                string filtro = string.Format("[Nombre Tienda]" + " LIKE '%{0}%' OR " +
+                                              "[Contacto]" + " LIKE '%{0}%' OR " +
+                                              "[Direccion]" + " LIKE '%{0}%' OR " +
+                                              "[Codigo Postal]" + " LIKE '%{0}%' OR "+
+                                              "[RFC]" + " LIKE '%{0}%' OR "+
+                                              "[Telefono]" + " LIKE '%{0}%' OR "+
+                                              "[Correo]" + " LIKE '%{0}%' OR "+
+                                              "[Ciudad]" + " LIKE '%{0}%' ", buscartextBox.Text);
+                var rows = dataTable.Select(filtro);
 
+                if (rows.Count() != 0)
+                    paginacionTabla.DataSource = rows.CopyToDataTable();
+                else
+                    Mensajes.Info("No se han encontrado resultados");
+                paginacionTabla.Refresh();
+
+            }
+            catch (Exception ex)
+            {
+                Mensajes.Error(ex.Message);
+            }
+        }
+
+        private void limpiarbutton_Click(object sender, EventArgs e)
+        {
+            buscartextBox.Text = "";
+            actualizarTabla();
+        }
     }
 }

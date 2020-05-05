@@ -30,18 +30,17 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.buscartextBox = new System.Windows.Forms.TextBox();
             this.dataOfertas = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.elementosPaginacionCmb = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.paginaxdey = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.siguienteBtn = new System.Windows.Forms.Button();
             this.anteriorBtn = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.paginaxdey = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.limpiarbutton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
@@ -73,15 +72,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Ofertas";
             // 
-            // textBox1
+            // buscartextBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(583, 84);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(329, 29);
-            this.textBox1.TabIndex = 33;
-            this.textBox1.Visible = false;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.buscartextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buscartextBox.Location = new System.Drawing.Point(648, 82);
+            this.buscartextBox.Name = "buscartextBox";
+            this.buscartextBox.Size = new System.Drawing.Size(329, 29);
+            this.buscartextBox.TabIndex = 33;
+            this.buscartextBox.TextChanged += new System.EventHandler(this.buscartextBox_TextChanged);
             // 
             // dataOfertas
             // 
@@ -155,29 +153,6 @@
             this.panel4.Size = new System.Drawing.Size(838, 59);
             this.panel4.TabIndex = 1;
             // 
-            // paginaxdey
-            // 
-            this.paginaxdey.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.paginaxdey.AutoSize = true;
-            this.paginaxdey.BackColor = System.Drawing.Color.Transparent;
-            this.paginaxdey.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.paginaxdey.Location = new System.Drawing.Point(306, 14);
-            this.paginaxdey.Name = "paginaxdey";
-            this.paginaxdey.Size = new System.Drawing.Size(59, 20);
-            this.paginaxdey.TabIndex = 29;
-            this.paginaxdey.Text = "1 de 2";
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Maroon;
-            this.panel2.Controls.Add(this.panel4);
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 540);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1038, 59);
-            this.panel2.TabIndex = 36;
-            // 
             // siguienteBtn
             // 
             this.siguienteBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -205,29 +180,39 @@
             this.anteriorBtn.UseVisualStyleBackColor = false;
             this.anteriorBtn.Click += new System.EventHandler(this.anteriorBtn_Click);
             // 
-            // button2
+            // paginaxdey
             // 
-            this.button2.Image = global::ERP_ventas.Properties.Resources.broom_32px;
-            this.button2.Location = new System.Drawing.Point(967, 80);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(43, 38);
-            this.button2.TabIndex = 31;
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Visible = false;
+            this.paginaxdey.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.paginaxdey.AutoSize = true;
+            this.paginaxdey.BackColor = System.Drawing.Color.Transparent;
+            this.paginaxdey.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.paginaxdey.Location = new System.Drawing.Point(306, 14);
+            this.paginaxdey.Name = "paginaxdey";
+            this.paginaxdey.Size = new System.Drawing.Size(59, 20);
+            this.paginaxdey.TabIndex = 29;
+            this.paginaxdey.Text = "1 de 2";
             // 
-            // button3
+            // panel2
             // 
-            this.button3.Image = global::ERP_ventas.Properties.Resources.search_32px;
-            this.button3.Location = new System.Drawing.Point(918, 80);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(43, 38);
-            this.button3.TabIndex = 32;
-            this.button3.Tag = "Agregar nuevo registro";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Visible = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.panel2.BackColor = System.Drawing.Color.Maroon;
+            this.panel2.Controls.Add(this.panel4);
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 540);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1038, 59);
+            this.panel2.TabIndex = 36;
+            // 
+            // limpiarbutton
+            // 
+            this.limpiarbutton.Image = global::ERP_ventas.Properties.Resources.broom_32px;
+            this.limpiarbutton.Location = new System.Drawing.Point(983, 80);
+            this.limpiarbutton.Name = "limpiarbutton";
+            this.limpiarbutton.Size = new System.Drawing.Size(43, 38);
+            this.limpiarbutton.TabIndex = 31;
+            this.limpiarbutton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.limpiarbutton.UseVisualStyleBackColor = true;
+            this.limpiarbutton.Click += new System.EventHandler(this.limpiarbutton_Click);
             // 
             // button1
             // 
@@ -275,9 +260,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1038, 599);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.buscartextBox);
+            this.Controls.Add(this.limpiarbutton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataOfertas);
             this.Controls.Add(this.btnEliminar);
@@ -306,9 +290,8 @@
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button limpiarbutton;
+        private System.Windows.Forms.TextBox buscartextBox;
         private System.Windows.Forms.DataGridView dataOfertas;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ComboBox elementosPaginacionCmb;

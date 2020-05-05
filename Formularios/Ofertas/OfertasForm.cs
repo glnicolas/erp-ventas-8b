@@ -171,9 +171,31 @@ namespace ERP_ventas.Formularios.Ofertas
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void buscartextBox_TextChanged(object sender, EventArgs e)
         {
+            try
+            {
+                var dataTable = (DataTable)dataOfertas.DataSource;
+                var rows = dataTable.Select(string.Format("[Nombre] LIKE '%{0}%' OR " +
+                                                          "[Descripción] LIKE '%{0}%' ",
+                                                          buscartextBox.Text));
+                if (rows.Count() != 0)
+                    dataOfertas.DataSource = rows.CopyToDataTable();
+                else
+                    Mensajes.Info("No se han encontrado resultados");
+                dataOfertas.Refresh();
 
+            }
+            catch (Exception ex)
+            {
+                Mensajes.Error(ex.Message);
+            }
+        }
+
+        private void limpiarbutton_Click(object sender, EventArgs e)
+        {
+            buscartextBox.Text = "";
+            actualizarTabla();
         }
     }
 }

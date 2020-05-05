@@ -41,6 +41,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.elementosPaginacionCmb = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.buscartextBox = new System.Windows.Forms.TextBox();
+            this.limpiarbutton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.paginacionTabla)).BeginInit();
             this.panel2.SuspendLayout();
@@ -215,11 +217,33 @@
             this.label2.TabIndex = 35;
             this.label2.Text = "Mostrar";
             // 
+            // buscartextBox
+            // 
+            this.buscartextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buscartextBox.Location = new System.Drawing.Point(541, 80);
+            this.buscartextBox.Name = "buscartextBox";
+            this.buscartextBox.Size = new System.Drawing.Size(329, 29);
+            this.buscartextBox.TabIndex = 39;
+            this.buscartextBox.TextChanged += new System.EventHandler(this.buscartextBox_TextChanged);
+            // 
+            // limpiarbutton
+            // 
+            this.limpiarbutton.Image = global::ERP_ventas.Properties.Resources.broom_32px;
+            this.limpiarbutton.Location = new System.Drawing.Point(876, 78);
+            this.limpiarbutton.Name = "limpiarbutton";
+            this.limpiarbutton.Size = new System.Drawing.Size(43, 38);
+            this.limpiarbutton.TabIndex = 38;
+            this.limpiarbutton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.limpiarbutton.UseVisualStyleBackColor = true;
+            this.limpiarbutton.Click += new System.EventHandler(this.limpiarbutton_Click);
+            // 
             // ClienteTiendaGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(927, 607);
+            this.Controls.Add(this.buscartextBox);
+            this.Controls.Add(this.limpiarbutton);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.paginacionTabla);
             this.Controls.Add(this.button1);
@@ -238,6 +262,7 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -255,5 +280,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ComboBox elementosPaginacionCmb;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox buscartextBox;
+        private System.Windows.Forms.Button limpiarbutton;
     }
 }
