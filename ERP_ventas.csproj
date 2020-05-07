@@ -93,11 +93,11 @@
     <Compile Include="Formularios\Tripulacion\AddTripulacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Tripulacion\Tripulacion.cs">
+    <Compile Include="Formularios\Tripulacion\TripulacionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Tripulacion\Tripulacion.Designer.cs">
-      <DependentUpon>Tripulacion.cs</DependentUpon>
+    <Compile Include="Formularios\Tripulacion\TripulacionForm.Designer.cs">
+      <DependentUpon>TripulacionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Producto.cs" />
     <Compile Include="Formularios\Ofertas\OfertasAgregar.cs">
@@ -212,8 +212,8 @@
     <EmbeddedResource Include="Formularios\Tripulacion\AddTripulacion.resx">
       <DependentUpon>AddTripulacion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Tripulacion\Tripulacion.resx">
-      <DependentUpon>Tripulacion.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\Tripulacion\TripulacionForm.resx">
+      <DependentUpon>TripulacionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

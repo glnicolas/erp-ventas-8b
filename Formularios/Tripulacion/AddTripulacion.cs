@@ -1,5 +1,6 @@
 ﻿using System;
 using ERP_ventas.Datos;
+using ERP_ventas.Modelo;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,21 +9,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ERP_ventas.Modelo;
+using ERP_ventas.Formularios;
+using ERP_ventas.Formularios.Tripulacion;
 
 namespace ERP_ventas.Formularios.Tripulacion
 {
     public partial class AddTripulacion : Form
     {
+        Modelo.Tripulacion tripulacion;
         private Panel panel1;
         private Label label8;
-        private NumericUpDown numericUpDown1;
-        private NumericUpDown numericUpDown2;
-        private Label label1;
+        private NumericUpDown txtIdEnvio;
         private Label label2;
-        private TextBox textBox1;
+        private TextBox textRol;
         private Button btnRegistrar;
         private Button modificarBtn;
+        private Label label1;
+        private ComboBox comboBoxEmpleado;
         private Label label3;
         
         public AddTripulacion()
@@ -32,11 +35,11 @@ namespace ERP_ventas.Formularios.Tripulacion
             btnRegistrar.Visible = true;
         }
 
-        public AddTripulacion(Tripulacion tripulacion) 
+        public AddTripulacion(Modelo.Tripulacion tripulacion) 
         {
             InitializeComponent();
             this.tripulacion = tripulacion;
-            label1.Text = "Editar Tripulacion";
+            label8.Text = "Editar Tripulacion";
             modificarBtn.Visible = true;
             btnRegistrar.Visible = false;
         }
@@ -45,17 +48,16 @@ namespace ERP_ventas.Formularios.Tripulacion
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
+            this.txtIdEnvio = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textRol = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.modificarBtn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBoxEmpleado = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIdEnvio)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -79,51 +81,33 @@ namespace ERP_ventas.Formularios.Tripulacion
             this.label8.TabIndex = 0;
             this.label8.Text = "Agregar Tripulacion";
             // 
-            // numericUpDown1
+            // txtIdEnvio
             // 
-            this.numericUpDown1.Enabled = false;
-            this.numericUpDown1.Location = new System.Drawing.Point(42, 99);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.ReadOnly = true;
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 18;
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Location = new System.Drawing.Point(42, 139);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown2.TabIndex = 19;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 81);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 13);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "idEmpleado";
+            this.txtIdEnvio.Location = new System.Drawing.Point(42, 161);
+            this.txtIdEnvio.Name = "txtIdEnvio";
+            this.txtIdEnvio.Size = new System.Drawing.Size(120, 20);
+            this.txtIdEnvio.TabIndex = 19;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 123);
+            this.label2.Location = new System.Drawing.Point(9, 145);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 21;
             this.label2.Text = "idEnvio";
             // 
-            // textBox1
+            // textRol
             // 
-            this.textBox1.Location = new System.Drawing.Point(42, 184);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(120, 20);
-            this.textBox1.TabIndex = 22;
+            this.textRol.Location = new System.Drawing.Point(42, 198);
+            this.textRol.Name = "textRol";
+            this.textRol.Size = new System.Drawing.Size(120, 20);
+            this.textRol.TabIndex = 22;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 168);
+            this.label3.Location = new System.Drawing.Point(11, 185);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(23, 13);
             this.label3.TabIndex = 23;
@@ -133,7 +117,7 @@ namespace ERP_ventas.Formularios.Tripulacion
             // 
             this.btnRegistrar.Image = global::ERP_ventas.Properties.Resources.save_24px;
             this.btnRegistrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRegistrar.Location = new System.Drawing.Point(179, 203);
+            this.btnRegistrar.Location = new System.Drawing.Point(179, 240);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(89, 41);
             this.btnRegistrar.TabIndex = 57;
@@ -146,7 +130,7 @@ namespace ERP_ventas.Formularios.Tripulacion
             // 
             this.modificarBtn.Image = global::ERP_ventas.Properties.Resources.save_24px;
             this.modificarBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.modificarBtn.Location = new System.Drawing.Point(179, 203);
+            this.modificarBtn.Location = new System.Drawing.Point(12, 242);
             this.modificarBtn.Name = "modificarBtn";
             this.modificarBtn.Size = new System.Drawing.Size(94, 39);
             this.modificarBtn.TabIndex = 58;
@@ -156,23 +140,42 @@ namespace ERP_ventas.Formularios.Tripulacion
             this.modificarBtn.Visible = false;
             this.modificarBtn.Click += new System.EventHandler(this.modificarBtn_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 105);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 13);
+            this.label1.TabIndex = 59;
+            this.label1.Text = "Empleado";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // comboBoxEmpleado
+            // 
+            this.comboBoxEmpleado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEmpleado.FormattingEnabled = true;
+            this.comboBoxEmpleado.Location = new System.Drawing.Point(42, 121);
+            this.comboBoxEmpleado.Name = "comboBoxEmpleado";
+            this.comboBoxEmpleado.Size = new System.Drawing.Size(157, 21);
+            this.comboBoxEmpleado.TabIndex = 60;
+            // 
             // AddTripulacion
             // 
-            this.ClientSize = new System.Drawing.Size(280, 256);
+            this.ClientSize = new System.Drawing.Size(280, 293);
+            this.Controls.Add(this.comboBoxEmpleado);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.modificarBtn);
             this.Controls.Add(this.btnRegistrar);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textRol);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.numericUpDown2);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.txtIdEnvio);
             this.Controls.Add(this.panel1);
             this.Name = "AddTripulacion";
+            this.Load += new System.EventHandler(this.AddTripulacion_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIdEnvio)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,20 +183,50 @@ namespace ERP_ventas.Formularios.Tripulacion
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            //if ()
-            //{
-            var resultado = new TripulacionDAO().Registrar(tripulacion);
-
-            //}
-            //else 
-            //{
-
-            //}
+           var resultado = new TripulacionDAO().Registrar(tripulacion);
+            Type resultadoTipo = resultado.GetType();
+            if (resultadoTipo.Equals(typeof(string))) 
+            {
+                Mensajes.Error(resultado.ToString());
+            }
+            else
+            {
+                Mensajes.Info("Registro exitoso.");
+                Close();
+            }
         }
 
         private void modificarBtn_Click(object sender, EventArgs e)
         {
+            var resultado = new TripulacionDAO().Editar(tripulacion);
+            Type resultado_tipo = resultado.GetType();
+
+            if (resultado_tipo.Equals(typeof(string)))
+            {
+                Mensajes.Error(resultado.ToString());
+            }
+            else
+            {
+                Mensajes.Info("Actualización exitosa.");
+                Close();
+            }
+        }
+
+        private void AddTripulacion_Load(object sender, EventArgs e)
+        {
+            //comboBoxEmpleado.Items.AddRange();
+            if (tripulacion!=null) 
+            {
+                txtIdEnvio.Value = tripulacion.idEnvio;
+                textRol.Text = tripulacion.rol;
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
 
         }
+
+        //public List<> empleado
     }
 }

@@ -11,7 +11,7 @@ namespace ERP_ventas.Datos
     class TripulacionDAO : Paginacion
     {
         public TripulacionDAO() {
-            table = "vtripulacion"; //Nonbre de la vista.
+            table = "VTripilacion"; //Nonbre de la vista.
             order_by = "Nombre"; //Nombre de la columna para ordenar los registros.
             rows_per_page = 3; //Cantidad de registros por pagina.
             try

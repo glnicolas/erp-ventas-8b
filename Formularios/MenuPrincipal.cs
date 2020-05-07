@@ -15,6 +15,7 @@ using System.IO;
 using ERP_ventas.Datos;
 using ERP_ventas.Formularios;
 using ERP_ventas.Formularios.Ofertas;
+using ERP_ventas.Formularios.Tripulacion;
 
 namespace ERP_ventas
 {
@@ -65,7 +66,8 @@ namespace ERP_ventas
 
         private void btnEnvios_Click(object sender, EventArgs e)
         {
-
+            TripulacionForm tripulacionForm = new TripulacionForm();
+            tripulacionForm.ShowDialog();
         }
     }
 }

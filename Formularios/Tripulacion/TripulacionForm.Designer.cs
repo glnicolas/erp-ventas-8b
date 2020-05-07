@@ -1,6 +1,6 @@
 ﻿namespace ERP_ventas.Formularios.Tripulacion
 {
-    partial class Tripulacion
+    partial class TripulacionForm
     {
         /// <summary>
         /// Required designer variable.
@@ -39,6 +39,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.elementosPaginacionCmb = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.buscartextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataTripulacion)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -64,6 +65,8 @@
             this.dataTripulacion.Size = new System.Drawing.Size(1038, 361);
             this.dataTripulacion.TabIndex = 27;
             this.dataTripulacion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataOfertas_CellContentClick);
+            this.dataTripulacion.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataTripulacion_CellContentDoubleClick);
+            this.dataTripulacion.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataTripulacion_DataBindingComplete_1);
             // 
             // btnEliminar
             // 
@@ -192,16 +195,26 @@
             this.label2.TabIndex = 35;
             this.label2.Text = "Mostrar";
             // 
-            // Tripulacion
+            // buscartextBox
+            // 
+            this.buscartextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buscartextBox.Location = new System.Drawing.Point(426, 26);
+            this.buscartextBox.Name = "buscartextBox";
+            this.buscartextBox.Size = new System.Drawing.Size(329, 29);
+            this.buscartextBox.TabIndex = 38;
+            this.buscartextBox.TextChanged += new System.EventHandler(this.buscartextBox_TextChanged);
+            // 
+            // TripulacionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 501);
+            this.Controls.Add(this.buscartextBox);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.dataTripulacion);
-            this.Name = "Tripulacion";
+            this.Name = "TripulacionForm";
             this.Text = "Tripulacion";
             this.Load += new System.EventHandler(this.Tripulacion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataTripulacion)).EndInit();
@@ -211,6 +224,7 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -227,5 +241,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ComboBox elementosPaginacionCmb;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox buscartextBox;
     }
 }

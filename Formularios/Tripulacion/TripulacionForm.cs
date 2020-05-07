@@ -12,10 +12,10 @@ using System.Windows.Forms;
 
 namespace ERP_ventas.Formularios.Tripulacion
 {
-    public partial class Tripulacion : Form
+    public partial class TripulacionForm : Form
     {
         TripulacionDAO tripulacionDAO;
-        public Tripulacion()
+        public TripulacionForm()
         {
             InitializeComponent();
             try
@@ -176,6 +176,58 @@ namespace ERP_ventas.Formularios.Tripulacion
                 siguienteBtn.Enabled = false; //Deshabilita siguiente porque está en la última página
             }
             paginaxdey.Text = tripulacionDAO.actual_page + "  de  " + tripulacionDAO.pages;
+        }
+
+        private void dataTripulacion_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                DataGridViewRow Renglon = dataTripulacion.Rows[e.RowIndex];
+                string sql_where=("where idEmpleado=@id");
+                List<string> parametros = new List<string>();
+                List<object> valores = new List<object>();
+                parametros.Add("@id");
+                valores.Add(Renglon.Cells["ID"].Value);
+                Modelo.Tripulacion tripulacion = tripulacionDAO.ConsultaGeneral(sql_where, parametros, valores)[0];
+                AddTripulacion addTripulacion = new AddTripulacion(tripulacion);
+                addTripulacion.ShowDialog();
+                actualizarTabla();
+            }
+            else 
+            {
+                Mensajes.Error("Selecciona un registro");
+            }
+        }
+
+        private void buscartextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                var dataTable = (DataTable)dataTripulacion.DataSource;
+                var Rows = dataTable.Select(string.Format("[Rol] LIKE '%{0}%'", buscartextBox.Text));
+                if (Rows.Count() != 0)
+                {
+                    dataTripulacion.DataSource = Rows.CopyToDataTable();
+                }
+                else
+                {
+                    Mensajes.Info("No se han encontrado resultados");
+                }
+                dataTripulacion.Refresh();
+            }
+            catch (Exception ex)
+            {
+                Mensajes.Error(ex.Message);
+            }
+        }
+
+        private void dataTripulacion_DataBindingComplete_1(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            foreach (DataGridViewColumn i in dataTripulacion.Columns) 
+            {
+                i.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+            dataTripulacion.AutoResizeRows();
         }
     }
 }
