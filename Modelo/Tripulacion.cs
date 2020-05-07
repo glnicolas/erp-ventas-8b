@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ERP_ventas.Modelo
 {
-    class Tripulacion
+    public class Tripulacion
     {
         public int idEmpleado { get; set; }
         public int idEnvio { get; set; }

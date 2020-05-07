@@ -1,5 +1,4 @@
 ﻿using System;
-using ERP_ventas.Modelo;
 using ERP_ventas.Datos;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ERP_ventas.Modelo;
 
 namespace ERP_ventas.Formularios.Tripulacion
 {
@@ -22,11 +22,23 @@ namespace ERP_ventas.Formularios.Tripulacion
         private Label label2;
         private TextBox textBox1;
         private Button btnRegistrar;
+        private Button modificarBtn;
         private Label label3;
-
+        
         public AddTripulacion()
         {
             InitializeComponent();
+            modificarBtn.Visible = false;
+            btnRegistrar.Visible = true;
+        }
+
+        public AddTripulacion(Tripulacion tripulacion) 
+        {
+            InitializeComponent();
+            this.tripulacion = tripulacion;
+            label1.Text = "Editar Tripulacion";
+            modificarBtn.Visible = true;
+            btnRegistrar.Visible = false;
         }
 
         private void InitializeComponent()
@@ -40,6 +52,7 @@ namespace ERP_ventas.Formularios.Tripulacion
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnRegistrar = new System.Windows.Forms.Button();
+            this.modificarBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -68,8 +81,10 @@ namespace ERP_ventas.Formularios.Tripulacion
             // 
             // numericUpDown1
             // 
+            this.numericUpDown1.Enabled = false;
             this.numericUpDown1.Location = new System.Drawing.Point(42, 99);
             this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.ReadOnly = true;
             this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
             this.numericUpDown1.TabIndex = 18;
             // 
@@ -127,9 +142,24 @@ namespace ERP_ventas.Formularios.Tripulacion
             this.btnRegistrar.UseVisualStyleBackColor = true;
             this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
+            // modificarBtn
+            // 
+            this.modificarBtn.Image = global::ERP_ventas.Properties.Resources.save_24px;
+            this.modificarBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.modificarBtn.Location = new System.Drawing.Point(179, 203);
+            this.modificarBtn.Name = "modificarBtn";
+            this.modificarBtn.Size = new System.Drawing.Size(94, 39);
+            this.modificarBtn.TabIndex = 58;
+            this.modificarBtn.Text = "Modificar";
+            this.modificarBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.modificarBtn.UseVisualStyleBackColor = true;
+            this.modificarBtn.Visible = false;
+            this.modificarBtn.Click += new System.EventHandler(this.modificarBtn_Click);
+            // 
             // AddTripulacion
             // 
             this.ClientSize = new System.Drawing.Size(280, 256);
+            this.Controls.Add(this.modificarBtn);
             this.Controls.Add(this.btnRegistrar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox1);
@@ -152,12 +182,18 @@ namespace ERP_ventas.Formularios.Tripulacion
         {
             //if ()
             //{
+            var resultado = new TripulacionDAO().Registrar(tripulacion);
 
             //}
             //else 
             //{
 
             //}
+        }
+
+        private void modificarBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
