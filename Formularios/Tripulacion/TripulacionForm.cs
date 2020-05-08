@@ -81,7 +81,7 @@ namespace ERP_ventas.Formularios.Tripulacion
                     try
                     {
                         DataGridViewRow renglon = dataTripulacion.SelectedRows[0];
-                        tripulacionDAO.Eliminar((int)renglon.Cells["ID"].Value);
+                        tripulacionDAO.Eliminar((int)renglon.Cells["ID empleado"].Value);
                     }
                     catch (Exception ex) 
                     {

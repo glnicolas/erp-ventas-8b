@@ -12,7 +12,7 @@ namespace ERP_ventas.Datos
     {
         public TripulacionDAO() {
             table = "VTripilacion"; //Nonbre de la vista.
-            order_by = "Nombre"; //Nombre de la columna para ordenar los registros.
+            order_by = "ID empleado"; //Nombre de la columna para ordenar los registros.
             rows_per_page = 3; //Cantidad de registros por pagina.
             try
             {
@@ -173,7 +173,7 @@ namespace ERP_ventas.Datos
             {
                 using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion)) 
                 {
-                    string cadena_sql = "update Tripulacion set status 'I' where idEmpleado = @id";
+                    string cadena_sql = "update Tripulacion set estatus 'I' where idEmpleado = @id";
 
                     SqlCommand comando = new SqlCommand(cadena_sql, conexion);
                     comando.Parameters.AddWithValue("@id", ID);
