@@ -31,7 +31,7 @@ namespace ERP_ventas.Datos
             {
                 using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion))
                 {
-                    string cadena_sql = "select idEmpleado, idEnvio, rol from Tripulacion";
+                    string cadena_sql = "select idEmpleado, idEnvio, rol from Tripulacion "+sql_where;
                     SqlCommand comando = new SqlCommand(cadena_sql, conexion);
 
                     conexion.Open();
@@ -138,10 +138,9 @@ namespace ERP_ventas.Datos
                 //{
                     using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion))
                     {
-                        string cadena_sql = "update Tripulacion set @rol=rol";
+                        string cadena_sql = "update Tripulacion set rol=@rol where idenvio=@idEnvio";
 
                         SqlCommand comando = new SqlCommand(cadena_sql, conexion);
-                        comando.Parameters.AddWithValue("@idEmpleado", tr.idEmpleado);
                         comando.Parameters.AddWithValue("@idEnvio", tr.idEnvio);
                         comando.Parameters.AddWithValue("@rol", tr.rol);
                         conexion.Open();
@@ -158,7 +157,7 @@ namespace ERP_ventas.Datos
                 //}
                 //else 
                 //{
-                    resultado = "Error: Ya existe una unidad con datos en común";
+                   // resultado = "Error: Ya existe una unidad con datos en común";
                 //}
             }
             catch(SqlException ex) 
@@ -173,7 +172,7 @@ namespace ERP_ventas.Datos
             {
                 using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion)) 
                 {
-                    string cadena_sql = "update Tripulacion set estatus = 'I' where idEmpleado = @id";
+                    string cadena_sql = "update Tripulacion set estatus = 'I' where idEnvio = @id";
 
                     SqlCommand comando = new SqlCommand(cadena_sql, conexion);
                     comando.Parameters.AddWithValue("@id", ID);

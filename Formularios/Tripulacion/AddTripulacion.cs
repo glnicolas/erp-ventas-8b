@@ -42,6 +42,8 @@ namespace ERP_ventas.Formularios.Tripulacion
             label8.Text = "Editar Tripulacion";
             modificarBtn.Visible = true;
             btnRegistrar.Visible = false;
+            comboBox1.Enabled = false;
+            comboBox2.Enabled = false;
         }
 
         private void InitializeComponent()

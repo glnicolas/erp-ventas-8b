@@ -62,23 +62,69 @@ namespace ERP_ventas.Formularios.Envios
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            EnviosDAO envdao =new EnviosDAO();
-            char status;
-            if (comboBox1.Text=="Activo")
+            int h = 0;
+            string f = "";
+            try{
+                EnviosDAO envdao = new EnviosDAO();
+                char status;
+                if (comboBox1.Text == "Activo")
+                {
+                    status = 'A';
+                }
+                else
+                {
+                    status = 'I';
+                }
+                Modelo.Envios env = new Modelo.Envios(1, dateTimePicker1.Value, ((Transporte)comboBox2.SelectedItem).ID, status);
+                envdao.Registrar(env);
+            }catch(Exception ex)
             {
-                status = 'A';
+                f = ""+ex;
+                h = 1;
             }
-            else
-            {
-                status = 'I';
+            if (h == 1) {
+                Mensajes.Error(f);
             }
-            Modelo.Envios env = new Modelo.Envios(1,dateTimePicker1.Value, ((Transporte)comboBox2.SelectedItem).ID, status);
-            envdao.Registrar(env);
+            else {
+                Mensajes.Info("Registro completado");
+            }
+            this.Close();
+
         }
 
         private void modificarButton_Click(object sender, EventArgs e)
         {
-
+            int h = 0;
+            string f = "";
+            try
+            {
+                EnviosDAO envdao = new EnviosDAO();
+                char status;
+                if (comboBox1.Text == "Activo")
+                {
+                    status = 'A';
+                }
+                else
+                {
+                    status = 'I';
+                }
+                Modelo.Envios env = new Modelo.Envios(envios.idenvio, dateTimePicker1.Value, ((Transporte)comboBox2.SelectedItem).ID, status);
+                envdao.Editar(env);
+            }
+            catch (Exception ex)
+            {
+                f = "" + ex;
+                h = 1;
+            }
+            if (h == 1)
+            {
+                Mensajes.Error(f);
+            }
+            else
+            {
+                Mensajes.Info("Los campos se editaron correctamente");
+            }
+            this.Close();
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)

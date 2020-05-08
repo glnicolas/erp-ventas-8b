@@ -27,6 +27,41 @@ namespace ERP_ventas.Datos
             }
         }
 
+
+        public object Editar(Envios env)
+        {
+            object resultado = new object();
+            try
+            {
+                    using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion))
+                    {
+                        string cadena_sql = "update envios set fechasalida=@fs, idUnidadTransporte=@idut where idenvio=@id";
+
+                        SqlCommand comando = new SqlCommand(cadena_sql, conexion);
+                        comando.Parameters.AddWithValue("@id", env.idenvio);
+                        comando.Parameters.AddWithValue("@fs", env.fechaSalida);
+                        comando.Parameters.AddWithValue("@idut", env.idUnidadTransporte);
+                        conexion.Open();
+
+                        int cant_registros = (int)comando.ExecuteNonQuery();
+                        conexion.Close();
+                        if (cant_registros == 1)
+                        {
+                            resultado = true;
+                        }
+                        else
+                        {
+                            resultado = "Se ha generado un error no especificado";
+                        }
+                    }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error relacionado con la BD. [ClienteTiendaDAO.R] \n Anota este error y contacta al administrador.\n" + ex.Message);
+            }
+            return resultado;
+        }
+
         public List<Envios> ConsultaGeneral(string sql_where, List<string> parametros, List<object> valores)
         {
             List<Envios> env = new List<Envios>();

@@ -81,7 +81,8 @@ namespace ERP_ventas.Formularios.Tripulacion
                     try
                     {
                         DataGridViewRow renglon = dataTripulacion.SelectedRows[0];
-                        tripulacionDAO.Eliminar((int)renglon.Cells["ID empleado"].Value);
+                        tripulacionDAO.Eliminar((int)renglon.Cells["ID Envio"].Value);
+                        actualizarTabla();
                     }
                     catch (Exception ex) 
                     {
@@ -228,6 +229,12 @@ namespace ERP_ventas.Formularios.Tripulacion
                 i.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
             dataTripulacion.AutoResizeRows();
+        }
+
+        private void limpiarbutton_Click(object sender, EventArgs e)
+        {
+            buscartextBox.Text = "";
+            actualizarTabla();
         }
     }
 }
