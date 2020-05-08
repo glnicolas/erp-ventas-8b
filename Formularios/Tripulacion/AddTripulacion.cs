@@ -202,7 +202,7 @@ namespace ERP_ventas.Formularios.Tripulacion
             }
             else 
             {
-                Mensajes.Info("El campo Rol, no puede quedar vacío.");
+                Mensajes.Info("Por favor, llene todos los campos.");
             }
         }
 
@@ -267,9 +267,28 @@ namespace ERP_ventas.Formularios.Tripulacion
         //public List<> empleado
         private Boolean Validacion() 
         {
-            tripulacion.rol = textRol.Text;
-            if (tripulacion.rol!="") 
+            string errores = "";
+            string texto1, texto2, texto3;
+            texto1 = comboBox1.Text;
+            texto2 = comboBox2.Text;
+            texto3 = textRol.Text;
+
+            if (texto2.Equals("")) 
             {
+                errores += "Agregar un empleado\n";
+            }
+
+            if (texto1.Equals("")) 
+            {
+                errores += "Agregar un envio \n";
+            }
+
+            if (texto3.Equals("")) 
+            {
+                errores += "Agregar Rol";
+            }
+
+            if (!(errores.Length>0)) {
                 return true;
             }
             return false;
