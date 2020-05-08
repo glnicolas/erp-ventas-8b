@@ -16,6 +16,12 @@ namespace ERP_ventas.Modelo
         public int Capacidad { get; set; }
         public char Estatus { get; set; }
 
+
+        public string Trans
+        {
+            get { return Marca + " " + Modelo + " " + Placas; }
+        }
+
         public Transporte(int id, string placas, string marca, string modelo, int anio, int cap, char estatus) {
             ID = id;
             Placas = placas;

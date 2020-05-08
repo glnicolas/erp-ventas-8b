@@ -32,7 +32,10 @@ namespace ERP_ventas.Modelo
         float PorcentajeComision { get; set; } 
         int idCiudad { get; set; }
         */
-
+        public string Emp
+        {
+            get { return Nombre + " " + Apaterno; }
+        }
         public Empleado(int id, string nombre, string apaterno, string amaterno, byte[] foto_bytes)
         {
             ID = id;
@@ -40,6 +43,14 @@ namespace ERP_ventas.Modelo
             Apaterno= apaterno;
             Amaterno = amaterno;
             Fotografia = new Bitmap(new System.IO.MemoryStream(foto_bytes));
+        }
+
+        public Empleado(int id, string nombre, string apaterno, string amaterno)
+        {
+            ID = id;
+            Nombre = nombre;
+            Apaterno = apaterno;
+            Amaterno = amaterno;
         }
     }
 }

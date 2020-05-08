@@ -19,13 +19,13 @@ namespace ERP_ventas.Formularios.Tripulacion
         Modelo.Tripulacion tripulacion;
         private Panel panel1;
         private Label label8;
-        private NumericUpDown txtIdEnvio;
         private Label label2;
         private TextBox textRol;
         private Button btnRegistrar;
         private Button modificarBtn;
         private Label label1;
-        private ComboBox comboBoxEmpleado;
+        private ComboBox comboBox1;
+        private ComboBox comboBox2;
         private Label label3;
         
         public AddTripulacion()
@@ -48,16 +48,15 @@ namespace ERP_ventas.Formularios.Tripulacion
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtIdEnvio = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.textRol = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.modificarBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBoxEmpleado = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIdEnvio)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -81,21 +80,14 @@ namespace ERP_ventas.Formularios.Tripulacion
             this.label8.TabIndex = 0;
             this.label8.Text = "Agregar Tripulacion";
             // 
-            // txtIdEnvio
-            // 
-            this.txtIdEnvio.Location = new System.Drawing.Point(42, 161);
-            this.txtIdEnvio.Name = "txtIdEnvio";
-            this.txtIdEnvio.Size = new System.Drawing.Size(120, 20);
-            this.txtIdEnvio.TabIndex = 19;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(9, 145);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 13);
+            this.label2.Size = new System.Drawing.Size(34, 13);
             this.label2.TabIndex = 21;
-            this.label2.Text = "idEnvio";
+            this.label2.Text = "Envio";
             // 
             // textRol
             // 
@@ -150,32 +142,38 @@ namespace ERP_ventas.Formularios.Tripulacion
             this.label1.Text = "Empleado";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // comboBoxEmpleado
+            // comboBox1
             // 
-            this.comboBoxEmpleado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxEmpleado.FormattingEnabled = true;
-            this.comboBoxEmpleado.Location = new System.Drawing.Point(42, 121);
-            this.comboBoxEmpleado.Name = "comboBoxEmpleado";
-            this.comboBoxEmpleado.Size = new System.Drawing.Size(157, 21);
-            this.comboBoxEmpleado.TabIndex = 60;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(42, 161);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 61;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(42, 121);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 21);
+            this.comboBox2.TabIndex = 62;
             // 
             // AddTripulacion
             // 
             this.ClientSize = new System.Drawing.Size(280, 293);
-            this.Controls.Add(this.comboBoxEmpleado);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.modificarBtn);
             this.Controls.Add(this.btnRegistrar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textRol);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtIdEnvio);
             this.Controls.Add(this.panel1);
             this.Name = "AddTripulacion";
             this.Load += new System.EventHandler(this.AddTripulacion_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtIdEnvio)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,7 +181,10 @@ namespace ERP_ventas.Formularios.Tripulacion
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-           var resultado = new TripulacionDAO().Registrar(tripulacion);
+            int id = ((Modelo.Envios)comboBox1.SelectedItem).idenvio;
+            int idE = ((Modelo.Empleado)comboBox2.SelectedItem).ID;
+            Modelo.Tripulacion trip = new Modelo.Tripulacion(idE,id,textRol.Text);
+           var resultado = new TripulacionDAO().Registrar(trip);
             Type resultadoTipo = resultado.GetType();
             if (resultadoTipo.Equals(typeof(string))) 
             {
@@ -198,7 +199,11 @@ namespace ERP_ventas.Formularios.Tripulacion
 
         private void modificarBtn_Click(object sender, EventArgs e)
         {
-            var resultado = new TripulacionDAO().Editar(tripulacion);
+
+            int id = ((Modelo.Envios)comboBox1.SelectedItem).idenvio;
+            int idE = ((Modelo.Empleado)comboBox2.SelectedItem).ID;
+            Modelo.Tripulacion trip = new Modelo.Tripulacion(idE, id, textRol.Text);
+            var resultado = new TripulacionDAO().Editar(trip);
             Type resultado_tipo = resultado.GetType();
 
             if (resultado_tipo.Equals(typeof(string)))
@@ -214,10 +219,28 @@ namespace ERP_ventas.Formularios.Tripulacion
 
         private void AddTripulacion_Load(object sender, EventArgs e)
         {
-            //comboBoxEmpleado.Items.AddRange();
+            comboBox1.Items.AddRange((new EnviosDAO().ConsultaGeneral("", new List<String>(), new List<object>())).ToArray());
+            comboBox1.DisplayMember = "Env";
+            comboBox2.Items.AddRange((new EmpleadoDAO().ConsultaGeneral("", new List<String>(), new List<object>())).ToArray());
+            comboBox2.DisplayMember = "Emp";
             if (tripulacion!=null) 
             {
-                txtIdEnvio.Value = tripulacion.idEnvio;
+                for (int i = 0; i < comboBox1.Items.Count; i++)
+                {
+                    comboBox1.SelectedIndex = i;
+                    if (((Modelo.Envios)comboBox1.SelectedItem).idenvio == tripulacion.idEnvio) 
+                    {
+                        break;
+                    }
+                }
+                for (int i = 0; i < comboBox2.Items.Count; i++)
+                {
+                    comboBox2.SelectedIndex = i;
+                    if (((Modelo.Empleado)comboBox2.SelectedItem).ID == tripulacion.idEnvio)
+                    {
+                        break;
+                    }
+                }
                 textRol.Text = tripulacion.rol;
             }
         }

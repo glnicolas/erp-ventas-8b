@@ -66,6 +66,9 @@ namespace ERP_ventas
 
         private void btnEnvios_Click(object sender, EventArgs e)
         {
+            Formularios.Envios.Envios env = new Formularios.Envios.Envios();
+            env.ShowDialog();
+
             TripulacionForm tripulacionForm = new TripulacionForm();
             tripulacionForm.ShowDialog();
         }

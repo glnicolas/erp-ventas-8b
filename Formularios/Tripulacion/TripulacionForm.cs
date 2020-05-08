@@ -183,11 +183,11 @@ namespace ERP_ventas.Formularios.Tripulacion
             if (e.RowIndex != -1)
             {
                 DataGridViewRow Renglon = dataTripulacion.Rows[e.RowIndex];
-                string sql_where=("where idEmpleado=@id");
+                string sql_where=("where idEnvio=@id");
                 List<string> parametros = new List<string>();
                 List<object> valores = new List<object>();
                 parametros.Add("@id");
-                valores.Add(Renglon.Cells["ID"].Value);
+                valores.Add(Renglon.Cells["ID Envio"].Value);
                 Modelo.Tripulacion tripulacion = tripulacionDAO.ConsultaGeneral(sql_where, parametros, valores)[0];
                 AddTripulacion addTripulacion = new AddTripulacion(tripulacion);
                 addTripulacion.ShowDialog();

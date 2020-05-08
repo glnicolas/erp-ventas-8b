@@ -173,7 +173,7 @@ namespace ERP_ventas.Datos
             {
                 using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion)) 
                 {
-                    string cadena_sql = "update Tripulacion set estatus 'I' where idEmpleado = @id";
+                    string cadena_sql = "update Tripulacion set estatus = 'I' where idEmpleado = @id";
 
                     SqlCommand comando = new SqlCommand(cadena_sql, conexion);
                     comando.Parameters.AddWithValue("@id", ID);

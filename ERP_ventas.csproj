@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Datos\ClienteTiendaDAO.cs" />
+    <Compile Include="Datos\EnviosDAO.cs" />
     <Compile Include="Datos\OfertasDAO.cs" />
     <Compile Include="Datos\Paginacion.cs" />
     <Compile Include="Datos\ProductoDAO.cs" />
@@ -89,6 +90,18 @@
     <Compile Include="Formularios\Clientes\ClienteTiendaRegistro.Designer.cs">
       <DependentUpon>ClienteTiendaRegistro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Envios\AddEnvio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Envios\AddEnvio.designer.cs">
+      <DependentUpon>AddEnvio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Envios\Envios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Envios\Envios.designer.cs">
+      <DependentUpon>Envios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Ofertas\ComboBoxTools.cs" />
     <Compile Include="Formularios\Tripulacion\AddTripulacion.cs">
       <SubType>Form</SubType>
@@ -99,6 +112,7 @@
     <Compile Include="Formularios\Tripulacion\TripulacionForm.Designer.cs">
       <DependentUpon>TripulacionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\Envios.cs" />
     <Compile Include="Modelo\Producto.cs" />
     <Compile Include="Formularios\Ofertas\OfertasAgregar.cs">
       <SubType>Form</SubType>
@@ -185,8 +199,14 @@
     <EmbeddedResource Include="Formularios\Clientes\ClienteTiendaRegistro.resx">
       <DependentUpon>ClienteTiendaRegistro.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Envios\AddEnvio.resx">
+      <DependentUpon>AddEnvio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Envios\AddTransporte.resx">
       <DependentUpon>AddTransporte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Envios\Envios.resx">
+      <DependentUpon>Envios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Envios\UnidadesTransporte.resx">
       <DependentUpon>UnidadesTransporte.cs</DependentUpon>
