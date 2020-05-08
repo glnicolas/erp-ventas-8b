@@ -116,6 +116,11 @@
             // numUDDescuento
             // 
             this.numUDDescuento.Location = new System.Drawing.Point(30, 297);
+            this.numUDDescuento.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numUDDescuento.Name = "numUDDescuento";
             this.numUDDescuento.Size = new System.Drawing.Size(41, 20);
             this.numUDDescuento.TabIndex = 6;
