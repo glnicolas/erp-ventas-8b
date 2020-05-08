@@ -103,6 +103,12 @@
       <DependentUpon>Envios.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Ofertas\ComboBoxTools.cs" />
+    <Compile Include="Formularios\submenuEnvios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\submenuEnvios.Designer.cs">
+      <DependentUpon>submenuEnvios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Tripulacion\AddTripulacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,6 +234,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\SubMClientes.resx">
       <DependentUpon>SubMClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\submenuEnvios.resx">
+      <DependentUpon>submenuEnvios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Tripulacion\AddTripulacion.resx">
       <DependentUpon>AddTripulacion.cs</DependentUpon>
