@@ -183,39 +183,51 @@ namespace ERP_ventas.Formularios.Tripulacion
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            int id = ((Modelo.Envios)comboBox1.SelectedItem).idenvio;
-            int idE = ((Modelo.Empleado)comboBox2.SelectedItem).ID;
-            Modelo.Tripulacion trip = new Modelo.Tripulacion(idE,id,textRol.Text);
-           var resultado = new TripulacionDAO().Registrar(trip);
-            Type resultadoTipo = resultado.GetType();
-            if (resultadoTipo.Equals(typeof(string))) 
+            if (Validacion())
             {
-                Mensajes.Error(resultado.ToString());
+                int id = ((Modelo.Envios)comboBox1.SelectedItem).idenvio;
+                int idE = ((Modelo.Empleado)comboBox2.SelectedItem).ID;
+                Modelo.Tripulacion trip = new Modelo.Tripulacion(idE, id, textRol.Text);
+                var resultado = new TripulacionDAO().Registrar(trip);
+                Type resultadoTipo = resultado.GetType();
+                if (resultadoTipo.Equals(typeof(string)))
+                {
+                    Mensajes.Error(resultado.ToString());
+                }
+                else
+                {
+                    Mensajes.Info("Registro exitoso.");
+                    Close();
+                }
             }
-            else
+            else 
             {
-                Mensajes.Info("Registro exitoso.");
-                Close();
+                Mensajes.Info("El campo Rol, no puede quedar vacío.");
             }
         }
 
         private void modificarBtn_Click(object sender, EventArgs e)
         {
+            if (Validacion()) {
+                int id = ((Modelo.Envios)comboBox1.SelectedItem).idenvio;
+                int idE = ((Modelo.Empleado)comboBox2.SelectedItem).ID;
+                Modelo.Tripulacion trip = new Modelo.Tripulacion(idE, id, textRol.Text);
+                var resultado = new TripulacionDAO().Editar(trip);
+                Type resultado_tipo = resultado.GetType();
 
-            int id = ((Modelo.Envios)comboBox1.SelectedItem).idenvio;
-            int idE = ((Modelo.Empleado)comboBox2.SelectedItem).ID;
-            Modelo.Tripulacion trip = new Modelo.Tripulacion(idE, id, textRol.Text);
-            var resultado = new TripulacionDAO().Editar(trip);
-            Type resultado_tipo = resultado.GetType();
-
-            if (resultado_tipo.Equals(typeof(string)))
-            {
-                Mensajes.Error(resultado.ToString());
+                if (resultado_tipo.Equals(typeof(string)))
+                {
+                    Mensajes.Error(resultado.ToString());
+                }
+                else
+                {
+                    Mensajes.Info("Actualización exitosa.");
+                    Close();
+                }
             }
             else
             {
-                Mensajes.Info("Actualización exitosa.");
-                Close();
+                Mensajes.Info("El campo Rol, no puede quedar vacío.");
             }
         }
 
@@ -253,5 +265,14 @@ namespace ERP_ventas.Formularios.Tripulacion
         }
 
         //public List<> empleado
+        private Boolean Validacion() 
+        {
+            tripulacion.rol = textRol.Text;
+            if (tripulacion.rol!="") 
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
