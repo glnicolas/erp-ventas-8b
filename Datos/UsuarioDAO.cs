@@ -48,7 +48,7 @@ namespace ERP_ventas.Datos
                     }
                 }
             }
-            catch (SqlException ex)
+            catch (Exception ex)
             {
                 throw new Exception("Error relacionado con la BD. [UsuarioDAO] \n" + ex.Message);
             }

@@ -22,7 +22,7 @@ namespace ERP_ventas
 
             //Application.Run(new Login());
             //Login loginForm = new Login();
-            MenuPrincipal ofertasForm = new MenuPrincipal();
+            Login ofertasForm = new Login();
             ofertasForm.FormClosed += MainForm_Closed;
             ofertasForm.Show();
             Application.Run();

@@ -62,33 +62,44 @@ namespace ERP_ventas.Formularios.Envios
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            int h = 0;
-            string f = "";
-            try{
-                EnviosDAO envdao = new EnviosDAO();
-                char status;
-                if (comboBox1.Text == "Activo")
+            if (comboBox1.SelectedItem == null || comboBox2.SelectedItem == null)
+            {
+                Mensajes.Error("Rellene los campos vacios antes de realizar el registro");
+            }
+            else
+            {
+                int h = 0;
+                string f = "";
+                try
                 {
-                    status = 'A';
+                    EnviosDAO envdao = new EnviosDAO();
+                    char status;
+                    if (comboBox1.Text == "Activo")
+                    {
+                        status = 'A';
+                    }
+                    else
+                    {
+                        status = 'I';
+                    }
+                    Modelo.Envios env = new Modelo.Envios(1, dateTimePicker1.Value, ((Transporte)comboBox2.SelectedItem).ID, status);
+                    envdao.Registrar(env);
+                }
+                catch (Exception ex)
+                {
+                    f = "" + ex;
+                    h = 1;
+                }
+                if (h == 1)
+                {
+                    Mensajes.Error(f);
                 }
                 else
                 {
-                    status = 'I';
+                    Mensajes.Info("Registro completado");
                 }
-                Modelo.Envios env = new Modelo.Envios(1, dateTimePicker1.Value, ((Transporte)comboBox2.SelectedItem).ID, status);
-                envdao.Registrar(env);
-            }catch(Exception ex)
-            {
-                f = ""+ex;
-                h = 1;
+                this.Close();
             }
-            if (h == 1) {
-                Mensajes.Error(f);
-            }
-            else {
-                Mensajes.Info("Registro completado");
-            }
-            this.Close();
 
         }
 
