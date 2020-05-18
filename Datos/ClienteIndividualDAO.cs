@@ -50,6 +50,7 @@ namespace ERP_ventas.Datos
                         while (lector.Read())
                         {
                             ClienteIndividual cliente = new ClienteIndividual(
+                                 (int)lector["idCliente"],
                                  (string)lector["nombre"],
                                  (string)lector["apaterno"],
                                  (string)lector["amaterno"],

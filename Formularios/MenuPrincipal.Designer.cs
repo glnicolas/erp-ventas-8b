@@ -33,14 +33,14 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lblFechaHora = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnVentas = new System.Windows.Forms.Button();
             this.btnEnvios = new System.Windows.Forms.Button();
             this.btnTransporte = new System.Windows.Forms.Button();
             this.btnOfertas = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -100,15 +100,6 @@
             this.lblUsuario.Text = "[USUARIO]";
             this.lblUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(66, 74);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -121,6 +112,10 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Módulo ventas";
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // btnVentas
             // 
             this.btnVentas.BackgroundImage = global::ERP_ventas.Properties.Resources.Sector_1;
@@ -130,6 +125,7 @@
             this.btnVentas.Size = new System.Drawing.Size(259, 113);
             this.btnVentas.TabIndex = 9;
             this.btnVentas.UseVisualStyleBackColor = true;
+            this.btnVentas.Click += new System.EventHandler(this.btnVentas_Click);
             // 
             // btnEnvios
             // 
@@ -195,9 +191,14 @@
             this.btnClientes.UseVisualStyleBackColor = false;
             this.btnClientes.Click += new System.EventHandler(this.btnClientes_Click);
             // 
-            // timer1
+            // pictureBox1
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(66, 74);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
             // 
             // MenuPrincipal
             // 

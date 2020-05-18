@@ -129,3 +129,53 @@ go
 */
 insert into OfertasProductos values(6, 1, 'A')
 insert into OfertasProductos values(5, 1, 'I')
+
+create procedure sp_detalleproductos (
+@id int
+)
+as
+begin
+	select dp.idProductoDetalle,dp.talla, dp.existencia, colores.nombre color from DetalleProductos dp
+	join Colores on dp.idColor=Colores.idColor where dp.idProducto=@id
+end
+go
+
+exec sp_detalleproductos 5
+go
+
+select * from Productos
+
+update Productos set nombre='Running free dama' where idProducto=7
+update Productos set nombre='Running free caballero' where idProducto=8
+
+select * from Colores
+
+insert into colores values('rojo')
+insert into colores values('azul')
+insert into colores values('verde')
+insert into colores values('amarillo')
+insert into colores values('negro')
+insert into colores values('gris')
+
+select* from DetalleProductos where idProducto=5 and talla=23
+
+insert into DetalleProductos values(23, 10,2,5)
+insert into DetalleProductos values(23, 10,6,5)
+insert into DetalleProductos values(24, 15,2,5)
+insert into DetalleProductos values(25, 20,2,5)
+insert into DetalleProductos values(26, 5,2,5)
+go
+
+
+alter table ventas alter column totalPagar float
+alter table ventas alter column cantPagada float
+alter table ventas alter column comentarios varchar(100)
+alter table ventas alter column idcliente int 
+alter table ventas alter column idempleado int
+go 
+
+insert into ventas values (GETDATE(), 0,0,'Venta 2','A',null,null)
+insert into ventas values (GETDATE(), 0,0,'Venta 3','A',null,null)
+insert into ventas values (GETDATE(), 0,0,'Venta 4','A',null,null)
+
+select * from Ventas

@@ -14,24 +14,6 @@ namespace ERP_ventas.Modelo
         public string Apaterno { get; set; }
         public string Amaterno { get; set; }
         public Bitmap Fotografia { get; set; }
-        public int idDepartamento { get; set; }
-        public int idPuesto { get; set; }
-
-        /* char Sexo { get; set; }
-        DateTime FechaContratacion { get; set; }
-        DateTime FechaNacimiento { get; set; }
-        decimal Salario { get; set; }
-        string Nss { get; set; }
-        string EstadoCivil { get; set; }
-        int DiasVacaciones { get; set; }
-        int DiasPermiso { get; set; } 
-        string Direccion { get; set; }
-        string Colonia { get; set; }
-        string CodigoPostal { get; set; }
-        string Escolaridad { get; set; }
-        float PorcentajeComision { get; set; } 
-        int idCiudad { get; set; }
-        */
         public string Emp
         {
             get { return Nombre + " " + Apaterno; }

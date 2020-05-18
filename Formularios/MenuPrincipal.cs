@@ -16,6 +16,7 @@ using ERP_ventas.Datos;
 using ERP_ventas.Formularios;
 using ERP_ventas.Formularios.Ofertas;
 using ERP_ventas.Formularios.Tripulacion;
+using ERP_ventas.Formularios.Ventas;
 
 namespace ERP_ventas
 {
@@ -68,6 +69,13 @@ namespace ERP_ventas
         {
             submenuEnvios submE = new submenuEnvios();
             submE.ShowDialog();
+        }
+
+        private void btnVentas_Click(object sender, EventArgs e)
+        {
+            VentasForm ventasform = new VentasForm();
+            ventasform.Show();
+            Close();
         }
     }
 }

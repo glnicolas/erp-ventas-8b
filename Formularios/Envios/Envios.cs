@@ -1,17 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ERP_ventas.Modelo;
 using ERP_ventas.Datos;
-using System.Windows.Forms;
-using System.Data.SqlClient;
-using ERP_ventas.Modelo;
 
 namespace ERP_ventas.Formularios.Envios
 {

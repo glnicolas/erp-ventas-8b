@@ -104,7 +104,6 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Cliente individual";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // SubMClientes
             // 
@@ -119,6 +118,7 @@
             this.Name = "SubMClientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "SubMClientes";
+            this.Load += new System.EventHandler(this.SubMClientes_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

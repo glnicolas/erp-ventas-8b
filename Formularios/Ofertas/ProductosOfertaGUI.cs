@@ -28,13 +28,13 @@ namespace ERP_ventas.Formularios.Ofertas
         {
             try
             {
+                comboBoxProductos.MostrarProductos(productoDAO.consultaGeneral("", new List<string>(), new List<object>()).ToArray());
                 llenarProductos(productosOfertaDAO.ConsultaGeneral(" where idoferta=@id", new List<string>() { "@id" }, new List<object>() { ID_Oferta }));
             }
             catch (Exception ex)
             {
                 Mensajes.Error(ex.Message);
             }
-            comboBoxProductos.MostrarProductos(productoDAO.consultaGeneral("", new List<string>(), new List<object>()).ToArray());
         }
 
         private void agregarProductoATabla(Producto producto)
@@ -87,7 +87,7 @@ namespace ERP_ventas.Formularios.Ofertas
                     renglon.Visible = true;
                 }
                 else
-                    Mensajes.Info("El producto " + item.Text + " ya se agregó a la oferta");
+                    Mensajes.Info("El producto " + item.NombreProducto + " ya se agregó a la oferta");
             }
         }
 

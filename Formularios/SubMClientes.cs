@@ -19,9 +19,15 @@ namespace ERP_ventas.Formularios
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        public SubMClientes(int n)
         {
+            InitializeComponent();
+            StartPosition = FormStartPosition.CenterParent;
+            btnClienteIndividual.Click += btnClienteIndividualAgregar_Click;
+            btnClienteTienda.Click += btnClienteTiendaAgregar_Click;
 
+            btnClienteIndividual.Click -= btnClienteIndividual_Click;
+            btnClienteTienda.Click -= btnClienteTienda_Click;
         }
 
         private void btnClienteIndividual_Click(object sender, EventArgs e)
@@ -30,10 +36,26 @@ namespace ERP_ventas.Formularios
             ClienteIndividual.ShowDialog();
         }
 
+        private void btnClienteIndividualAgregar_Click(object sender, EventArgs e)
+        {
+            ClienteIndividualAgregar ClienteIndividual = new ClienteIndividualAgregar();
+            ClienteIndividual.ShowDialog();
+        }
+
         private void btnClienteTienda_Click(object sender, EventArgs e)
         {
-            ClienteTiendaGUI clienteTiendaF = new ClienteTiendaGUI();
+            ClienteIndividualAgregar clienteTiendaF = new ClienteIndividualAgregar();
+            clienteTiendaF.Show();
+        }
+
+        private void btnClienteTiendaAgregar_Click(object sender, EventArgs e)
+        {
+            ClienteTiendaRegistro clienteTiendaF = new ClienteTiendaRegistro();
             clienteTiendaF.ShowDialog();
+        }
+
+        private void SubMClientes_Load(object sender, EventArgs e)
+        {
         }
     }
 }

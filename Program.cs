@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using ERP_ventas.Formularios.Clientes;
 using ERP_ventas.Clientes;
 using ERP_ventas.Formularios.Ofertas;
+using ERP_ventas.Formularios.Ventas;
 
 namespace ERP_ventas
 {
@@ -22,7 +23,7 @@ namespace ERP_ventas
 
             //Application.Run(new Login());
             //Login loginForm = new Login();
-            Login ofertasForm = new Login();
+            VentasForm ofertasForm = new VentasForm();
             ofertasForm.FormClosed += MainForm_Closed;
             ofertasForm.Show();
             Application.Run();

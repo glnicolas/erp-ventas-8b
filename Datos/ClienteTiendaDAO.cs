@@ -37,6 +37,7 @@ namespace ERP_ventas.Datos
                         {
                             Console.WriteLine(lector.GetDataTypeName(3));
                             ClienteTienda cliente = new ClienteTienda(
+                                 (int)lector["idCliente"],
                                  (string)lector["nombre"],
                                  (string)lector["Contacto"],
                                  decimal.Parse(lector["limiteCredito"].ToString())

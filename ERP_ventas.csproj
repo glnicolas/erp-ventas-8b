@@ -72,6 +72,13 @@
     <Compile Include="Datos\ProductoDAO.cs" />
     <Compile Include="Datos\ProductosOfertaDAO.cs" />
     <Compile Include="Datos\TripulacionDAO.cs" />
+    <Compile Include="Datos\VentaDAO.cs" />
+    <Compile Include="Formularios\Clientes\BuscarClientesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Clientes\BuscarClientesForm.Designer.cs">
+      <DependentUpon>BuscarClientesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Clientes\ClienteIndividualAgregar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +125,25 @@
     <Compile Include="Formularios\Tripulacion\TripulacionForm.Designer.cs">
       <DependentUpon>TripulacionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Ventas\AgregarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Ventas\AgregarProducto.Designer.cs">
+      <DependentUpon>AgregarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Ventas\VentasAgregar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Ventas\VentasAgregar.Designer.cs">
+      <DependentUpon>VentasAgregar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Ventas\VentasForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Ventas\VentasForm.Designer.cs">
+      <DependentUpon>VentasForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\DetalleProducto.cs" />
     <Compile Include="Modelo\Envios.cs" />
     <Compile Include="Modelo\Producto.cs" />
     <Compile Include="Formularios\Ofertas\OfertasAgregar.cs">
@@ -190,9 +216,14 @@
     <Compile Include="Modelo\Transporte.cs" />
     <Compile Include="Modelo\Tripulacion.cs" />
     <Compile Include="Modelo\Usuario.cs" />
+    <Compile Include="Modelo\Venta.cs" />
+    <Compile Include="Modelo\VistaProducto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilidades.cs" />
+    <EmbeddedResource Include="Formularios\Clientes\BuscarClientesForm.resx">
+      <DependentUpon>BuscarClientesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Clientes\ClienteIndividualAgregar.resx">
       <DependentUpon>ClienteIndividualAgregar.cs</DependentUpon>
     </EmbeddedResource>
@@ -244,6 +275,15 @@
     <EmbeddedResource Include="Formularios\Tripulacion\TripulacionForm.resx">
       <DependentUpon>TripulacionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Ventas\AgregarProducto.resx">
+      <DependentUpon>AgregarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Ventas\VentasAgregar.resx">
+      <DependentUpon>VentasAgregar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Ventas\VentasForm.resx">
+      <DependentUpon>VentasForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -289,7 +329,7 @@
     <None Include="Resources\editar2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Formularios\Ventas\" />
+    <None Include="Resources\print_blue_30px.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Sector 1.png" />
@@ -344,6 +384,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\broom_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\detail_property_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ok_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ok_24px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

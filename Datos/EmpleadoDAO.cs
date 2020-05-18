@@ -54,7 +54,7 @@ namespace ERP_ventas.Datos
             }
             catch (Exception ex)
             {
-                throw new Exception("Error relacionado con la BD. [TripulacionDAO.c] \n Anota este error y contacta al administrador.\n" + ex.Message);
+                throw new Exception("Error relacionado con la BD. [EmpleadoDAO.c] \n Anota este error y contacta al administrador.\n" + ex.Message);
             }
             return env;
         }
@@ -80,14 +80,6 @@ namespace ERP_ventas.Datos
                         Empleado empleado;
                         lector.Read();
                         {
-                             // Otra opción de recuperar los datos del lector
-                             //empleado = new Empleado(
-                             //    lector.GetInt32(0),
-                             //    lector.GetString(1),
-                             //    lector.GetString(2),
-                             //    lector.GetString(3),
-                             //    (byte[])lector["fotografia"]
-                             //    );
                             empleado = new Empleado(
                                  (int)lector["idempleado"],
                                  (string)lector["nombre"],

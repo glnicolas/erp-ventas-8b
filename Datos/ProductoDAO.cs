@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using ERP_ventas.Formularios.Ofertas;
+using System.Data;
 using ERP_ventas.Modelo;
+
 
 namespace ERP_ventas.Datos
 {
@@ -42,14 +41,15 @@ namespace ERP_ventas.Datos
                                  (string)lector["nombre"],
                                  (string)lector["Descripcion"],
                                  ((string)lector["genero"])[0],
-                                 (double)lector["precioVenta"], 
+                                 (double)lector["precioVenta"],
                                  ConsultarimagenProducto((int)lector["ID"])
                                  );
+                            producto.Detalles = detalleProductos(producto.ID);
                             productos.Add(producto);
                         }
                     }
-                        lector.Close();
-                        conexion.Close();
+                    lector.Close();
+                    conexion.Close();
                 }
             }
             catch (SqlException ex)
@@ -75,7 +75,37 @@ namespace ERP_ventas.Datos
             }
         }
 
-       
+        private List<DetalleProducto> detalleProductos(int idproducto)
+        {
+            List<DetalleProducto> detalles = new List<DetalleProducto>();
+            using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion))
+            {
+                string cadena_sql = "sp_detalleproductos";
+                SqlCommand comando = new SqlCommand(cadena_sql, conexion)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                conexion.Open();
+                comando.Parameters.AddWithValue("@id", idproducto);
+
+                SqlDataReader lector = comando.ExecuteReader();
+
+                if (lector.HasRows)
+                {
+                    while (lector.Read())
+                    {
+                        DetalleProducto dp = new DetalleProducto(
+                            (int)lector["idProductoDetalle"],
+                            (string)lector["color"],
+                            (double)lector["talla"],
+                            (int)lector["existencia"]
+                            );
+                        detalles.Add(dp);
+                    }
+                }
+            }
+            return detalles;
+        }
 
     }
 }
