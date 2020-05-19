@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Datos\ClienteTiendaDAO.cs" />
     <Compile Include="Datos\EnviosDAO.cs" />
+    <Compile Include="Datos\EnviosVentaDAO.cs" />
     <Compile Include="Datos\OfertasDAO.cs" />
     <Compile Include="Datos\Paginacion.cs" />
     <Compile Include="Datos\ProductoDAO.cs" />

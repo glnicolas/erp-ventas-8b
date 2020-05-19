@@ -35,11 +35,11 @@
             this.anteriorBtn = new System.Windows.Forms.Button();
             this.buscartextBox = new System.Windows.Forms.TextBox();
             this.limpiarbutton = new System.Windows.Forms.Button();
-            this.dataOfertas = new System.Windows.Forms.DataGridView();
+            this.dataEnviosVentas = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.btnEliminar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataOfertas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataEnviosVentas)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,6 +70,7 @@
             this.elementosPaginacionCmb.Name = "elementosPaginacionCmb";
             this.elementosPaginacionCmb.Size = new System.Drawing.Size(65, 26);
             this.elementosPaginacionCmb.TabIndex = 39;
+            this.elementosPaginacionCmb.SelectedIndexChanged += new System.EventHandler(this.elementosPaginacionCmb_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -92,6 +93,7 @@
             this.siguienteBtn.Size = new System.Drawing.Size(50, 43);
             this.siguienteBtn.TabIndex = 37;
             this.siguienteBtn.UseVisualStyleBackColor = false;
+            this.siguienteBtn.Click += new System.EventHandler(this.siguienteBtn_Click);
             // 
             // anteriorBtn
             // 
@@ -105,6 +107,7 @@
             this.anteriorBtn.Size = new System.Drawing.Size(50, 43);
             this.anteriorBtn.TabIndex = 36;
             this.anteriorBtn.UseVisualStyleBackColor = false;
+            this.anteriorBtn.Click += new System.EventHandler(this.anteriorBtn_Click);
             // 
             // buscartextBox
             // 
@@ -113,6 +116,7 @@
             this.buscartextBox.Name = "buscartextBox";
             this.buscartextBox.Size = new System.Drawing.Size(329, 29);
             this.buscartextBox.TabIndex = 45;
+            this.buscartextBox.TextChanged += new System.EventHandler(this.buscartextBox_TextChanged);
             // 
             // limpiarbutton
             // 
@@ -123,25 +127,26 @@
             this.limpiarbutton.TabIndex = 44;
             this.limpiarbutton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.limpiarbutton.UseVisualStyleBackColor = true;
+            this.limpiarbutton.Click += new System.EventHandler(this.limpiarbutton_Click);
             // 
-            // dataOfertas
+            // dataEnviosVentas
             // 
-            this.dataOfertas.AllowUserToAddRows = false;
-            this.dataOfertas.AllowUserToDeleteRows = false;
-            this.dataOfertas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dataEnviosVentas.AllowUserToAddRows = false;
+            this.dataEnviosVentas.AllowUserToDeleteRows = false;
+            this.dataEnviosVentas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataOfertas.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            this.dataOfertas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataOfertas.Location = new System.Drawing.Point(2, 116);
-            this.dataOfertas.MultiSelect = false;
-            this.dataOfertas.Name = "dataOfertas";
-            this.dataOfertas.ReadOnly = true;
-            this.dataOfertas.RowHeadersVisible = false;
-            this.dataOfertas.RowHeadersWidth = 51;
-            this.dataOfertas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataOfertas.Size = new System.Drawing.Size(801, 332);
-            this.dataOfertas.TabIndex = 46;
+            this.dataEnviosVentas.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.dataEnviosVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataEnviosVentas.Location = new System.Drawing.Point(2, 116);
+            this.dataEnviosVentas.MultiSelect = false;
+            this.dataEnviosVentas.Name = "dataEnviosVentas";
+            this.dataEnviosVentas.ReadOnly = true;
+            this.dataEnviosVentas.RowHeadersVisible = false;
+            this.dataEnviosVentas.RowHeadersWidth = 51;
+            this.dataEnviosVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataEnviosVentas.Size = new System.Drawing.Size(801, 332);
+            this.dataEnviosVentas.TabIndex = 46;
             // 
             // panel1
             // 
@@ -175,6 +180,7 @@
             this.btnEliminar.Text = "Eliminar  ";
             this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // EnviosVentasForm
             // 
@@ -183,7 +189,7 @@
             this.ClientSize = new System.Drawing.Size(800, 502);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.dataOfertas);
+            this.Controls.Add(this.dataEnviosVentas);
             this.Controls.Add(this.buscartextBox);
             this.Controls.Add(this.limpiarbutton);
             this.Controls.Add(this.siguienteBtn);
@@ -193,7 +199,8 @@
             this.Controls.Add(this.label2);
             this.Name = "EnviosVentasForm";
             this.Text = "EnviosVentasForm";
-            ((System.ComponentModel.ISupportInitialize)(this.dataOfertas)).EndInit();
+            this.Load += new System.EventHandler(this.EnviosVentasForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataEnviosVentas)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -210,7 +217,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox buscartextBox;
         private System.Windows.Forms.Button limpiarbutton;
-        private System.Windows.Forms.DataGridView dataOfertas;
+        private System.Windows.Forms.DataGridView dataEnviosVentas;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnEliminar;
