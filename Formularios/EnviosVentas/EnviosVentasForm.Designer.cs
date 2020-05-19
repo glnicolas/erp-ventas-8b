@@ -147,6 +147,7 @@
             this.dataEnviosVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataEnviosVentas.Size = new System.Drawing.Size(801, 332);
             this.dataEnviosVentas.TabIndex = 46;
+            this.dataEnviosVentas.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataEnviosVentas_CellContentDoubleClick);
             // 
             // panel1
             // 

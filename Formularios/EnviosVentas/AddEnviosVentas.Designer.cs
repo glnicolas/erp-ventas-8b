@@ -109,6 +109,7 @@
             this.modificarBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.modificarBtn.UseVisualStyleBackColor = true;
             this.modificarBtn.Visible = false;
+            this.modificarBtn.Click += new System.EventHandler(this.modificarBtn_Click);
             // 
             // btnRegistrar
             // 
@@ -163,6 +164,7 @@
             // 
             // comboBox2
             // 
+            this.comboBox2.Enabled = false;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(18, 209);
             this.comboBox2.Name = "comboBox2";

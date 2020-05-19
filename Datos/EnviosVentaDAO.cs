@@ -129,5 +129,38 @@ namespace ERP_ventas.Datos
             return resultado;
         }
 
+        public object Editar(Modelo.EnviosVentas enviosVentas) 
+        {
+            object resultado = new object();
+
+            try
+            {
+                using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion)) 
+                {
+                    string cadena_sql = "update EnviosVentas set idEnvio = @idEnvio, fechaEntregaPlaneada = @fechaEntregaPlaneada, fechaEntregaReal = @fechaEntregaReal where idVenta=@idVenta";
+
+                    SqlCommand comando = new SqlCommand(cadena_sql, conexion);
+                    comando.Parameters.AddWithValue("@idEnvio", enviosVentas.idEnvio);
+                    comando.Parameters.AddWithValue("@idVenta", enviosVentas.idVenta);
+                    comando.Parameters.AddWithValue("@fechaEntregaPlaneada", enviosVentas.fechaEntregaPlaneada);
+                    comando.Parameters.AddWithValue("@fechaEntregaReal", enviosVentas.fechaEntregaReal);
+                    conexion.Open();
+
+                    int cant_registros = (int)comando.ExecuteNonQuery();
+                    conexion.Close();
+                    if (cant_registros == 1)
+                    {
+                        resultado = true;
+                    }
+                    else
+                        resultado = "Ha ocurrido un error no especificado";
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error relacionado con la BD. [ClienteIndividualDAO.R] \n Anota este error y contacta al administrador.\n" + ex.Message);
+            }
+            return resultado;
+        }
     }
 }

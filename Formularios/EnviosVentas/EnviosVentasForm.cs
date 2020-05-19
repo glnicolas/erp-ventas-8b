@@ -140,5 +140,26 @@ namespace ERP_ventas.Formularios.EnviosVentas
             buscartextBox.Text = "";
             actualizarTabla();
         }
+
+        private void dataEnviosVentas_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                DataGridViewRow Renglon = dataEnviosVentas.Rows[e.RowIndex];
+                string sql_where = " where idVenta = @idVenta";
+                List<string> parametros = new List<string>();
+                List<object> valores = new List<object>();
+                parametros.Add("@idVenta");
+                valores.Add(Renglon.Cells["idVenta"].Value);
+                Modelo.EnviosVentas enviosVentas = envdao.ConsultaGeneral(sql_where, parametros, valores)[0];
+                AddEnviosVentas addEnviosVentas = new AddEnviosVentas(enviosVentas);
+                addEnviosVentas.ShowDialog();
+                actualizarTabla();
+            }
+            else 
+            {
+                Mensajes.Error("Selecciona un registro");
+            }
+        }
     }
 }
