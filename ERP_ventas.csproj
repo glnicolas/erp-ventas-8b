@@ -98,6 +98,12 @@
     <Compile Include="Formularios\Clientes\ClienteTiendaRegistro.Designer.cs">
       <DependentUpon>ClienteTiendaRegistro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\EnviosVentas\AddEnviosVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\EnviosVentas\AddEnviosVentas.Designer.cs">
+      <DependentUpon>AddEnviosVentas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\EnviosVentas\EnviosVentasForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Clientes\ClienteTiendaRegistro.resx">
       <DependentUpon>ClienteTiendaRegistro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\EnviosVentas\AddEnviosVentas.resx">
+      <DependentUpon>AddEnviosVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\EnviosVentas\EnviosVentasForm.resx">
       <DependentUpon>EnviosVentasForm.cs</DependentUpon>

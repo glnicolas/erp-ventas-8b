@@ -54,7 +54,11 @@ namespace ERP_ventas.Formularios.Ventas
                 if (venta.EstatusChar == 'P')
                     Mensajes.Error(venta.ToString());
                 else
-                    Mensajes.Info("La venta seleccionada aún no se puede enviar");
+                {
+                    //Mensajes.Info("La venta seleccionada aún no se puede enviar");
+                    EnviosVentas.AddEnviosVentas addEnviosVentas = new EnviosVentas.AddEnviosVentas(venta.ID);
+                    addEnviosVentas.ShowDialog();
+                }
             }
         }
     }
