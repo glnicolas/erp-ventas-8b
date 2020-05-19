@@ -30,6 +30,7 @@ namespace ERP_ventas.Formularios.EnviosVentas
 
         private void EnviosVentasForm_Load(object sender, EventArgs e)
         {
+            dataEnviosVentas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             elementosPaginacionCmb.SelectedIndex = 0;
         }
 
