@@ -53,7 +53,8 @@ namespace ERP_ventas.Datos
                                 (int)lector["idEnvio"],
                                 (int)lector["idVenta"],
                                 (DateTime)lector["fechaEntregaPlaneada"],
-                                (DateTime)lector["fechaEntregaReal"]
+                                (DateTime)lector["fechaEntregaReal"],
+                                (char)lector["estatus"]
                                 );
                             env.Add(envi);
                         }
@@ -93,6 +94,39 @@ namespace ERP_ventas.Datos
             {
                 throw new Exception("Error relacionado con la BD. [ClienteIndividualDAO.E] \n Anota este error y contacta al administrador.\n" + ex.Message);
             }
+        }
+
+        public object Registrar(Modelo.EnviosVentas enviosVentas) 
+        {
+            object resultado = new object();
+            try
+            {
+                using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion)) 
+                {
+                    string cadena_sql = "insert into EnviosVentas values(@idEnvio, @idVenta, @fechaEntregaPlaneada, @fechaEntregaReal, 'A')";
+
+                    SqlCommand comando = new SqlCommand(cadena_sql, conexion);
+                    comando.Parameters.AddWithValue("@idEnvio", enviosVentas.idEnvio);
+                    comando.Parameters.AddWithValue("@idVenta", enviosVentas.idVenta);
+                    comando.Parameters.AddWithValue("@fechaEntregaPlaneada", enviosVentas.fechaEntregaPlaneada);
+                    comando.Parameters.AddWithValue("@fechaEntregaReal", enviosVentas.fechaEntregaReal);
+                    conexion.Open();
+
+                    int cant_registros = (int)comando.ExecuteNonQuery();
+                    conexion.Close();
+                    if (cant_registros == 1)
+                    {
+                        resultado = true;
+                    }
+                    else
+                        resultado = "Se ha generado un error no especificado";
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error relacionado con la BD. [ClienteIndividualDAO.R] \n Anota este error y contacta al administrador.\n" + ex.Message);
+            }
+            return resultado;
         }
 
     }

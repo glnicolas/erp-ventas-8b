@@ -41,23 +41,52 @@ namespace ERP_ventas.Formularios.EnviosVentas
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-
+            int idVenta = (int)numericUpDown1.Value;
+            int idEnvio = ((Modelo.Envios)comboBox1.SelectedItem).idenvio;
+            Modelo.EnviosVentas enviosVentas = new Modelo.EnviosVentas(idEnvio, idVenta, dateTimePicker1.Value, dateTimePicker2.Value, 'A');
+            var resultado = new EnviosVentaDAO().Registrar(enviosVentas);
+            Type resultadoTipo = resultado.GetType();
+            if (resultadoTipo.Equals(typeof(string)))
+            {
+                Mensajes.Error(resultado.ToString());
+            }
+            else 
+            {
+                Mensajes.Info("Registro exitoso");
+                Close();
+            }
         }
 
         private void AddEnviosVentas_Load(object sender, EventArgs e)
         {
-            comboBox1.Items.AddRange(new EnviosDAO().ConsultaGeneral("", new List<string>(), new List<object>()).ToArray());
+            comboBox1.Items.AddRange(new EnviosDAO().ConsultaGeneral(" where estatus='A'", new List<string>(), new List<object>()).ToArray());
+            comboBox1.DisplayMember = "idEnvio";
+            comboBox2.Items.Add(new EnviosDAO().ConsultaGeneral(" where estatus='A'", new List<string>(), new List<object>()));
+            comboBox2.DisplayMember = "fechaSalida";
             if (enviosVentas != null)
             {
                 for (int i = 0; i < comboBox1.Items.Count; i++)
                 {
                     comboBox1.SelectedIndex = i;
-
                 }
+
+                for (int i = 0; i < comboBox2.Items.Count; i++)
+                {
+                    comboBox2.SelectedIndex = i;
+                }
+
             }
-            else 
+            else
             {
                 numericUpDown1.Value = idVenta;
+                for (int i = 0; i < comboBox1.Items.Count; i++)
+                {
+                    comboBox1.SelectedIndex = 0;
+                }
+                for (int i = 0; i < comboBox2.Items.Count; i++) 
+                {
+                    comboBox2.SelectedIndex = comboBox1.SelectedIndex;
+                }
             }
         }
     }

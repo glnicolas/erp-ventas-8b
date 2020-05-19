@@ -52,13 +52,13 @@ namespace ERP_ventas.Formularios.Ventas
                 var row = dataOfertas.SelectedRows[0];
                 var venta = (Venta)row.DataBoundItem; //Castea el row como objeto de la clase venta
                 if (venta.EstatusChar == 'P')
-                    Mensajes.Error(venta.ToString());
-                else
                 {
-                    //Mensajes.Info("La venta seleccionada aún no se puede enviar");
+                    //Mensajes.Error(venta.ToString());
                     EnviosVentas.AddEnviosVentas addEnviosVentas = new EnviosVentas.AddEnviosVentas(venta.ID);
                     addEnviosVentas.ShowDialog();
                 }
+                else
+                    Mensajes.Info("La venta seleccionada aún no se puede enviar");
             }
         }
     }
