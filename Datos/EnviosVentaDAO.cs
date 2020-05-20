@@ -138,11 +138,12 @@ namespace ERP_ventas.Datos
             {
                 using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion)) 
                 {
-                    string cadena_sql = "update EnviosVentas set idEnvio = @idEnvio, fechaEntregaPlaneada = @FEP, fechaEntregaReal = @FER where idVenta = @idVenta";
+                    string cadena_sql = "update EnviosVentas set idEnvio=@idEnvio, fechaEntregaPlaneada=@FEP, fechaEntregaReal=@FER where idVenta=@idVenta";
 
                     SqlCommand comando = new SqlCommand(cadena_sql, conexion);
-                    Mensajes.Info(enviosVentas.fechaEntregaPlaneada.ToString());
-                    Mensajes.Info(enviosVentas.fechaEntregaReal.ToString());
+                    Mensajes.Info("idEnvio: "+enviosVentas.idEnvio+ "\n idVenta: " + 
+                        enviosVentas.idVenta+ "\n FechaPlaneada: " + enviosVentas.fechaEntregaPlaneada+ 
+                        "\n FechaReal: " + enviosVentas.fechaEntregaReal);
                     comando.Parameters.AddWithValue("@idEnvio", enviosVentas.idEnvio);
                     comando.Parameters.AddWithValue("@idVenta", enviosVentas.idVenta);
                     comando.Parameters.AddWithValue("@FEP", enviosVentas.fechaEntregaPlaneada);
