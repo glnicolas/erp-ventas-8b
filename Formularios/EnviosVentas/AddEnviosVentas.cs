@@ -32,6 +32,10 @@ namespace ERP_ventas.Formularios.EnviosVentas
             btnRegistrar.Visible = false;
             modificarBtn.Visible = true;
             this.enviosVentas = enviosVentas;
+            numericUpDown1.Value=enviosVentas.idVenta;
+            comboBox1.SelectedItem = enviosVentas.idEnvio;
+            dateTimePicker1.Value = enviosVentas.fechaEntregaPlaneada;
+            dateTimePicker2.Value = enviosVentas.fechaEntregaReal;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -41,20 +45,36 @@ namespace ERP_ventas.Formularios.EnviosVentas
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-            int idVenta = (int)numericUpDown1.Value;
-            int idEnvio = ((Modelo.Envios)comboBox1.SelectedItem).idenvio;
-            Modelo.EnviosVentas enviosVentas = new Modelo.EnviosVentas(idEnvio, idVenta, dateTimePicker1.Value, dateTimePicker2.Value, 'A');
-            var resultado = new EnviosVentaDAO().Registrar(enviosVentas);
-            Type resultadoTipo = resultado.GetType();
-            if (resultadoTipo.Equals(typeof(string)))
+            EnviosVentaDAO envdao= new EnviosVentaDAO();
+            string sql_where = " where idVenta = @idVenta";
+            List<string> parametros = new List<string>();
+            List<object> valores = new List<object>();
+            parametros.Add("@idVenta");
+            valores.Add((int)numericUpDown1.Value);
+            List<Modelo.EnviosVentas> enviosVentas = envdao.ConsultaGeneral(sql_where, parametros, valores);
+
+            if (enviosVentas.Count==0)
             {
-                Mensajes.Error(resultado.ToString());
+                int idVenta = (int)numericUpDown1.Value;
+                int idEnvio = ((Modelo.Envios)comboBox1.SelectedItem).idenvio;
+                Modelo.EnviosVentas enviosVenta = new Modelo.EnviosVentas(idEnvio, idVenta, dateTimePicker1.Value, dateTimePicker2.Value, 'A');
+                var resultado = new EnviosVentaDAO().Registrar(enviosVenta);
+                Type resultadoTipo = resultado.GetType();
+                if (resultadoTipo.Equals(typeof(string)))
+                {
+                    Mensajes.Error(resultado.ToString());
+                }
+                else
+                {
+                    Mensajes.Info("Registro exitoso");
+                    Close();
+                }
             }
-            else 
+            else
             {
-                Mensajes.Info("Registro exitoso");
-                Close();
+                Mensajes.Error("El idVenta esta repetido");
             }
+            
         }
 
         private void AddEnviosVentas_Load(object sender, EventArgs e)
@@ -68,6 +88,10 @@ namespace ERP_ventas.Formularios.EnviosVentas
                 for (int i = 0; i < comboBox1.Items.Count; i++)
                 {
                     comboBox1.SelectedIndex = i;
+                    if (((Modelo.Envios)comboBox1.SelectedItem).idenvio == enviosVentas.idEnvio)
+                    {
+                        break;
+                    }
                 }
 
                 for (int i = 0; i < comboBox2.Items.Count; i++)

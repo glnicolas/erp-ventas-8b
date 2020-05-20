@@ -34,8 +34,9 @@ namespace ERP_ventas.Datos
             {
                 using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion))
                 {
-                    string cadena_sql = "select C.direccion, V.fechaEntregaPlaneada 'Fecha de entrega preevista' from EnviosVentas EV inner join Ventas V on V.idVenta=EV.idVenta" +
-                        "inner join Clientes C on V.idCliente=C.idCliente" + sql_where;
+                    //string cadena_sql = "select C.direccion, V.fechaEntregaPlaneada 'Fecha de entrega preevista' from EnviosVentas EV inner join Ventas V on V.idVenta=EV.idVenta" +
+                    //  "inner join Clientes C on V.idCliente=C.idCliente" + sql_where;
+                    string cadena_sql = "select idEnvio, idVenta, fechaEntregaPlaneada, fechaEntregaReal, estatus from EnviosVentas"+sql_where;
                     SqlCommand comando = new SqlCommand(cadena_sql, conexion);
 
                     conexion.Open();
@@ -54,7 +55,7 @@ namespace ERP_ventas.Datos
                                 (int)lector["idVenta"],
                                 (DateTime)lector["fechaEntregaPlaneada"],
                                 (DateTime)lector["fechaEntregaReal"],
-                                (char)lector["estatus"]
+                                ((string)lector["estatus"])[0]
                                 );
                             env.Add(envi);
                         }
@@ -70,7 +71,7 @@ namespace ERP_ventas.Datos
             }
             catch (Exception ex)
             {
-                throw new Exception("Error relacionado con la BD. [TripulacionDAO.c] \n Anota este error y contacta al administrador.\n" + ex.Message);
+                throw new Exception("Error relacionado con la BD. [EnviosVentas.c] \n Anota este error y contacta al administrador.\n" + ex.Message);
             }
             return env;
         }
@@ -137,13 +138,15 @@ namespace ERP_ventas.Datos
             {
                 using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion)) 
                 {
-                    string cadena_sql = "update EnviosVentas set idEnvio = @idEnvio, fechaEntregaPlaneada = @fechaEntregaPlaneada, fechaEntregaReal = @fechaEntregaReal where idVenta=@idVenta";
+                    string cadena_sql = "update EnviosVentas set idEnvio = @idEnvio, fechaEntregaPlaneada = @FEP, fechaEntregaReal = @FER where idVenta = @idVenta";
 
                     SqlCommand comando = new SqlCommand(cadena_sql, conexion);
+                    Mensajes.Info(enviosVentas.fechaEntregaPlaneada.ToString());
+                    Mensajes.Info(enviosVentas.fechaEntregaReal.ToString());
                     comando.Parameters.AddWithValue("@idEnvio", enviosVentas.idEnvio);
                     comando.Parameters.AddWithValue("@idVenta", enviosVentas.idVenta);
-                    comando.Parameters.AddWithValue("@fechaEntregaPlaneada", enviosVentas.fechaEntregaPlaneada);
-                    comando.Parameters.AddWithValue("@fechaEntregaReal", enviosVentas.fechaEntregaReal);
+                    comando.Parameters.AddWithValue("@FEP", enviosVentas.fechaEntregaPlaneada);
+                    comando.Parameters.AddWithValue("@FER", enviosVentas.fechaEntregaReal);
                     conexion.Open();
 
                     int cant_registros = (int)comando.ExecuteNonQuery();
