@@ -27,7 +27,7 @@ namespace ERP_ventas.Modelo
         public string Descripcion { get; set; }
         public char Genero { get; set; }
         internal Oferta  Oferta { get; set; }
-
+        internal int IDVentaDetalle { get; set; }
         public int Cantidad;
         public DetalleProducto detalleSeleccionado;
         public string GeneroString

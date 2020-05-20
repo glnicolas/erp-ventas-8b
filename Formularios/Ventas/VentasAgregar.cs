@@ -17,6 +17,7 @@ namespace ERP_ventas.Formularios.Ventas
     {
         private VentaDAO ventaDAO;
         private decimal totalPagar;
+        private bool editar = false;
 
         /*
          * Las ventas tienen 3 status:
@@ -28,6 +29,7 @@ namespace ERP_ventas.Formularios.Ventas
         private Cliente cliente;
         private List<Producto> productos;
         private Venta ventaEnCaptura;
+
         public VentasAgregar()
         {
             InitializeComponent();
@@ -36,6 +38,16 @@ namespace ERP_ventas.Formularios.Ventas
             ventaDAO = new VentaDAO();
             comboBoxEstatus.SelectedIndex = 0;
         }
+
+        public VentasAgregar(Venta venta)
+        {
+            InitializeComponent();
+            productos = new List<Producto>();
+            ventaDAO = new VentaDAO();
+            comboBoxEstatus.SelectedIndex = 0;
+            ventaEnCaptura = venta;
+        }
+
         private void btnBuscarCliente_Click_1(object sender, EventArgs e)
         {
             BuscarClientesForm buscar = new BuscarClientesForm();
@@ -84,7 +96,13 @@ namespace ERP_ventas.Formularios.Ventas
 
         private void cargarVenta()
         {
-            throw new NotImplementedException();
+            cliente = ventaEnCaptura.ClienteObj;
+            comentariosTextBox.Text = ventaEnCaptura.Comentarios;
+            productos = ventaEnCaptura.Productos;
+            ActualizarTablaProductos();
+            label1.Text = "Editar venta";
+            labelVenta.Text = string.Format("No. {0}", ventaEnCaptura.ID);
+            textBox1.Text = ventaEnCaptura.Cliente;
         }
 
         private void registrarVenta()
@@ -213,7 +231,6 @@ namespace ERP_ventas.Formularios.Ventas
                 {
                     if (dataGridViewProductos.Rows.Count > 0)
                     {
-                        
                         ventaEnCaptura.EstatusChar = 'A';
                         ventaEnCaptura.TotalPagar = totalPagar;
                         ventaEnCaptura.EmpleadoObj = (Empleado)empleadosComboBox.SelectedItem;
@@ -222,7 +239,14 @@ namespace ERP_ventas.Formularios.Ventas
                         ventaEnCaptura.Productos = productos;
                         try
                         {
-                            ventaDAO.Actualizar(ventaEnCaptura);
+                            if(ventaDAO.Actualizar(ventaEnCaptura))
+                            {
+                                if (editar)
+                                    Mensajes.Info("Venta actualizada");
+                                else
+                                    Mensajes.Info("Venta registrada");
+                                Close();
+                            }
                         }
                         catch(Exception ex)
                         {
@@ -251,7 +275,54 @@ namespace ERP_ventas.Formularios.Ventas
         }
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-
+            if (empleadosComboBox.SelectedItem != null)
+            {
+                if (cliente != null)
+                {
+                    if (dataGridViewProductos.Rows.Count > 0)
+                    {
+                        ventaEnCaptura.EstatusChar = 'F';
+                        ventaEnCaptura.TotalPagar = totalPagar;
+                        ventaEnCaptura.EmpleadoObj = (Empleado)empleadosComboBox.SelectedItem;
+                        ventaEnCaptura.ClienteObj = cliente;
+                        ventaEnCaptura.Comentarios = comentariosTextBox.Text;
+                        ventaEnCaptura.Productos = productos;
+                        DialogResult respuesta = Mensajes.PreguntaInfo("¿Estás seguro que quieres finalizar la venta?\nNo se podrán realizar cambios después");
+                        if (respuesta == DialogResult.OK)
+                        {
+                            try
+                            {
+                                if (ventaDAO.Actualizar(ventaEnCaptura))
+                                {
+                                        Mensajes.Info("Venta finalizada");
+                                    Close();
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                foreach (Producto producto in productos)
+                                {
+                                    try
+                                    {
+                                        new ProductoDAO().ActualizarExistencias(producto.detalleSeleccionado.ID, producto.Cantidad);
+                                    }
+                                    catch (Exception en)
+                                    {
+                                        Mensajes.Error(en.Message);
+                                    }
+                                }
+                                Mensajes.Error(ex.Message);
+                            }
+                        }
+                    }
+                    else
+                        Mensajes.Info("Agrega por lo menos un producto a la venta");
+                }
+                else
+                    Mensajes.Info("Seleccionna un cliente");
+            }
+            else
+                Mensajes.Info("Seleccionna un empleado");
         }
     }
 }

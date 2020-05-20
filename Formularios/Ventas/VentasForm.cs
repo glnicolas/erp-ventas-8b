@@ -37,7 +37,7 @@ namespace ERP_ventas.Formularios.Ventas
 
         private void VentasForm_Load(object sender, EventArgs e)
         {
-            dataOfertas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataVentas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             actualizarTabla();
         }
 
@@ -45,7 +45,7 @@ namespace ERP_ventas.Formularios.Ventas
         {
             try
             {
-                dataOfertas.DataSource = ventaDAO.ConsultaGeneral("", new List<string>(), new List<object>());
+                dataVentas.DataSource = ventaDAO.ConsultaGeneral(" where estatus != 'I'", new List<string>(), new List<object>());
             }
             catch (Exception ex)
             {
@@ -55,15 +55,65 @@ namespace ERP_ventas.Formularios.Ventas
 
         private void btnEnviar_Click(object sender, EventArgs e)
         {
-            if (dataOfertas.SelectedRows.Count == 1)
+            if (dataVentas.SelectedRows.Count == 1)
             {
-                var row = dataOfertas.SelectedRows[0];
+                var row = dataVentas.SelectedRows[0];
                 var venta = (Venta)row.DataBoundItem; //Castea el row como objeto de la clase venta
                 if (venta.EstatusChar == 'P')
                     Mensajes.Error(venta.ToString());
                 else
                     Mensajes.Info("La venta seleccionada aún no se puede enviar");
             }
+        }
+
+        private void btnDetalle_Click(object sender, EventArgs e)
+        {
+            if (dataVentas.SelectedRows.Count == 1)
+            {
+                var row = dataVentas.SelectedRows[0];
+                Venta venta = (Venta)row.DataBoundItem;
+                if (venta.EstatusChar == 'A')
+                {
+                    VentasAgregar ventasAgregar = new VentasAgregar(venta);
+                    ventasAgregar.ShowDialog();
+                    actualizarTabla();
+                }
+                else
+                {
+                    Mensajes.Error("La venta no se puede editar");
+                }
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+            if (dataVentas.SelectedRows.Count == 1)
+            {
+                var row = dataVentas.SelectedRows[0];
+                Venta venta = (Venta)row.DataBoundItem;
+                DialogResult result = Mensajes.PreguntaAdvertencia(string.Format("¿Estás seguro de eliminar la venta no. {0}?", venta.ID));
+                if (result == DialogResult.OK)
+                {
+                    try
+                    {
+                        if (ventaDAO.Eliminar(venta.ID))
+                        {
+                            Mensajes.Info(string.Format("La venta no. {0} ha sido eliminada", venta.ID));
+                            actualizarTabla();
+                        }
+                        else
+                        {
+                            Mensajes.Info(string.Format("La venta no. {0} no pudo ser eliminada", venta.ID));
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Mensajes.Error(ex.StackTrace);
+                    }
+                }
+            }
+
         }
     }
 }

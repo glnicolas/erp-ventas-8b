@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ERP_ventas.Modelo
 {
-    class Venta
+    public class Venta
     {
         public int ID { get; set; }
         public DateTime Fecha { get; set; }
@@ -46,6 +46,8 @@ namespace ERP_ventas.Modelo
                         return "Cancelada";
                     case 'F':
                         return "Finalizada";
+                    case 'I':
+                        return "Eliminada";
                     default:
                         return "No disponible";
                 }

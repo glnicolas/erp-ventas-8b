@@ -9,7 +9,6 @@ namespace ERP_ventas.Datos
 {
     class ProductoDAO
     {
-
         public List<Producto> consultaGeneral(string sql_where, List<string> parametros, List<object> valores)
         {
             List<Producto> productos = new List<Producto>();

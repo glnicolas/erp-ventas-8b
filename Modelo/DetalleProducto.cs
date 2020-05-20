@@ -20,5 +20,10 @@ namespace ERP_ventas.Modelo
             Talla = talla;
             Existencias = existencias;
         }
+
+        public DetalleProducto(int id)
+        {
+            ID = id;
+        }
     }
 }

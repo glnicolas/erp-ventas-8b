@@ -37,7 +37,7 @@
             this.elementosPaginacionCmb = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.buscartextBox = new System.Windows.Forms.TextBox();
-            this.dataOfertas = new System.Windows.Forms.DataGridView();
+            this.dataVentas = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.btnDetalle = new System.Windows.Forms.Button();
@@ -49,7 +49,7 @@
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataOfertas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataVentas)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -158,24 +158,24 @@
             this.buscartextBox.Size = new System.Drawing.Size(329, 29);
             this.buscartextBox.TabIndex = 43;
             // 
-            // dataOfertas
+            // dataVentas
             // 
-            this.dataOfertas.AllowUserToAddRows = false;
-            this.dataOfertas.AllowUserToDeleteRows = false;
-            this.dataOfertas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dataVentas.AllowUserToAddRows = false;
+            this.dataVentas.AllowUserToDeleteRows = false;
+            this.dataVentas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataOfertas.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            this.dataOfertas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataOfertas.Location = new System.Drawing.Point(0, 124);
-            this.dataOfertas.MultiSelect = false;
-            this.dataOfertas.Name = "dataOfertas";
-            this.dataOfertas.ReadOnly = true;
-            this.dataOfertas.RowHeadersVisible = false;
-            this.dataOfertas.RowHeadersWidth = 51;
-            this.dataOfertas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataOfertas.Size = new System.Drawing.Size(1038, 414);
-            this.dataOfertas.TabIndex = 40;
+            this.dataVentas.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.dataVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataVentas.Location = new System.Drawing.Point(0, 124);
+            this.dataVentas.MultiSelect = false;
+            this.dataVentas.Name = "dataVentas";
+            this.dataVentas.ReadOnly = true;
+            this.dataVentas.RowHeadersVisible = false;
+            this.dataVentas.RowHeadersWidth = 51;
+            this.dataVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataVentas.Size = new System.Drawing.Size(1038, 414);
+            this.dataVentas.TabIndex = 40;
             // 
             // panel1
             // 
@@ -202,13 +202,14 @@
             // 
             this.btnDetalle.Image = global::ERP_ventas.Properties.Resources.detail_property_30px;
             this.btnDetalle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDetalle.Location = new System.Drawing.Point(178, 80);
+            this.btnDetalle.Location = new System.Drawing.Point(96, 80);
             this.btnDetalle.Name = "btnDetalle";
             this.btnDetalle.Size = new System.Drawing.Size(77, 38);
             this.btnDetalle.TabIndex = 46;
             this.btnDetalle.Text = "Detalle";
             this.btnDetalle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDetalle.UseVisualStyleBackColor = true;
+            this.btnDetalle.Click += new System.EventHandler(this.btnDetalle_Click);
             // 
             // btnImprimir
             // 
@@ -236,13 +237,14 @@
             // 
             this.btnEliminar.Image = global::ERP_ventas.Properties.Resources.eliminar2;
             this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminar.Location = new System.Drawing.Point(96, 80);
+            this.btnEliminar.Location = new System.Drawing.Point(178, 80);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(77, 38);
             this.btnEliminar.TabIndex = 38;
             this.btnEliminar.Text = "Eliminar  ";
             this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnNuevo
             // 
@@ -282,7 +284,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.buscartextBox);
             this.Controls.Add(this.limpiarbutton);
-            this.Controls.Add(this.dataOfertas);
+            this.Controls.Add(this.dataVentas);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.panel1);
@@ -296,7 +298,7 @@
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataOfertas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataVentas)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -316,7 +318,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox buscartextBox;
         private System.Windows.Forms.Button limpiarbutton;
-        private System.Windows.Forms.DataGridView dataOfertas;
+        private System.Windows.Forms.DataGridView dataVentas;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Panel panel1;

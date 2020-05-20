@@ -31,7 +31,7 @@ namespace ERP_ventas.Modelo
         override
         public string ToString()
         {
-            return string.Format("{0}, Contacto: {1}", ID, Nombre, Contacto);
+            return string.Format("{0}, Contacto: {1}", Nombre, Contacto);
         }
     }
 }
