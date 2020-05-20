@@ -10,6 +10,26 @@ namespace ERP_ventas.Modelo
     {
         public int ID { get; set; }
         public DateTime Fecha { get; set; }
+        public string Cliente
+        {
+            get
+            {
+                if (ClienteObj != null)
+                    return ClienteObj.InfoCliente.ToString();
+                else
+                    return "Público en general";
+            }
+        }
+        public string Empleado
+        {
+            get
+            {
+                if (EmpleadoObj != null)
+                    return EmpleadoObj.Emp;
+                else
+                    return "No asignado";
+            }
+        }
         public decimal TotalPagar { get; set; }
         public decimal CantidadPagada { get; set; }
         public string Estatus
@@ -21,9 +41,9 @@ namespace ERP_ventas.Modelo
                     case 'A':
                         return "En Captura";
                     case 'P':
-                        return "Pagado";
+                        return "Pagada";
                     case 'C':
-                        return "Cancelado";
+                        return "Cancelada";
                     case 'F':
                         return "Finalizada";
                     default:
@@ -31,31 +51,10 @@ namespace ERP_ventas.Modelo
                 }
             }
         }
-
-        public string Empleado
-        {
-            get
-            {
-                if (EmpleadoObj != null)
-                    return EmpleadoObj.Emp;
-                else
-                    return "No asignado";
-            }
-        }
-        public string Cliente
-        {
-            get
-            {
-                if (ClienteObj != null)
-                    return ClienteObj.InfoCliente.ToString();
-                else
-                    return "Público en general";
-            }
-        }
-
         public string Comentarios;
         internal Empleado EmpleadoObj { get; set; }
         internal Cliente ClienteObj { get; set; }
+        internal List<Producto> Productos { get; set; }
         internal char EstatusChar;
         public Venta(int id, DateTime fecha, decimal totalPagar, decimal cantpagada, string comentarios, char estatus, Cliente cliente, Empleado empleado)
         {
@@ -67,9 +66,15 @@ namespace ERP_ventas.Modelo
             EstatusChar = estatus;
             ClienteObj = cliente;
             EmpleadoObj = empleado;
-
         }
-
+        public Venta(int id, DateTime fecha, char estatus)
+        {
+            ID = id;
+            Fecha = fecha;
+            EstatusChar = estatus;
+            ClienteObj = null;
+            EmpleadoObj = null;
+        }
         public Venta()
         {
             ID = 0;
@@ -80,8 +85,6 @@ namespace ERP_ventas.Modelo
             EmpleadoObj = null;
             ClienteObj = null;
         }
-
-
         override
         public string ToString()
         {

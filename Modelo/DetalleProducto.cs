@@ -8,7 +8,7 @@ namespace ERP_ventas.Modelo
 {
     public class DetalleProducto
     {
-        private int ID;
+        public int ID;
         public string Color { get; set; }
         public double Talla { get; set; }
         public int Existencias { get; set; }

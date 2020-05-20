@@ -132,6 +132,7 @@
             this.tallasComboBox.Name = "tallasComboBox";
             this.tallasComboBox.Size = new System.Drawing.Size(251, 28);
             this.tallasComboBox.TabIndex = 7;
+            this.tallasComboBox.SelectedIndexChanged += new System.EventHandler(this.tallasComboBox_SelectedIndexChanged);
             this.tallasComboBox.SelectionChangeCommitted += new System.EventHandler(this.tallasComboBox_SelectionChangeCommitted);
             // 
             // existenciasTextBox
@@ -141,6 +142,7 @@
             this.existenciasTextBox.Name = "existenciasTextBox";
             this.existenciasTextBox.Size = new System.Drawing.Size(100, 26);
             this.existenciasTextBox.TabIndex = 8;
+            this.existenciasTextBox.Text = "No disponible";
             // 
             // label5
             // 
@@ -205,7 +207,7 @@
             this.coloresComboBox.Name = "coloresComboBox";
             this.coloresComboBox.Size = new System.Drawing.Size(126, 28);
             this.coloresComboBox.TabIndex = 15;
-            this.coloresComboBox.SelectionChangeCommitted += new System.EventHandler(this.coloresComboBox_SelectionChangeCommitted);
+            this.coloresComboBox.SelectedIndexChanged += new System.EventHandler(this.coloresComboBox_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -274,6 +276,7 @@
             this.Controls.Add(this.productoComboBox);
             this.Controls.Add(this.label1);
             this.Name = "AgregarProducto";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AgregarProducto";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AgregarProducto_FormClosing);
             this.Load += new System.EventHandler(this.AgregarProducto_Load);

@@ -1,7 +1,7 @@
-create database ERP2020
+create database ERP2020v2
 GO
 
-Use ERP2020
+Use ERP2020v2
 GO
 	----------------------------- MODULO RH -----------------------------
 
@@ -539,11 +539,11 @@ create table OfertasProductos(
     
 create table VentasOfertas(
     idVentaDetalle			int not null,
-    idVentaProducto			int not null,
+--    idVentaProducto			int not null,
 	idProducto				int not null,
     idOferta				int not null,
-	estatus					CHAR NOT NULL,
-    constraint PK_VentaOferta primary key(idVentaDetalle,idVentaProducto,idOferta),
+--	estatus					CHAR NOT NULL,
+    constraint PK_VentaOferta primary key(idVentaDetalle,idOferta,idProducto),
     CONSTRAINT FK_VentasOfertas_OfertasProductos FOREIGN KEY (idProducto,idOferta) REFERENCES OfertasProductos(idProducto,idOferta),
     CONSTRAINT FK_VentasOfertas_VentasDetalle FOREIGN KEY (idVentaDetalle) REFERENCES VentasDetalle(idVentaDetalle)
 )

@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace ERP_ventas.Modelo
 {
-    class VistaProducto
+    public class VistaProducto
     {
         public int ID {get;set;}
+        internal int IDDetalle { get; set; }
         public string Nombre { get; set; }
         public double Talla { get; set; }
         public string Color { get; set; }
         public int Cantidad { get; set; }
-
         public double PrecioUnitario { get; set; }
-
-        public Producto _producto;
+        public double Subtotal { get { return PrecioUnitario * Cantidad; } }
+        private Producto _producto;
 
         internal VistaProducto(Producto producto)
         {
@@ -27,6 +27,7 @@ namespace ERP_ventas.Modelo
             Color = producto.detalleSeleccionado.Color;
             PrecioUnitario = producto.Precio_venta;
             Cantidad = producto.Cantidad;
+            IDDetalle = producto.detalleSeleccionado.ID;
         }
 
         public Producto GetProducto()

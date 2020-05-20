@@ -25,6 +25,8 @@ namespace ERP_ventas.Formularios.Ventas
         {
             VentasAgregar ventasAgregar = new VentasAgregar();
             ventasAgregar.ShowDialog();
+            actualizarTabla();
+
         }
 
         private void VentasForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -36,10 +38,16 @@ namespace ERP_ventas.Formularios.Ventas
         private void VentasForm_Load(object sender, EventArgs e)
         {
             dataOfertas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            actualizarTabla();
+        }
+
+        private void actualizarTabla()
+        {
             try
             {
-                dataOfertas.DataSource=ventaDAO.ConsultaGeneral("", new List<string>(), new List<object>());
-            }catch(Exception ex)
+                dataOfertas.DataSource = ventaDAO.ConsultaGeneral("", new List<string>(), new List<object>());
+            }
+            catch (Exception ex)
             {
                 Mensajes.Error(ex.Message);
             }

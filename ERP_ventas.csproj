@@ -109,6 +109,12 @@
     <Compile Include="Formularios\Envios\Envios.designer.cs">
       <DependentUpon>Envios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Ofertas\BuscarOfertasForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Ofertas\BuscarOfertasForm.Designer.cs">
+      <DependentUpon>BuscarOfertasForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Ofertas\ComboBoxTools.cs" />
     <Compile Include="Formularios\submenuEnvios.cs">
       <SubType>Form</SubType>
@@ -217,6 +223,7 @@
     <Compile Include="Modelo\Tripulacion.cs" />
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Modelo\Venta.cs" />
+    <Compile Include="Modelo\VentaDetalle.cs" />
     <Compile Include="Modelo\VistaProducto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -253,6 +260,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Ofertas\BuscarOfertasForm.resx">
+      <DependentUpon>BuscarOfertasForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Ofertas\OfertasAgregar.resx">
       <DependentUpon>OfertasAgregar.cs</DependentUpon>
@@ -393,6 +403,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ok_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_24px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

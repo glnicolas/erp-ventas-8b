@@ -107,7 +107,7 @@ namespace ERP_ventas.Datos
                     try
                     {
                         trans.Rollback();
-                        throw new Exception("Error con la BD. Anota este error y contacta al administrador.\n"+ex.Message);
+                        throw new Exception("Error con la BD. Anota este error y contacta al administrador.\n" + ex.Message);
                     }
                     catch (Exception ex2)
                     {
@@ -124,5 +124,50 @@ namespace ERP_ventas.Datos
 
         }
 
+        public List<Oferta> BuscarOfertaProducto(int idProducto)
+        {
+            List<Oferta> ofertas = new List<Oferta>();
+
+            try
+            {
+                using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion))
+                {
+                    string cadena_sql = "sp_buscarProductoEnOfertas";
+
+                    SqlCommand comando = new SqlCommand(cadena_sql, conexion);
+                    comando.CommandType = System.Data.CommandType.StoredProcedure;
+                    conexion.Open();
+                    comando.Parameters.AddWithValue("@id", idProducto);
+
+
+                    SqlDataReader lector = comando.ExecuteReader();
+                    if (lector.HasRows)
+                    {
+                        while (lector.Read())
+                        {
+                            Oferta oferta = new Oferta(
+                                (int)lector["idOferta"],
+                                (string)lector["nombre"],
+                                (double)lector["porDescuento"],
+                                (int)lector["canMinProducto"]);
+                            ofertas.Add(oferta);
+                        }
+                        lector.Close();
+                        conexion.Close();
+                    }
+                    else
+                    {
+                        lector.Close();
+                        conexion.Close();
+                    }
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error relacionado con la BD. [OfertaDAO.c] \n Anota este error y contacta al administrador.\n" + ex.Message);
+            }
+            return ofertas;
+        }
     }
 }

@@ -16,6 +16,7 @@ namespace ERP_ventas.Modelo
         public String fechaFin  { get; set; } 
         public int canMinProducto  { get; set; } 
         public String estatus  { get; set; }
+        internal bool Aplicada { get; set; }
 
         public Oferta(int idOferta, string nombre, string descripcion, double porDescuento, string fechaInicio, string fechaFin, int canMinProducto, string estatus)
         {
@@ -27,6 +28,14 @@ namespace ERP_ventas.Modelo
             this.fechaFin = fechaFin;
             this.canMinProducto = canMinProducto;
             this.estatus = estatus;
+        }
+
+        public Oferta(int idOferta, string nombre, double porDescuento, int canMinProducto)
+        {
+            this.idOferta = idOferta;
+            this.nombre = nombre;
+            this.porDescuento = porDescuento;
+            this.canMinProducto = canMinProducto;
         }
     }
 }

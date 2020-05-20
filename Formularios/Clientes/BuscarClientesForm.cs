@@ -9,9 +9,10 @@ namespace ERP_ventas.Formularios.Clientes
     public partial class BuscarClientesForm : Form
     {
         public char tipoCliente;
-        public object cliente = null;
+        private object cliente = null;
+        internal Cliente clienteEncontrado; 
 
-        public BuscarClientesForm(object cliente,char tipoCliente)
+        public BuscarClientesForm()
         {
             InitializeComponent();
             comboBoxTipo.SelectedIndex = 0;
@@ -83,7 +84,7 @@ namespace ERP_ventas.Formularios.Clientes
                     (cliente as ClienteIndividual).Apaterno, 
                     (cliente as ClienteIndividual).Amaterno));
                 if (respuesta == DialogResult.OK)
-                    Close();
+                    ObtenerCliente((cliente as ClienteIndividual).ID);
             }
             else
             {
@@ -92,12 +93,18 @@ namespace ERP_ventas.Formularios.Clientes
                     string.Format("¿Seleccionar al cliente {0}: {1}?",
                     (cliente as ClienteTienda).Nombre, (cliente as ClienteTienda).Contacto));
                 if (respuesta == DialogResult.OK)
-                    Close();
+                    ObtenerCliente((cliente as ClienteTienda).ID);
             }
 
             Mensajes.Info(cliente.ToString());
 
 
+        }
+
+        private void ObtenerCliente(int id)
+        {
+            clienteEncontrado = new ClienteDAO().ConsultaGeneral("where idcliente=@id", new List<string>() { "@id" }, new List<object>() { id })[0];
+            Close();
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Windows.Forms;
+using ERP_ventas.Formularios.Ofertas;
 
 namespace ERP_ventas.Formularios.Ventas
 {
@@ -17,11 +18,21 @@ namespace ERP_ventas.Formularios.Ventas
         private ProductoDAO productoDAO;
         private List<Producto> productos;
         internal Producto productoSeleccionado;
+        internal Oferta ofertaSeleccionada;
+
         public AgregarProducto()
         {
             InitializeComponent();
             productoDAO = new ProductoDAO();
             productoSeleccionado = null;
+            ofertaSeleccionada = null;
+        }
+
+        public AgregarProducto(VistaProducto producto)
+        {
+            InitializeComponent();
+            productoDAO = new ProductoDAO();
+            productoSeleccionado = producto.GetProducto();
         }
 
         private void AgregarProducto_Load(object sender, EventArgs e)
@@ -29,12 +40,80 @@ namespace ERP_ventas.Formularios.Ventas
             try
             {
                 CargarProductos();
+                if (productoSeleccionado != null)
+                {
+                    cargarProducto();
+                }
             }
             catch (Exception ex)
             {
                 Mensajes.Error(ex.Message);
                 Close();
             }
+        }
+
+        private void cargarProducto()
+        {
+            tallasComboBox.SelectedIndexChanged -= tallasComboBox_SelectedIndexChanged;
+            coloresComboBox.SelectedIndexChanged -= coloresComboBox_SelectedIndexChanged;
+
+            ofertaSeleccionada = productoSeleccionado.Oferta;
+            foreach (Producto producto in productoComboBox.Items)
+            {
+                if (producto.ID == productoSeleccionado.ID)
+                {
+                    productoComboBox.SelectedItem = producto;
+                    break;
+                }
+            }
+            fotoPictureBox.Image = new Bitmap(new MemoryStream(productoSeleccionado.Imagen_bytes));
+            precioTextBox.Text = productoSeleccionado.Precio_venta.ToString("C2");
+            caracteristicasTextBox.Text = string.Format("Descripcion: {0}" +
+                                                        "{1}Género: {2}" +
+                                                        "{1}Estilo: {3}" +
+                                                        "{1}Categoría: {4}",
+                                                        productoSeleccionado.Descripcion,
+                                                        Environment.NewLine,
+                                                        productoSeleccionado.GeneroString,
+                                                        productoSeleccionado.Estilo,
+                                                        productoSeleccionado.Categoria);
+            Dictionary<double, DetalleProducto> tallas = new Dictionary<double, DetalleProducto>();
+            foreach (DetalleProducto detalle in productoSeleccionado.Detalles)
+            {
+                if (!tallas.ContainsKey(detalle.Talla))
+                {
+                    tallas.Add(detalle.Talla, detalle);
+                }
+            }
+            tallasComboBox.DataSource = tallas.Values.ToList();
+            tallasComboBox.DisplayMember = "Talla";
+            tallasComboBox.ValueMember = "Talla";
+            tallasComboBox.SelectedItem = productoSeleccionado.detalleSeleccionado;
+
+            //Llenar colores
+            double talla = (double)tallasComboBox.SelectedValue;
+            foreach (DetalleProducto detalle in productoSeleccionado.Detalles)
+            {
+                if (detalle.Talla == talla)
+                {
+                    coloresComboBox.Items.Add(detalle);
+                }
+            }
+            coloresComboBox.DisplayMember = "Color";
+            coloresComboBox.SelectedItem = productoSeleccionado.detalleSeleccionado;
+
+            existenciasTextBox.Text = productoSeleccionado.detalleSeleccionado.Existencias.ToString();
+            cantidadNumericUpDown.Maximum = productoSeleccionado.detalleSeleccionado.Existencias;
+            cantidadNumericUpDown.Value = productoSeleccionado.Cantidad;
+            if (ofertaSeleccionada != null)
+                cantidadNumericUpDown.Minimum = productoSeleccionado.Oferta.canMinProducto;
+            else
+                cantidadNumericUpDown.Minimum = 1;
+
+            coloresComboBox.SelectedItem = productoSeleccionado.detalleSeleccionado;
+
+            tallasComboBox.SelectedIndexChanged += tallasComboBox_SelectedIndexChanged;
+            coloresComboBox.SelectedIndexChanged += coloresComboBox_SelectedIndexChanged;
         }
 
         private void CargarProductos()
@@ -48,6 +127,7 @@ namespace ERP_ventas.Formularios.Ventas
 
         private void productoComboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            coloresComboBox.Items.Clear();
             productoSeleccionado = (Producto)productoComboBox.SelectedItem;
             fotoPictureBox.Image = new Bitmap(new MemoryStream(productoSeleccionado.Imagen_bytes));
             precioTextBox.Text = productoSeleccionado.Precio_venta.ToString("C2");
@@ -63,7 +143,6 @@ namespace ERP_ventas.Formularios.Ventas
 
 
             Dictionary<double, DetalleProducto> tallas = new Dictionary<double, DetalleProducto>();
-
             foreach (DetalleProducto detalle in productoSeleccionado.Detalles)
             {
                 if (!tallas.ContainsKey(detalle.Talla))
@@ -71,46 +150,94 @@ namespace ERP_ventas.Formularios.Ventas
                     tallas.Add(detalle.Talla, detalle);
                 }
             }
-            tallasComboBox.DataSource = tallas.Values.ToList();
             tallasComboBox.DisplayMember = "Talla";
             tallasComboBox.ValueMember = "Talla";
+            tallasComboBox.DataSource = tallas.Values.ToList();
+            //tallasComboBox.DisplayMember = "Talla";
+            //tallasComboBox.ValueMember = "Talla";
             cantidadNumericUpDown.Maximum = 1;
             existenciasTextBox.Text = "No disponible";
+
+            VerificarOfertas();
+        }
+
+        private void VerificarOfertas()
+        {
+            try
+            {
+                List<Oferta> ofertas = new ProductosOfertaDAO().BuscarOfertaProducto(productoSeleccionado.ID);
+                if (ofertas.Count > 0)
+                {
+                    BuscarOfertasForm buscar = new BuscarOfertasForm(ofertas);
+                    buscar.ShowDialog();
+                    if (ofertaSeleccionada == null)
+                    {
+                        if (buscar.oferta != null)
+                        {
+                            SeleccionarOferta(buscar.oferta);
+                        }
+                        else
+                        {
+                            ofertaSeleccionada = null;
+                            cantidadNumericUpDown.Minimum = 1;
+                        }
+                    }
+                    else
+                    {
+                        if (buscar.oferta != null)
+                        {
+                            productoSeleccionado.Precio_venta = productoDAO.consultaGeneral(" where ID=@id", new List<string>() { "@id" }, new List<object>() { productoSeleccionado.ID })[0].Precio_venta;
+                            SeleccionarOferta(buscar.oferta);
+                        }
+                    }
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensajes.Error(ex.Message);
+            }
         }
 
         private void tallasComboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            coloresComboBox.Items.Clear();
-            existenciasTextBox.Text = "";
-            double talla = (double)tallasComboBox.SelectedValue;
-            foreach (DetalleProducto detalle in productoSeleccionado.Detalles)
-            {
-                if (detalle.Talla == talla)
-                {
-                    coloresComboBox.Items.Add(detalle);
-                }
-            }
-            coloresComboBox.DisplayMember = "Color";
+            //coloresComboBox.Items.Clear();
+            //existenciasTextBox.Text = "";
+            //double talla = (double)tallasComboBox.SelectedValue;
+            //foreach (DetalleProducto detalle in productoSeleccionado.Detalles)
+            //{
+            //    if (detalle.Talla == talla)
+            //    {
+            //        coloresComboBox.Items.Add(detalle);
+            //    }
+            //}
+            //coloresComboBox.DisplayMember = "Color";
 
-            cantidadNumericUpDown.Maximum = 1;
-            existenciasTextBox.Text = "No disponible";
+            //cantidadNumericUpDown.Maximum = 1;
+            //existenciasTextBox.Text = "No disponible";
         }
 
         private void coloresComboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            DetalleProducto detalleSeleccionado = coloresComboBox.SelectedItem as DetalleProducto;
-            existenciasTextBox.Text = detalleSeleccionado.Existencias.ToString();
-            cantidadNumericUpDown.Maximum = detalleSeleccionado.Existencias;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             if (Validar())
             {
+                productoSeleccionado.Oferta = ofertaSeleccionada;
                 productoSeleccionado.detalleSeleccionado = coloresComboBox.SelectedItem as DetalleProducto;
                 productoSeleccionado.Cantidad = (int)cantidadNumericUpDown.Value;
-                FormClosing -= AgregarProducto_FormClosing;
-                Close();
+                if (productoDAO.ActualizarExistencias(productoSeleccionado.detalleSeleccionado.ID, -productoSeleccionado.Cantidad))
+                {
+                    FormClosing -= AgregarProducto_FormClosing;
+                    Close();
+                }
+                else
+                {
+                    Mensajes.Error("No se ha podido actualizar las existencias");
+                }
             }
         }
 
@@ -122,13 +249,21 @@ namespace ERP_ventas.Formularios.Ventas
                 {
                     if (coloresComboBox.SelectedItem != null)
                     {
-                        if ((coloresComboBox.SelectedItem as DetalleProducto).Existencias>=cantidadNumericUpDown.Value)
+                        if ((coloresComboBox.SelectedItem as DetalleProducto).Existencias != 0)
                         {
-                            return true;
+                            if ((coloresComboBox.SelectedItem as DetalleProducto).Existencias >= cantidadNumericUpDown.Value)
+                            {
+                                return true;
+                            }
+                            else
+                            {
+                                Mensajes.Info("La cantidad seleccionada excede las existencias");
+                                return false;
+                            }
                         }
                         else
                         {
-                            Mensajes.Info("La cantidad seleccionada es inválida");
+                            Mensajes.Info("Se agotaron las existencias");
                             return false;
                         }
                     }
@@ -160,6 +295,39 @@ namespace ERP_ventas.Formularios.Ventas
         private void AgregarProducto_FormClosing(object sender, FormClosingEventArgs e)
         {
             productoSeleccionado = null;
+        }
+
+        private void coloresComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DetalleProducto detalleSeleccionado = coloresComboBox.SelectedItem as DetalleProducto;
+            existenciasTextBox.Text = detalleSeleccionado.Existencias.ToString();
+            cantidadNumericUpDown.Maximum = detalleSeleccionado.Existencias;
+           
+        }
+
+        private void SeleccionarOferta(Oferta oferta)
+        {
+            ofertaSeleccionada = oferta;
+            productoSeleccionado.Precio_venta -= ofertaSeleccionada.porDescuento * productoSeleccionado.Precio_venta;
+            precioTextBox.Text = productoSeleccionado.Precio_venta.ToString("C2");
+            cantidadNumericUpDown.Minimum = ofertaSeleccionada.canMinProducto;
+        }
+
+        private void tallasComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            coloresComboBox.Items.Clear();
+            existenciasTextBox.Text = "";
+            double talla = (double)tallasComboBox.SelectedValue;
+            coloresComboBox.DisplayMember = "Color";
+            foreach (DetalleProducto detalle in productoSeleccionado.Detalles)
+            {
+                if (detalle.Talla == talla)
+                {
+                    coloresComboBox.Items.Add(detalle);
+                }
+            }
+            cantidadNumericUpDown.Maximum = 1;
+            existenciasTextBox.Text = "No disponible";
         }
     }
 }

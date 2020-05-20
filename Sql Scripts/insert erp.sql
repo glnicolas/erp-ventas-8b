@@ -29,11 +29,12 @@ insert into Ciudades values('Jacona', 1)
 insert into Ciudades values('Zamora', 1)
 go
 
+
 /*
 		Tabla Clientes
 */
 insert into Clientes values ('avenida siempreviva', '12345', '123456789012', '123-123-1234','nico@correo.com','I','A',3)
-insert into Clientes values ('avenida conecticut', '54321', '132113131313', '123-000-1234','juan@correo.com','T','A',1)
+insert into Clientes values ('avenida conecticut', '54321', '132113131313', '123-000-1234','amatista@correo.com','T','A',1)
 go
 
 /*
@@ -44,7 +45,7 @@ go
 /*
 		Tabla Cliente tienda
 */
-insert into ClienteTienda values(2, 'Zapateria amatista','Juan',10500)
+insert into ClienteTienda values(2, 'Zapateria amatista','Jeni',10500)
 go
 
 /*
@@ -85,11 +86,11 @@ go
 /*
 		Tabla Productos
 */
-insert into Productos values ('Chuck Taylor All Star', 'Estilo clasico',  50, 'U', 740, 1200, 'A', 'Sintetico', 2, 1, 10)
-insert into Productos values ('Old School', 'Estilo clasico',  50, 'U', 740, 1200, 'A', 'Sintetico', 3, 1, 10)
-insert into Productos values ('Running free', 'Fiaaaaaum',  50, 'F', 943, 1500, 'A', 'Sintetico', 4, 4, 6)
-insert into Productos values ('Running free', 'Fiaaaaaum',  50, 'M', 943, 1500, 'A', 'Sintetico', 4, 4, 7)
-insert into Productos values ('Samba', 'Diseño ligero que brinda mayor libertad de movimiento',  50, 'U', 1460, 1999, 'A', 'Sintetico', 5, 1, 7)
+insert into Productos values ('Chuck Taylor All Star', 'Estilo clasico',  50, 'U', 740, 1200, 'A', 'Sintetico', 1, 1, 5)
+insert into Productos values ('Old School', 'Diseño clasico',  50, 'U', 740, 1200, 'A', 'Sintetico', 2, 1, 5)
+insert into Productos values ('Running free dama', 'Fiaaaaaum',  50, 'F', 943, 1500, 'A', 'Sintetico', 3, 4, 1)
+insert into Productos values ('Running free caballero', 'Fiaaaaaum',  50, 'M', 943, 1500, 'A', 'Sintetico', 3, 4, 2)
+insert into Productos values ('Samba', 'Diseño ligero que brinda mayor libertad de movimiento',  50, 'U', 1460, 1999, 'A', 'Sintetico', 4, 1, 2)
 go
 /*
 		Tabla imagenes producto
@@ -100,35 +101,38 @@ go
 insert into ImagenesProducto values('vans_old_school.jpg', 
 									(SELECT * FROM OPENROWSET(BULK N'C:\images\vans_old_school.jpg', SINGLE_BLOB) as T1), 
 									'P',
-									6)
+									17)
 
 insert into ImagenesProducto values('converse_chuck_taylor.jpg', 
 									(SELECT * FROM OPENROWSET(BULK N'C:\images\converse_chuck_taylor.jpg', SINGLE_BLOB) as T1), 
 									'P',
-									5)
+									16)
 									
 insert into ImagenesProducto values('nike_rf_m.jpg', 
 									(SELECT * FROM OPENROWSET(BULK N'C:\images\nike_rf_m.jpg', SINGLE_BLOB) as T1), 
 									'P',
-									7)
+									18)
 
 insert into ImagenesProducto values('nike_rf_h.jpg', 
 									(SELECT * FROM OPENROWSET(BULK N'C:\images\nike_rf_h.jpg', SINGLE_BLOB) as T1), 
 									'P',
-									8)
+									19)
 
 insert into ImagenesProducto values('adidas_samba.jpg', 
 									(SELECT * FROM OPENROWSET(BULK N'C:\images\adidas_samba.jpg', SINGLE_BLOB) as T1), 
 									'P',
-									10)
+									20)
 
 go
 
 /*
 		Tabla Oferas producto
 */
-insert into OfertasProductos values(6, 1, 'A')
-insert into OfertasProductos values(5, 1, 'I')
+insert into OfertasProductos values(16, 1, 'A')
+insert into OfertasProductos values(17, 1, 'A')
+go
+
+
 
 create procedure sp_detalleproductos (
 @id int
@@ -139,14 +143,6 @@ begin
 	join Colores on dp.idColor=Colores.idColor where dp.idProducto=@id
 end
 go
-
-exec sp_detalleproductos 5
-go
-
-select * from Productos
-
-update Productos set nombre='Running free dama' where idProducto=7
-update Productos set nombre='Running free caballero' where idProducto=8
 
 select * from Colores
 
@@ -159,11 +155,25 @@ insert into colores values('gris')
 
 select* from DetalleProductos where idProducto=5 and talla=23
 
-insert into DetalleProductos values(23, 10,2,5)
-insert into DetalleProductos values(23, 10,6,5)
-insert into DetalleProductos values(24, 15,2,5)
-insert into DetalleProductos values(25, 20,2,5)
-insert into DetalleProductos values(26, 5,2,5)
+/*
+	Detalles para producto  (Converse)
+*/
+select * from Productos
+insert into DetalleProductos values(23, 13,1,16)
+insert into DetalleProductos values(23, 10,2,16)
+insert into DetalleProductos values(24, 15,6,16)
+insert into DetalleProductos values(25, 20,2,16)
+insert into DetalleProductos values(26, 5,2,16)
+go
+
+/*
+	Detalles para producto 6 (vans)
+*/
+insert into DetalleProductos values(23, 22,2,17)
+insert into DetalleProductos values(23, 12,6,17)
+insert into DetalleProductos values(24, 15,3,17)
+insert into DetalleProductos values(25, 18,5,17)
+insert into DetalleProductos values(26, 7,2,17)
 go
 
 
@@ -179,3 +189,23 @@ insert into ventas values (GETDATE(), 0,0,'Venta 3','A',null,null)
 insert into ventas values (GETDATE(), 0,0,'Venta 4','A',null,null)
 
 select * from Ventas
+
+
+go
+
+create procedure sp_buscarProductoEnOfertas (@id int)
+as
+begin
+	select o.idOferta, o.canMinProducto, o.nombre, o.porDescuento from ofertas o
+	join OfertasProductos op on o.idOferta=op.idOferta
+	where op.idProducto=@id
+	and o.estatus='A' 
+	and GETDATE() between o.fechaInicio and o.fechaFin
+end
+go
+
+
+go
+alter table VentasOfertas drop constraint VentasOfertas_PK
+alter table VentasOfertas drop column idventaproducto
+alter table VentasOfertas add constraint VentasOfertas_PK primary key (idVentaDetalle,idProducto, idoferta)

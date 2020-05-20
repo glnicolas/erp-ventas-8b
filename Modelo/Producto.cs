@@ -26,6 +26,7 @@ namespace ERP_ventas.Modelo
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public char Genero { get; set; }
+        internal Oferta  Oferta { get; set; }
 
         public int Cantidad;
         public DetalleProducto detalleSeleccionado;
@@ -48,6 +49,8 @@ namespace ERP_ventas.Modelo
         public bool Agregado { get; set; }
         public byte[] Imagen_bytes { get; set; }
         public List<DetalleProducto> Detalles { get; set; }
+
+        internal decimal Suma { get { return (decimal)(Cantidad * Precio_venta); } }
         public Producto(int id, string marca, string estilo, string categoria, string nombre, string descripcion, char genero, double precio, byte[] imagen)
         {
             ID = id;

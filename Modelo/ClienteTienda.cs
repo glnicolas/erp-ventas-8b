@@ -8,16 +8,16 @@ namespace ERP_ventas.Modelo
 {
     class ClienteTienda
     {
-        int ID { get; set; }
+        public int ID { get; set; }
         public string Nombre { get; set; }
         public string Contacto { get; set; }
         public decimal Limite { get; set; }
 
-        public ClienteTienda(int id,string nombre, string contacto, decimal limite)
+        public ClienteTienda(int id, string nombre, string contacto, decimal limite)
         {
             ID = id;
-            Nombre= nombre;
-            Contacto= contacto;
+            Nombre = nombre;
+            Contacto = contacto;
             Limite = limite;
         }
 
@@ -29,9 +29,9 @@ namespace ERP_ventas.Modelo
         }
 
         override
-            public string ToString()
+        public string ToString()
         {
-            return string.Format("ID:{0} Nombre:{1} Contacto:{2} Limite{3}", ID, Nombre, Contacto, Limite);
+            return string.Format("{0}, Contacto: {1}", ID, Nombre, Contacto);
         }
     }
 }

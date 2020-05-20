@@ -106,6 +106,46 @@ namespace ERP_ventas.Datos
             }
             return detalles;
         }
+        
+        internal bool ActualizarExistencias(int idDetalle, int cantidad)
+        {
+            using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion))
+            {
+                conexion.Open();
 
+                SqlCommand comando = conexion.CreateCommand();
+                SqlTransaction trans;
+
+                trans = conexion.BeginTransaction("ActualizarExistencias");
+
+                comando.Connection = conexion;
+                comando.Transaction = trans;
+                try
+                {
+                    comando.CommandText = "update DetalleProductos set existencia+=@cantidad where idProductoDetalle=@id";
+                    comando.Parameters.AddWithValue("@id", idDetalle);
+                    comando.Parameters.AddWithValue("@cantidad", cantidad);
+                    comando.ExecuteNonQuery();
+                    trans.Commit();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Commit Exception Type: {0}", ex.GetType());
+                    Console.WriteLine("  Message: {0}", ex.Message);
+                    try
+                    {
+                        trans.Rollback();
+                        throw new Exception("Error con la BD. Anota este error y contacta al administrador.\n" + ex.Message);
+                    }
+                    catch (Exception ex2)
+                    {
+                        Console.WriteLine("Rollback Exception Type: {0}", ex2.GetType());
+                        Console.WriteLine("  Message: {0}", ex2.Message);
+                        throw new Exception(ex2.Message);
+                    }
+                }
+            }
+        }
     }
 }
