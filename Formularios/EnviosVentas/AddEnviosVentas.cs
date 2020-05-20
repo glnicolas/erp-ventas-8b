@@ -117,7 +117,7 @@ namespace ERP_ventas.Formularios.EnviosVentas
         private void modificarBtn_Click(object sender, EventArgs e)
         {
             int idEnvio = ((Modelo.Envios)comboBox1.SelectedItem).idenvio;
-            Modelo.EnviosVentas enviosVentas = new Modelo.EnviosVentas((int)numericUpDown1.Value, idEnvio, dateTimePicker1.Value, dateTimePicker2.Value, 'A');
+            Modelo.EnviosVentas enviosVentas = new Modelo.EnviosVentas(idEnvio, (int)numericUpDown1.Value, dateTimePicker1.Value, dateTimePicker2.Value, 'A');
             var resultado = new EnviosVentaDAO().Editar(enviosVentas);
             Type resultado_tipo = resultado.GetType();
 
