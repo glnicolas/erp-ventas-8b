@@ -83,10 +83,12 @@ namespace ERP_ventas.Formularios.Ventas
             {
                 var row = dataVentas.SelectedRows[0];
                 Venta venta = (Venta)row.DataBoundItem;
+                
                 if (venta.EstatusChar == 'A')
                 {
                     VentasAgregar ventasAgregar = new VentasAgregar(venta);
                     ventasAgregar.ShowDialog();
+                    
                     actualizarTabla();
                 }
                 else

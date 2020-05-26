@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,7 @@ namespace ERP_ventas.Formularios.Ventas
         private Cliente cliente;
         private List<Producto> productos;
         private Venta ventaEnCaptura;
+        private double precio_venta;
 
         public VentasAgregar()
         {
@@ -46,6 +48,11 @@ namespace ERP_ventas.Formularios.Ventas
             ventaDAO = new VentaDAO();
             comboBoxEstatus.SelectedIndex = 0;
             ventaEnCaptura = venta;
+        }
+
+        public VentasAgregar(Venta venta, double precio_venta)
+        {
+
         }
 
         private void btnBuscarCliente_Click_1(object sender, EventArgs e)
@@ -204,6 +211,7 @@ namespace ERP_ventas.Formularios.Ventas
                     if (new ProductoDAO().ActualizarExistencias(producto.IDDetalle, producto.Cantidad))
                     {
                         AgregarProducto agregarProducto = new AgregarProducto(producto);
+                        agregarProducto.precioreal = producto.PrecioUnitario;
                         agregarProducto.ShowDialog();
                         if (agregarProducto.productoSeleccionado != null)
                         {

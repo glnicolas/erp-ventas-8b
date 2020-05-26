@@ -19,7 +19,7 @@ namespace ERP_ventas.Formularios.Ventas
         private List<Producto> productos;
         internal Producto productoSeleccionado;
         internal Oferta ofertaSeleccionada;
-        private double precioreal=0;
+        public double precioreal=0;
 
         public AgregarProducto()
         {
@@ -57,8 +57,8 @@ namespace ERP_ventas.Formularios.Ventas
         {
             tallasComboBox.SelectedIndexChanged -= tallasComboBox_SelectedIndexChanged;
             coloresComboBox.SelectedIndexChanged -= coloresComboBox_SelectedIndexChanged;
-
             ofertaSeleccionada = productoSeleccionado.Oferta;
+            
             foreach (Producto producto in productoComboBox.Items)
             {
                 if (producto.ID == productoSeleccionado.ID)
@@ -318,15 +318,17 @@ namespace ERP_ventas.Formularios.Ventas
         private void SeleccionarOferta(Oferta oferta)
         {
             ofertaSeleccionada = oferta;
-            if (precioreal > 0)
-            {
-                productoSeleccionado.Precio_venta = precioreal - ( ofertaSeleccionada.porDescuento * precioreal);
-                precioTextBox.Text = productoSeleccionado.Precio_venta.ToString("C2");
-            }
-            else { 
-            productoSeleccionado.Precio_venta -= ofertaSeleccionada.porDescuento * productoSeleccionado.Precio_venta;
-            precioTextBox.Text = productoSeleccionado.Precio_venta.ToString("C2");
-            }
+            Mensajes.Info(ofertaSeleccionada.nombre + "   " + oferta.nombre+"    "+precioreal);
+                if (precioreal > 0 || ofertaSeleccionada.nombre != oferta.nombre)
+                {
+                    productoSeleccionado.Precio_venta = precioreal - (ofertaSeleccionada.porDescuento * precioreal);
+                    precioTextBox.Text = productoSeleccionado.Precio_venta.ToString("C2");
+                }
+                else {
+                    productoSeleccionado.Precio_venta -= ofertaSeleccionada.porDescuento * productoSeleccionado.Precio_venta;
+                    precioTextBox.Text = productoSeleccionado.Precio_venta.ToString("C2");
+                }
+            
         }
 
         private void tallasComboBox_SelectedIndexChanged(object sender, EventArgs e)
