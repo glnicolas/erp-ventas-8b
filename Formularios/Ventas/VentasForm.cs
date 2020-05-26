@@ -108,15 +108,20 @@ namespace ERP_ventas.Formularios.Ventas
                 {
                     try
                     {
-                        if (ventaDAO.Eliminar(venta.ID))
+                        if (venta.EstatusChar != 'P')
                         {
-                            Mensajes.Info(string.Format("La venta no. {0} ha sido eliminada", venta.ID));
-                            actualizarTabla();
+                            if (ventaDAO.Eliminar(venta.ID))
+                            {
+                                Mensajes.Info(string.Format("La venta no. {0} ha sido eliminada", venta.ID));
+                                actualizarTabla();
+                            }
+                            else
+                            {
+                                Mensajes.Info(string.Format("La venta no. {0} no pudo ser eliminada", venta.ID));
+                            }
                         }
                         else
-                        {
-                            Mensajes.Info(string.Format("La venta no. {0} no pudo ser eliminada", venta.ID));
-                        }
+                            Mensajes.Error("No es posible eliminar una venta que ya ha sido completada.");
                     }
                     catch (Exception ex)
                     {
