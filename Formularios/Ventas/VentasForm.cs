@@ -108,7 +108,7 @@ namespace ERP_ventas.Formularios.Ventas
                 {
                     try
                     {
-                        if (venta.EstatusChar != 'P')
+                        if (venta.EstatusChar != 'P' && venta.EstatusChar != 'F')
                         {
                             if (ventaDAO.Eliminar(venta.ID))
                             {
