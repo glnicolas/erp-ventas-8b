@@ -46,6 +46,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.cantidadNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.fotoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cantidadNumericUpDown)).BeginInit();
             this.SuspendLayout();
@@ -68,6 +70,7 @@
             this.productoComboBox.Name = "productoComboBox";
             this.productoComboBox.Size = new System.Drawing.Size(251, 28);
             this.productoComboBox.TabIndex = 1;
+            this.productoComboBox.SelectedIndexChanged += new System.EventHandler(this.productoComboBox_SelectedIndexChanged);
             this.productoComboBox.SelectionChangeCommitted += new System.EventHandler(this.productoComboBox_SelectionChangeCommitted);
             // 
             // label2
@@ -138,7 +141,7 @@
             // existenciasTextBox
             // 
             this.existenciasTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.existenciasTextBox.Location = new System.Drawing.Point(293, 263);
+            this.existenciasTextBox.Location = new System.Drawing.Point(293, 237);
             this.existenciasTextBox.Name = "existenciasTextBox";
             this.existenciasTextBox.Size = new System.Drawing.Size(100, 26);
             this.existenciasTextBox.TabIndex = 8;
@@ -148,7 +151,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(289, 234);
+            this.label5.Location = new System.Drawing.Point(289, 210);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(105, 24);
             this.label5.TabIndex = 9;
@@ -158,7 +161,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(159, 300);
+            this.label6.Location = new System.Drawing.Point(159, 324);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(64, 24);
             this.label6.TabIndex = 11;
@@ -167,7 +170,7 @@
             // precioTextBox
             // 
             this.precioTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.precioTextBox.Location = new System.Drawing.Point(163, 327);
+            this.precioTextBox.Location = new System.Drawing.Point(163, 351);
             this.precioTextBox.Name = "precioTextBox";
             this.precioTextBox.Size = new System.Drawing.Size(100, 26);
             this.precioTextBox.TabIndex = 10;
@@ -176,7 +179,7 @@
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Image = global::ERP_ventas.Properties.Resources.eliminar2;
-            this.button1.Location = new System.Drawing.Point(293, 320);
+            this.button1.Location = new System.Drawing.Point(293, 342);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(102, 35);
             this.button1.TabIndex = 12;
@@ -189,7 +192,7 @@
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Image = global::ERP_ventas.Properties.Resources.ok_24px;
-            this.button2.Location = new System.Drawing.Point(423, 320);
+            this.button2.Location = new System.Drawing.Point(423, 342);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(103, 35);
             this.button2.TabIndex = 13;
@@ -203,7 +206,7 @@
             this.coloresComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.coloresComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.coloresComboBox.FormattingEnabled = true;
-            this.coloresComboBox.Location = new System.Drawing.Point(16, 327);
+            this.coloresComboBox.Location = new System.Drawing.Point(16, 351);
             this.coloresComboBox.Name = "coloresComboBox";
             this.coloresComboBox.Size = new System.Drawing.Size(126, 28);
             this.coloresComboBox.TabIndex = 15;
@@ -213,7 +216,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(12, 300);
+            this.label7.Location = new System.Drawing.Point(12, 320);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(55, 24);
             this.label7.TabIndex = 14;
@@ -223,7 +226,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(422, 236);
+            this.label8.Location = new System.Drawing.Point(419, 210);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(84, 24);
             this.label8.TabIndex = 17;
@@ -232,7 +235,7 @@
             // cantidadNumericUpDown
             // 
             this.cantidadNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cantidadNumericUpDown.Location = new System.Drawing.Point(423, 263);
+            this.cantidadNumericUpDown.Location = new System.Drawing.Point(422, 238);
             this.cantidadNumericUpDown.Maximum = new decimal(new int[] {
             1,
             0,
@@ -251,12 +254,36 @@
             0,
             0,
             0});
+            this.cantidadNumericUpDown.ValueChanged += new System.EventHandler(this.cantidadNumericUpDown_ValueChanged);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(293, 299);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(233, 28);
+            this.comboBox1.TabIndex = 19;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(371, 272);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(69, 24);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Ofertas";
             // 
             // AgregarProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(537, 375);
+            this.ClientSize = new System.Drawing.Size(537, 391);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.cantidadNumericUpDown);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.coloresComboBox);
@@ -307,5 +334,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown cantidadNumericUpDown;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label9;
     }
 }

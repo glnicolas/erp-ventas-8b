@@ -19,6 +19,7 @@ namespace ERP_ventas.Formularios.Ventas
         private List<Producto> productos;
         internal Producto productoSeleccionado;
         internal Oferta ofertaSeleccionada;
+        private double precioreal=0;
 
         public AgregarProducto()
         {
@@ -129,6 +130,7 @@ namespace ERP_ventas.Formularios.Ventas
         {
             coloresComboBox.Items.Clear();
             productoSeleccionado = (Producto)productoComboBox.SelectedItem;
+            precioreal=productoSeleccionado.Precio_venta;
             fotoPictureBox.Image = new Bitmap(new MemoryStream(productoSeleccionado.Imagen_bytes));
             precioTextBox.Text = productoSeleccionado.Precio_venta.ToString("C2");
             caracteristicasTextBox.Text = string.Format("Descripcion: {0}" +
@@ -168,6 +170,14 @@ namespace ERP_ventas.Formularios.Ventas
                 List<Oferta> ofertas = new ProductosOfertaDAO().BuscarOfertaProducto(productoSeleccionado.ID);
                 if (ofertas.Count > 0)
                 {
+                    for (int i=0;i< ofertas.Count;i++)
+                    {
+                        if (cantidadNumericUpDown.Value>=ofertas[i].canMinProducto)
+                        {
+                            comboBox1.Items.Add(ofertas[i].OfertaString);
+                        }
+                    }
+                    /*
                     BuscarOfertasForm buscar = new BuscarOfertasForm(ofertas);
                     buscar.ShowDialog();
                     if (ofertaSeleccionada == null)
@@ -189,7 +199,7 @@ namespace ERP_ventas.Formularios.Ventas
                             productoSeleccionado.Precio_venta = productoDAO.consultaGeneral(" where ID=@id", new List<string>() { "@id" }, new List<object>() { productoSeleccionado.ID })[0].Precio_venta;
                             SeleccionarOferta(buscar.oferta);
                         }
-                    }
+                    }*/
 
 
                 }
@@ -308,9 +318,15 @@ namespace ERP_ventas.Formularios.Ventas
         private void SeleccionarOferta(Oferta oferta)
         {
             ofertaSeleccionada = oferta;
+            if (precioreal > 0)
+            {
+                productoSeleccionado.Precio_venta = precioreal - ( ofertaSeleccionada.porDescuento * precioreal);
+                precioTextBox.Text = productoSeleccionado.Precio_venta.ToString("C2");
+            }
+            else { 
             productoSeleccionado.Precio_venta -= ofertaSeleccionada.porDescuento * productoSeleccionado.Precio_venta;
             precioTextBox.Text = productoSeleccionado.Precio_venta.ToString("C2");
-            cantidadNumericUpDown.Minimum = ofertaSeleccionada.canMinProducto;
+            }
         }
 
         private void tallasComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -328,6 +344,63 @@ namespace ERP_ventas.Formularios.Ventas
             }
             cantidadNumericUpDown.Maximum = 1;
             existenciasTextBox.Text = "No disponible";
+        }
+
+        private void productoComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cantidadNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            string selectantiguo = "";
+            if (comboBox1.SelectedItem != null) { selectantiguo = comboBox1.SelectedItem.ToString(); }
+            comboBox1.Items.Clear();
+            List<Oferta> ofertas = new ProductosOfertaDAO().BuscarOfertaProducto(productoSeleccionado.ID);
+            if (ofertas.Count > 0)
+            {
+                for (int i = 0; i < ofertas.Count; i++)
+                {
+                    if (cantidadNumericUpDown.Value >= ofertas[i].canMinProducto)
+                    {
+                        comboBox1.Items.Add(ofertas[i].OfertaString);
+                        if (selectantiguo==ofertas[i].OfertaString)
+                        {
+                            comboBox1.SelectedItem = selectantiguo;
+                        }
+                    }
+                    if (comboBox1.Items.Count == 0)
+                    {
+                        productoSeleccionado.Precio_venta = precioreal;
+                        precioTextBox.Text = productoSeleccionado.Precio_venta.ToString("C2");
+                    }
+                }
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string[] result;
+            try
+            {
+                if (comboBox1.SelectedItem != null)
+                {
+                    result=comboBox1.SelectedItem.ToString().Split();
+                    List<Oferta> ofertas = new ProductosOfertaDAO().BuscarOfertaProducto(productoSeleccionado.ID);
+                    for(int i = 0; i < ofertas.Count; i++)
+                    {
+                        if (result[0]==ofertas[i].idOferta.ToString())
+                        {
+                            SeleccionarOferta(ofertas[i]);
+                        }
+                    }
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                Mensajes.Error(ex+"no se pudo seleccionar la oferta");
+            }
         }
     }
 }

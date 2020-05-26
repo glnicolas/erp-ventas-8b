@@ -38,7 +38,14 @@ namespace ERP_ventas.Formularios.Ventas
         private void VentasForm_Load(object sender, EventArgs e)
         {
             dataVentas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            actualizarTabla();
+            try
+            {
+                dataVentas.DataSource = ventaDAO.ConsultaGeneral("", new List<string>(), new List<object>());
+            }
+            catch (Exception ex)
+            {
+                Mensajes.Error(ex.Message);
+            }
         }
 
         private void actualizarTabla()
@@ -60,7 +67,11 @@ namespace ERP_ventas.Formularios.Ventas
                 var row = dataVentas.SelectedRows[0];
                 var venta = (Venta)row.DataBoundItem; //Castea el row como objeto de la clase venta
                 if (venta.EstatusChar == 'P')
-                    Mensajes.Error(venta.ToString());
+                {
+                    //Mensajes.Error(venta.ToString());
+                    EnviosVentas.AddEnviosVentas addEnviosVentas = new EnviosVentas.AddEnviosVentas(venta.ID,venta.Fecha);
+                    addEnviosVentas.ShowDialog();
+                }
                 else
                     Mensajes.Info("La venta seleccionada aún no se puede enviar");
             }

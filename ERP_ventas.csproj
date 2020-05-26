@@ -67,12 +67,17 @@
   <ItemGroup>
     <Compile Include="Datos\ClienteTiendaDAO.cs" />
     <Compile Include="Datos\EnviosDAO.cs" />
+    <Compile Include="Datos\EnviosVentaDAO.cs" />
     <Compile Include="Datos\OfertasDAO.cs" />
     <Compile Include="Datos\Paginacion.cs" />
     <Compile Include="Datos\ProductoDAO.cs" />
     <Compile Include="Datos\ProductosOfertaDAO.cs" />
     <Compile Include="Datos\TripulacionDAO.cs" />
     <Compile Include="Datos\VentaDAO.cs" />
+    <Compile Include="Formularios\AddEnviosVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\AddEnviosVentas.Designer.cs" />
     <Compile Include="Formularios\Clientes\BuscarClientesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +102,10 @@
     <Compile Include="Formularios\Clientes\ClienteTiendaRegistro.Designer.cs">
       <DependentUpon>ClienteTiendaRegistro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\EnviosVentasForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\EnviosVentasForm.Designer.cs" />
     <Compile Include="Formularios\Envios\AddEnvio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +160,7 @@
     </Compile>
     <Compile Include="Modelo\DetalleProducto.cs" />
     <Compile Include="Modelo\Envios.cs" />
+    <Compile Include="Modelo\EnviosVentas.cs" />
     <Compile Include="Modelo\Producto.cs" />
     <Compile Include="Formularios\Ofertas\OfertasAgregar.cs">
       <SubType>Form</SubType>
@@ -228,6 +238,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilidades.cs" />
+    <EmbeddedResource Include="Formularios\AddEnviosVentas.resx">
+      <DependentUpon>AddEnviosVentas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Clientes\BuscarClientesForm.resx">
       <DependentUpon>BuscarClientesForm.cs</DependentUpon>
     </EmbeddedResource>

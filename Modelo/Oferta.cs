@@ -18,6 +18,12 @@ namespace ERP_ventas.Modelo
         public String estatus  { get; set; }
         internal bool Aplicada { get; set; }
 
+
+        public string OfertaString
+        {
+            get { return idOferta+" "+nombre + " " + porDescuento+" "+canMinProducto; }
+        }
+
         public Oferta(int idOferta, string nombre, string descripcion, double porDescuento, string fechaInicio, string fechaFin, int canMinProducto, string estatus)
         {
             this.idOferta = idOferta;
