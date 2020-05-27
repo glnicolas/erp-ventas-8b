@@ -19,6 +19,7 @@ namespace ERP_ventas.Formularios.Ventas
         private List<Producto> productos;
         internal Producto productoSeleccionado;
         internal Oferta ofertaSeleccionada;
+        private Producto prod;
         public double precioreal=0;
 
         public AgregarProducto()
@@ -34,6 +35,7 @@ namespace ERP_ventas.Formularios.Ventas
             InitializeComponent();
             productoDAO = new ProductoDAO();
             productoSeleccionado = producto.GetProducto();
+            ofertaSeleccionada = producto.GetProducto().Oferta;
         }
 
         private void AgregarProducto_Load(object sender, EventArgs e)
@@ -318,10 +320,10 @@ namespace ERP_ventas.Formularios.Ventas
         private void SeleccionarOferta(Oferta oferta)
         {
             ofertaSeleccionada = oferta;
-            Mensajes.Info(ofertaSeleccionada.nombre + "   " + oferta.nombre+"    "+precioreal);
                 if (precioreal > 0 || ofertaSeleccionada.nombre != oferta.nombre)
                 {
-                    productoSeleccionado.Precio_venta = precioreal - (ofertaSeleccionada.porDescuento * precioreal);
+                Mensajes.Info(""+precioreal+" "+ ofertaSeleccionada.nombre+" "+oferta.nombre);
+                    productoSeleccionado.Precio_venta = (precioreal - (ofertaSeleccionada.porDescuento * precioreal));
                     precioTextBox.Text = productoSeleccionado.Precio_venta.ToString("C2");
                 }
                 else {

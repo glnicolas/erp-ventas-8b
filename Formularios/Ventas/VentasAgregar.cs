@@ -209,9 +209,26 @@ namespace ERP_ventas.Formularios.Ventas
                     var row = dataGridViewProductos.SelectedRows[0];
                     var producto = (VistaProducto)row.DataBoundItem; //Castea el row como objeto de la clase
                     if (new ProductoDAO().ActualizarExistencias(producto.IDDetalle, producto.Cantidad))
-                    {
-                        AgregarProducto agregarProducto = new AgregarProducto(producto);
-                        agregarProducto.precioreal = producto.PrecioUnitario;
+                    {AgregarProducto agregarProducto = new AgregarProducto(producto);
+                        using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion))
+                        {
+                            string cadena_sql = "";
+                            cadena_sql = "  select precioventa from Productos where idProducto= @idproducto";
+                            SqlCommand comando = new SqlCommand(cadena_sql, conexion);
+                            comando.Parameters.AddWithValue("@idproducto", producto.ID);
+                            conexion.Open();
+
+                            using (SqlDataReader reader = comando.ExecuteReader())
+                            {
+                                if (reader.Read())
+                                {
+                                    agregarProducto.precioreal=Convert.ToDouble(String.Format("{0}", reader["precioventa"]));
+                                }
+                            }
+
+                            conexion.Close();
+
+                        }
                         agregarProducto.ShowDialog();
                         if (agregarProducto.productoSeleccionado != null)
                         {
