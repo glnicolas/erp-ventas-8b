@@ -46,6 +46,7 @@ namespace ERP_ventas.Formularios.Ventas
                 if (productoSeleccionado != null)
                 {
                     cargarProducto();
+                    
                 }
             }
             catch (Exception ex)
@@ -106,14 +107,15 @@ namespace ERP_ventas.Formularios.Ventas
             coloresComboBox.SelectedItem = productoSeleccionado.detalleSeleccionado;
 
             existenciasTextBox.Text = productoSeleccionado.detalleSeleccionado.Existencias.ToString();
-            cantidadNumericUpDown.Maximum = productoSeleccionado.detalleSeleccionado.Existencias;
-            cantidadNumericUpDown.Value = productoSeleccionado.Cantidad;
-            if (ofertaSeleccionada != null)
-                cantidadNumericUpDown.Minimum = productoSeleccionado.Oferta.canMinProducto;
-            else
+            cantidadNumericUpDown.Maximum = productoSeleccionado.detalleSeleccionado.Existencias+productoSeleccionado.Cantidad;
+            
+            //if (ofertaSeleccionada != null)
+              //  cantidadNumericUpDown.Minimum = productoSeleccionado.Oferta.canMinProducto;
+            //else
                 cantidadNumericUpDown.Minimum = 1;
-
+            cantidadNumericUpDown.Value = productoSeleccionado.Cantidad;
             coloresComboBox.SelectedItem = productoSeleccionado.detalleSeleccionado;
+            VerificarOfertas();
 
             tallasComboBox.SelectedIndexChanged += tallasComboBox_SelectedIndexChanged;
             coloresComboBox.SelectedIndexChanged += coloresComboBox_SelectedIndexChanged;
@@ -172,12 +174,21 @@ namespace ERP_ventas.Formularios.Ventas
                 List<Oferta> ofertas = new ProductosOfertaDAO().BuscarOfertaProducto(productoSeleccionado.ID);
                 if (ofertas.Count > 0)
                 {
+                    comboBox1.Items.Clear();
                     for (int i=0;i< ofertas.Count;i++)
                     {
                         if (cantidadNumericUpDown.Value>=ofertas[i].canMinProducto)
                         {
                             comboBox1.Items.Add(ofertas[i].OfertaString);
+                            if (ofertaSeleccionada.nombre == ofertas[i].nombre)
+                            {
+                                comboBox1.SelectedIndex = i;
+                            }
                         }
+                    }
+                    if (ofertaSeleccionada != null)
+                    {
+                        comboBox1.SelectedItem = comboBox1.FindString(ofertaSeleccionada.nombre);
                     }
                     /*
                     BuscarOfertasForm buscar = new BuscarOfertasForm(ofertas);
@@ -322,7 +333,6 @@ namespace ERP_ventas.Formularios.Ventas
             ofertaSeleccionada = oferta;
                 if (precioreal > 0 || ofertaSeleccionada.nombre != oferta.nombre)
                 {
-                Mensajes.Info(""+precioreal+" "+ ofertaSeleccionada.nombre+" "+oferta.nombre);
                     productoSeleccionado.Precio_venta = (precioreal - (ofertaSeleccionada.porDescuento * precioreal));
                     precioTextBox.Text = productoSeleccionado.Precio_venta.ToString("C2");
                 }
@@ -370,7 +380,7 @@ namespace ERP_ventas.Formularios.Ventas
                         comboBox1.Items.Add(ofertas[i].OfertaString);
                         if (selectantiguo==ofertas[i].OfertaString)
                         {
-                            comboBox1.SelectedItem = selectantiguo;
+                            comboBox1.SelectedItem = i;
                         }
                     }
                     if (comboBox1.Items.Count == 0)
