@@ -38,7 +38,7 @@ namespace ERP_ventas.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=ERP2020;Persist Security Info=True;User ID=" +
-            "sa; Password=hola.123")]
+            "sa; Password=Hola.123")]
         public string cadenaConexion {
             get {
                 return ((string)(this["cadenaConexion"]));

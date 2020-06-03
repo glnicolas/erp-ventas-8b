@@ -21,7 +21,7 @@ namespace ERP_ventas.Modelo
 
         public string OfertaString
         {
-            get { return idOferta+" "+nombre + " " + porDescuento+" "+canMinProducto; }
+            get { return string.Format("{0} {1} {2} {3}", idOferta,nombre,porDescuento.ToString("P"),canMinProducto); }
         }
 
         public Oferta(int idOferta, string nombre, string descripcion, double porDescuento, string fechaInicio, string fechaFin, int canMinProducto, string estatus)

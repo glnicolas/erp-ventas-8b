@@ -20,7 +20,7 @@ namespace ERP_ventas.Formularios.Ventas
         internal Producto productoSeleccionado;
         internal Oferta ofertaSeleccionada;
         private Producto prod;
-        public double precioreal=0;
+        public double precioreal = 0;
 
         public AgregarProducto()
         {
@@ -46,7 +46,7 @@ namespace ERP_ventas.Formularios.Ventas
                 if (productoSeleccionado != null)
                 {
                     cargarProducto();
-                    
+
                 }
             }
             catch (Exception ex)
@@ -61,7 +61,11 @@ namespace ERP_ventas.Formularios.Ventas
             tallasComboBox.SelectedIndexChanged -= tallasComboBox_SelectedIndexChanged;
             coloresComboBox.SelectedIndexChanged -= coloresComboBox_SelectedIndexChanged;
             ofertaSeleccionada = productoSeleccionado.Oferta;
-            
+
+            cantidadNumericUpDown.Maximum = productoSeleccionado.detalleSeleccionado.Existencias + productoSeleccionado.Cantidad;
+            cantidadNumericUpDown.Minimum = 1;
+            cantidadNumericUpDown.Value = productoSeleccionado.Cantidad;
+
             foreach (Producto producto in productoComboBox.Items)
             {
                 if (producto.ID == productoSeleccionado.ID)
@@ -105,17 +109,14 @@ namespace ERP_ventas.Formularios.Ventas
             }
             coloresComboBox.DisplayMember = "Color";
             coloresComboBox.SelectedItem = productoSeleccionado.detalleSeleccionado;
-
             existenciasTextBox.Text = productoSeleccionado.detalleSeleccionado.Existencias.ToString();
-            cantidadNumericUpDown.Maximum = productoSeleccionado.detalleSeleccionado.Existencias+productoSeleccionado.Cantidad;
-            
-            //if (ofertaSeleccionada != null)
-              //  cantidadNumericUpDown.Minimum = productoSeleccionado.Oferta.canMinProducto;
-            //else
-                cantidadNumericUpDown.Minimum = 1;
-            cantidadNumericUpDown.Value = productoSeleccionado.Cantidad;
             coloresComboBox.SelectedItem = productoSeleccionado.detalleSeleccionado;
-            VerificarOfertas();
+
+            foreach(string oferta in comboBox1.Items)
+            {
+                if (oferta == ofertaSeleccionada.OfertaString)
+                    comboBox1.SelectedItem = oferta;
+            }
 
             tallasComboBox.SelectedIndexChanged += tallasComboBox_SelectedIndexChanged;
             coloresComboBox.SelectedIndexChanged += coloresComboBox_SelectedIndexChanged;
@@ -132,9 +133,11 @@ namespace ERP_ventas.Formularios.Ventas
 
         private void productoComboBox_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            ofertaSeleccionada = null;
+
             coloresComboBox.Items.Clear();
             productoSeleccionado = (Producto)productoComboBox.SelectedItem;
-            precioreal=productoSeleccionado.Precio_venta;
+            precioreal = productoSeleccionado.Precio_venta;
             fotoPictureBox.Image = new Bitmap(new MemoryStream(productoSeleccionado.Imagen_bytes));
             precioTextBox.Text = productoSeleccionado.Precio_venta.ToString("C2");
             caracteristicasTextBox.Text = string.Format("Descripcion: {0}" +
@@ -175,46 +178,28 @@ namespace ERP_ventas.Formularios.Ventas
                 if (ofertas.Count > 0)
                 {
                     comboBox1.Items.Clear();
-                    for (int i=0;i< ofertas.Count;i++)
+                    for (int i = 0; i < ofertas.Count; i++)
                     {
-                        if (cantidadNumericUpDown.Value>=ofertas[i].canMinProducto)
+                        if (cantidadNumericUpDown.Value >= ofertas[i].canMinProducto)
                         {
                             comboBox1.Items.Add(ofertas[i].OfertaString);
-                            if (ofertaSeleccionada.nombre == ofertas[i].nombre)
+                            if (ofertaSeleccionada != null)
                             {
-                                comboBox1.SelectedIndex = i;
+                                if (ofertaSeleccionada.nombre == ofertas[i].nombre)
+                                {
+                                    comboBox1.SelectedIndex = i;
+                                }
+                            }
+                            else
+                            {
+                                ofertaSeleccionada = (Oferta)comboBox1.SelectedItem;
                             }
                         }
                     }
-                    if (ofertaSeleccionada != null)
-                    {
-                        comboBox1.SelectedItem = comboBox1.FindString(ofertaSeleccionada.nombre);
-                    }
-                    /*
-                    BuscarOfertasForm buscar = new BuscarOfertasForm(ofertas);
-                    buscar.ShowDialog();
-                    if (ofertaSeleccionada == null)
-                    {
-                        if (buscar.oferta != null)
-                        {
-                            SeleccionarOferta(buscar.oferta);
-                        }
-                        else
-                        {
-                            ofertaSeleccionada = null;
-                            cantidadNumericUpDown.Minimum = 1;
-                        }
-                    }
-                    else
-                    {
-                        if (buscar.oferta != null)
-                        {
-                            productoSeleccionado.Precio_venta = productoDAO.consultaGeneral(" where ID=@id", new List<string>() { "@id" }, new List<object>() { productoSeleccionado.ID })[0].Precio_venta;
-                            SeleccionarOferta(buscar.oferta);
-                        }
-                    }*/
-
-
+                    //if (ofertaSeleccionada != null)
+                    //{
+                    //    comboBox1.SelectedItem = comboBox1.FindString(ofertaSeleccionada.nombre);
+                    //}
                 }
             }
             catch (Exception ex)
@@ -325,22 +310,23 @@ namespace ERP_ventas.Formularios.Ventas
             DetalleProducto detalleSeleccionado = coloresComboBox.SelectedItem as DetalleProducto;
             existenciasTextBox.Text = detalleSeleccionado.Existencias.ToString();
             cantidadNumericUpDown.Maximum = detalleSeleccionado.Existencias;
-           
+
         }
 
         private void SeleccionarOferta(Oferta oferta)
         {
             ofertaSeleccionada = oferta;
-                if (precioreal > 0 || ofertaSeleccionada.nombre != oferta.nombre)
-                {
-                    productoSeleccionado.Precio_venta = (precioreal - (ofertaSeleccionada.porDescuento * precioreal));
-                    precioTextBox.Text = productoSeleccionado.Precio_venta.ToString("C2");
-                }
-                else {
-                    productoSeleccionado.Precio_venta -= ofertaSeleccionada.porDescuento * productoSeleccionado.Precio_venta;
-                    precioTextBox.Text = productoSeleccionado.Precio_venta.ToString("C2");
-                }
-            
+            if (precioreal > 0 || ofertaSeleccionada.nombre != oferta.nombre)
+            {
+                productoSeleccionado.Precio_venta = (precioreal - (ofertaSeleccionada.porDescuento * precioreal));
+                precioTextBox.Text = productoSeleccionado.Precio_venta.ToString("C2");
+            }
+            else
+            {
+                productoSeleccionado.Precio_venta -= ofertaSeleccionada.porDescuento * productoSeleccionado.Precio_venta;
+                precioTextBox.Text = productoSeleccionado.Precio_venta.ToString("C2");
+            }
+
         }
 
         private void tallasComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -378,7 +364,7 @@ namespace ERP_ventas.Formularios.Ventas
                     if (cantidadNumericUpDown.Value >= ofertas[i].canMinProducto)
                     {
                         comboBox1.Items.Add(ofertas[i].OfertaString);
-                        if (selectantiguo==ofertas[i].OfertaString)
+                        if (selectantiguo == ofertas[i].OfertaString)
                         {
                             comboBox1.SelectedItem = i;
                         }
@@ -399,21 +385,21 @@ namespace ERP_ventas.Formularios.Ventas
             {
                 if (comboBox1.SelectedItem != null)
                 {
-                    result=comboBox1.SelectedItem.ToString().Split();
+                    result = comboBox1.SelectedItem.ToString().Split();
                     List<Oferta> ofertas = new ProductosOfertaDAO().BuscarOfertaProducto(productoSeleccionado.ID);
-                    for(int i = 0; i < ofertas.Count; i++)
+                    for (int i = 0; i < ofertas.Count; i++)
                     {
-                        if (result[0]==ofertas[i].idOferta.ToString())
+                        if (result[0] == ofertas[i].idOferta.ToString())
                         {
                             SeleccionarOferta(ofertas[i]);
                         }
                     }
-                    
+
                 }
             }
             catch (Exception ex)
             {
-                Mensajes.Error(ex+"no se pudo seleccionar la oferta");
+                Mensajes.Error(ex + "no se pudo seleccionar la oferta");
             }
         }
     }

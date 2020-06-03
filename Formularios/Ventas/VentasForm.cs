@@ -40,7 +40,7 @@ namespace ERP_ventas.Formularios.Ventas
             dataVentas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             try
             {
-                dataVentas.DataSource = ventaDAO.ConsultaGeneral("", new List<string>(), new List<object>());
+                dataVentas.DataSource = ventaDAO.ConsultaGeneral(" where estatus !='I'", new List<string>(), new List<object>());
             }
             catch (Exception ex)
             {
