@@ -17,7 +17,7 @@ namespace ERP_ventas.Datos
                 using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion))
                 {
                     string cadena_sql = "select * from Productos_venta " + sql_where;
-                    //idCliente	direccion	codidoPostal	rfc	telefono	email	tipo	estatus     idCiudad
+                    //ID	Marca	Estilo	Categoria	nombre	descripcion	genero	precioVenta
 
                     SqlCommand comando = new SqlCommand(cadena_sql, conexion);
 
@@ -105,7 +105,7 @@ namespace ERP_ventas.Datos
             }
             return detalles;
         }
-        
+
         internal bool ActualizarExistencias(int idDetalle, int cantidad)
         {
             using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion))

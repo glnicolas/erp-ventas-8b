@@ -249,6 +249,7 @@ namespace ERP_ventas.Datos
                             comando.Parameters.Clear();
                             comando.CommandText = "sp_registrarDetalleVenta";
                             comando.CommandType = CommandType.StoredProcedure;
+                            comando.Parameters.AddWithValue("@real", producto.Precio_real);
                             comando.Parameters.AddWithValue("@unitario", producto.Precio_venta);
                             comando.Parameters.AddWithValue("@cantidad", producto.Cantidad);
                             comando.Parameters.AddWithValue("@subtotal", producto.Suma);
@@ -314,6 +315,7 @@ namespace ERP_ventas.Datos
                         producto.Cantidad = Convert.ToInt32(lector["cantidad"]);
                         producto.IDVentaDetalle = Convert.ToInt32(lector["idVentaDetalle"]);
                         producto.Precio_venta = (double)lector["precioUnitario"];
+                        producto.Precio_real = (double)lector["precioReal"];
                         producto.detalleSeleccionado = new DetalleProducto((int)lector["idProductoDetalle"]);
                         productos.Add(producto);
                     }

@@ -222,16 +222,17 @@ namespace ERP_ventas.Formularios.Ventas
                             {
                                 if (reader.Read())
                                 {
-                                    agregarProducto.precioreal=Convert.ToDouble(String.Format("{0}", reader["precioventa"]));
+                                    agregarProducto.precioreal=(double)reader["precioventa"];
                                 }
                             }
-
                             conexion.Close();
-
                         }
                         agregarProducto.ShowDialog();
                         if (agregarProducto.productoSeleccionado != null)
                         {
+                            producto = new VistaProducto(agregarProducto.productoSeleccionado);
+                            productos.RemoveAt(row.Index);
+                            productos.Add(producto.GetProducto());
                             ActualizarTablaProductos();
                         }
                         else

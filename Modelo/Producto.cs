@@ -45,6 +45,7 @@ namespace ERP_ventas.Modelo
             }
         }
         public double Precio_venta { get; set; }
+        public double Precio_real { get; set; }
         public char Estatus { get; set; }
         public bool Agregado { get; set; }
         public byte[] Imagen_bytes { get; set; }
