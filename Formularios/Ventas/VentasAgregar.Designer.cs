@@ -36,9 +36,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.comentariosTextBox = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.dataGridViewProductos = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.empleadosComboBox = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnBuscarCliente = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.totalTextBox = new System.Windows.Forms.TextBox();
@@ -48,31 +53,30 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.comboBoxEstatus = new System.Windows.Forms.ComboBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnBuscarCliente = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.empleadosComboBox = new System.Windows.Forms.ComboBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.comentariosTextBox = new System.Windows.Forms.TextBox();
+            this.dataGridViewProductos = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductos)).BeginInit();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductos)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.labelVenta);
             this.panel1.Controls.Add(this.btnConfirmar);
             this.panel1.Controls.Add(this.btnCancelar);
@@ -100,7 +104,7 @@
             this.btnConfirmar.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnConfirmar.Image = global::ERP_ventas.Properties.Resources.ok_24px;
             this.btnConfirmar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnConfirmar.Location = new System.Drawing.Point(876, 23);
+            this.btnConfirmar.Location = new System.Drawing.Point(569, 20);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(93, 34);
             this.btnConfirmar.TabIndex = 3;
@@ -114,7 +118,7 @@
             this.btnCancelar.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnCancelar.Image = global::ERP_ventas.Properties.Resources.cancel_24px;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancelar.Location = new System.Drawing.Point(590, 23);
+            this.btnCancelar.Location = new System.Drawing.Point(371, 20);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(93, 34);
             this.btnCancelar.TabIndex = 2;
@@ -128,7 +132,7 @@
             this.btnGuardar.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btnGuardar.Image = global::ERP_ventas.Properties.Resources.save_24px;
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGuardar.Location = new System.Drawing.Point(741, 23);
+            this.btnGuardar.Location = new System.Drawing.Point(470, 20);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(93, 34);
             this.btnGuardar.TabIndex = 1;
@@ -176,6 +180,27 @@
             this.panel3.Size = new System.Drawing.Size(388, 132);
             this.panel3.TabIndex = 1;
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.comentariosTextBox);
+            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.Location = new System.Drawing.Point(0, 0);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(388, 132);
+            this.groupBox5.TabIndex = 0;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Comentarios";
+            // 
+            // comentariosTextBox
+            // 
+            this.comentariosTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comentariosTextBox.Location = new System.Drawing.Point(3, 22);
+            this.comentariosTextBox.Multiline = true;
+            this.comentariosTextBox.Name = "comentariosTextBox";
+            this.comentariosTextBox.Size = new System.Drawing.Size(382, 107);
+            this.comentariosTextBox.TabIndex = 0;
+            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.groupBox2);
@@ -186,45 +211,64 @@
             this.panel4.Size = new System.Drawing.Size(584, 65);
             this.panel4.TabIndex = 0;
             // 
-            // dataGridViewProductos
+            // groupBox2
             // 
-            this.dataGridViewProductos.AllowUserToAddRows = false;
-            this.dataGridViewProductos.AllowUserToDeleteRows = false;
-            this.dataGridViewProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewProductos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewProductos.Location = new System.Drawing.Point(3, 3);
-            this.dataGridViewProductos.MultiSelect = false;
-            this.dataGridViewProductos.Name = "dataGridViewProductos";
-            this.dataGridViewProductos.ReadOnly = true;
-            this.dataGridViewProductos.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewProductos.RowTemplate.DefaultCellStyle.NullValue = null;
-            this.dataGridViewProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewProductos.Size = new System.Drawing.Size(978, 343);
-            this.dataGridViewProductos.TabIndex = 0;
+            this.groupBox2.Controls.Add(this.empleadosComboBox);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(328, 0);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(256, 65);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Vendedor";
             // 
-            // tableLayoutPanel2
+            // empleadosComboBox
             // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel2.Controls.Add(this.dataGridViewProductos, 0, 1);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 212);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(984, 349);
-            this.tableLayoutPanel2.TabIndex = 7;
+            this.empleadosComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.empleadosComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.empleadosComboBox.FormattingEnabled = true;
+            this.empleadosComboBox.IntegralHeight = false;
+            this.empleadosComboBox.Location = new System.Drawing.Point(3, 22);
+            this.empleadosComboBox.Name = "empleadosComboBox";
+            this.empleadosComboBox.Size = new System.Drawing.Size(250, 28);
+            this.empleadosComboBox.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnBuscarCliente);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(328, 65);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Cliente";
+            // 
+            // btnBuscarCliente
+            // 
+            this.btnBuscarCliente.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnBuscarCliente.Image = global::ERP_ventas.Properties.Resources.search_32px;
+            this.btnBuscarCliente.Location = new System.Drawing.Point(248, 17);
+            this.btnBuscarCliente.Name = "btnBuscarCliente";
+            this.btnBuscarCliente.Size = new System.Drawing.Size(64, 40);
+            this.btnBuscarCliente.TabIndex = 1;
+            this.btnBuscarCliente.UseVisualStyleBackColor = true;
+            this.btnBuscarCliente.Click += new System.EventHandler(this.btnBuscarCliente_Click_1);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.BackColor = System.Drawing.SystemColors.Window;
+            this.textBox1.Location = new System.Drawing.Point(9, 24);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(236, 26);
+            this.textBox1.TabIndex = 0;
             // 
             // panel2
             // 
@@ -344,85 +388,73 @@
             this.comboBoxEstatus.Size = new System.Drawing.Size(172, 28);
             this.comboBoxEstatus.TabIndex = 0;
             // 
-            // groupBox1
+            // dataGridViewProductos
             // 
-            this.groupBox1.Controls.Add(this.btnBuscarCliente);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(328, 65);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Cliente";
+            this.dataGridViewProductos.AllowUserToAddRows = false;
+            this.dataGridViewProductos.AllowUserToDeleteRows = false;
+            this.dataGridViewProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewProductos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewProductos.Location = new System.Drawing.Point(3, 3);
+            this.dataGridViewProductos.MultiSelect = false;
+            this.dataGridViewProductos.Name = "dataGridViewProductos";
+            this.dataGridViewProductos.ReadOnly = true;
+            this.dataGridViewProductos.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewProductos.RowTemplate.DefaultCellStyle.NullValue = null;
+            this.dataGridViewProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewProductos.Size = new System.Drawing.Size(978, 343);
+            this.dataGridViewProductos.TabIndex = 0;
             // 
-            // btnBuscarCliente
+            // tableLayoutPanel2
             // 
-            this.btnBuscarCliente.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnBuscarCliente.Image = global::ERP_ventas.Properties.Resources.search_32px;
-            this.btnBuscarCliente.Location = new System.Drawing.Point(248, 17);
-            this.btnBuscarCliente.Name = "btnBuscarCliente";
-            this.btnBuscarCliente.Size = new System.Drawing.Size(64, 40);
-            this.btnBuscarCliente.TabIndex = 1;
-            this.btnBuscarCliente.UseVisualStyleBackColor = true;
-            this.btnBuscarCliente.Click += new System.EventHandler(this.btnBuscarCliente_Click_1);
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel2.Controls.Add(this.dataGridViewProductos, 0, 1);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 212);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(984, 349);
+            this.tableLayoutPanel2.TabIndex = 7;
             // 
-            // textBox1
+            // button1
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox1.Location = new System.Drawing.Point(9, 24);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(236, 26);
-            this.textBox1.TabIndex = 0;
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.button1.Image = global::ERP_ventas.Properties.Resources.print_blue_30px;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.Location = new System.Drawing.Point(681, 20);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(119, 34);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Factura PDF";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // groupBox2
+            // button2
             // 
-            this.groupBox2.Controls.Add(this.empleadosComboBox);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(328, 0);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(256, 65);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Vendedor";
-            // 
-            // empleadosComboBox
-            // 
-            this.empleadosComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.empleadosComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.empleadosComboBox.FormattingEnabled = true;
-            this.empleadosComboBox.IntegralHeight = false;
-            this.empleadosComboBox.Location = new System.Drawing.Point(3, 22);
-            this.empleadosComboBox.Name = "empleadosComboBox";
-            this.empleadosComboBox.Size = new System.Drawing.Size(250, 28);
-            this.empleadosComboBox.TabIndex = 0;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.comentariosTextBox);
-            this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(0, 0);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(388, 132);
-            this.groupBox5.TabIndex = 0;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Comentarios";
-            // 
-            // comentariosTextBox
-            // 
-            this.comentariosTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comentariosTextBox.Location = new System.Drawing.Point(3, 22);
-            this.comentariosTextBox.Multiline = true;
-            this.comentariosTextBox.Name = "comentariosTextBox";
-            this.comentariosTextBox.Size = new System.Drawing.Size(382, 107);
-            this.comentariosTextBox.TabIndex = 0;
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.button2.Image = global::ERP_ventas.Properties.Resources.print_blue_30px;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.Location = new System.Drawing.Point(806, 20);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(119, 34);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "Factura XML";
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // VentasAgregar
             // 
@@ -441,19 +473,19 @@
             this.panel1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductos)).EndInit();
-            this.tableLayoutPanel2.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProductos)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -487,5 +519,7 @@
         private System.Windows.Forms.ComboBox empleadosComboBox;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TextBox comentariosTextBox;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
