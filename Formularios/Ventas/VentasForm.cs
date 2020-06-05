@@ -37,6 +37,9 @@ namespace ERP_ventas.Formularios.Ventas
 
         private void VentasForm_Load(object sender, EventArgs e)
         {
+            
+            
+            
             dataVentas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             try
             {
@@ -90,7 +93,7 @@ namespace ERP_ventas.Formularios.Ventas
                     ventasAgregar.ShowDialog();
 
                     actualizarTabla();
-                } else if (venta.EstatusChar == 'P') {
+                } else if (venta.EstatusChar == 'P' || venta.EstatusChar == 'F') {
                     VentasAgregar ventasAgregar = new VentasAgregar(venta,"Completa");
                     ventasAgregar.ShowDialog();
                 }
@@ -168,6 +171,26 @@ namespace ERP_ventas.Formularios.Ventas
             xlWorkSheet.PasteSpecial(CR, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, true);
 
             MessageBox.Show("Exportación finalizada");
+        }
+
+        private void btnCobrar_Click(object sender, EventArgs e)
+        {
+            if (dataVentas.SelectedRows.Count == 1)
+            {
+                var row = dataVentas.SelectedRows[0];
+                Venta venta = (Venta)row.DataBoundItem;
+
+                if (venta.EstatusChar == 'F' || venta.EstatusChar == 'E')
+                {
+                    PagosForm ventasAgregar = new PagosForm(venta);
+                    ventasAgregar.ShowDialog();
+                    actualizarTabla();
+                }
+                else
+                {
+                    Mensajes.Error("La venta no se puede cobrar");
+                }
+            }
         }
     }
 }

@@ -47,5 +47,29 @@ namespace ERP_ventas.Properties {
                 this["cadenaConexion"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("187.241.125.146")]
+        public string nombreServidor {
+            get {
+                return ((string)(this["nombreServidor"]));
+            }
+            set {
+                this["nombreServidor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ERP2020")]
+        public string nombreBD {
+            get {
+                return ((string)(this["nombreBD"]));
+            }
+            set {
+                this["nombreBD"] = value;
+            }
+        }
     }
 }

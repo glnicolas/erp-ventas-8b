@@ -40,6 +40,8 @@ namespace ERP_ventas.Modelo
                 {
                     case 'A':
                         return "En Captura";
+                    case 'E':
+                        return "En pago";
                     case 'P':
                         return "Pagada";
                     case 'C':

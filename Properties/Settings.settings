@@ -8,5 +8,11 @@
     <Setting Name="cadenaConexion" Type="System.String" Scope="User">
       <Value Profile="(Default)">Data Source=187.241.125.146;Initial Catalog=ERP2020;Persist Security Info=True;User ID=sa; Password=Hola.123</Value>
     </Setting>
+    <Setting Name="nombreServidor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">187.241.125.146</Value>
+    </Setting>
+    <Setting Name="nombreBD" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ERP2020</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

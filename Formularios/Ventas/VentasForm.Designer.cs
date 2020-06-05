@@ -30,23 +30,21 @@
         {
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.siguienteBtn = new System.Windows.Forms.Button();
-            this.anteriorBtn = new System.Windows.Forms.Button();
             this.paginaxdey = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.elementosPaginacionCmb = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.buscartextBox = new System.Windows.Forms.TextBox();
             this.dataVentas = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnEnviar = new System.Windows.Forms.Button();
             this.btnDetalle = new System.Windows.Forms.Button();
-            this.btnImprimir = new System.Windows.Forms.Button();
-            this.limpiarbutton = new System.Windows.Forms.Button();
+            this.btnCobrar = new System.Windows.Forms.Button();
+            this.siguienteBtn = new System.Windows.Forms.Button();
+            this.anteriorBtn = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
-            this.btnEnviar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -76,31 +74,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(838, 59);
             this.panel4.TabIndex = 1;
-            // 
-            // siguienteBtn
-            // 
-            this.siguienteBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.siguienteBtn.AutoSize = true;
-            this.siguienteBtn.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.siguienteBtn.Image = global::ERP_ventas.Properties.Resources.right_squared_32px;
-            this.siguienteBtn.Location = new System.Drawing.Point(397, 4);
-            this.siguienteBtn.Name = "siguienteBtn";
-            this.siguienteBtn.Size = new System.Drawing.Size(50, 43);
-            this.siguienteBtn.TabIndex = 28;
-            this.siguienteBtn.UseVisualStyleBackColor = false;
-            // 
-            // anteriorBtn
-            // 
-            this.anteriorBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.anteriorBtn.AutoSize = true;
-            this.anteriorBtn.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.anteriorBtn.Enabled = false;
-            this.anteriorBtn.Image = global::ERP_ventas.Properties.Resources.back_32px;
-            this.anteriorBtn.Location = new System.Drawing.Point(229, 4);
-            this.anteriorBtn.Name = "anteriorBtn";
-            this.anteriorBtn.Size = new System.Drawing.Size(50, 43);
-            this.anteriorBtn.TabIndex = 27;
-            this.anteriorBtn.UseVisualStyleBackColor = false;
             // 
             // paginaxdey
             // 
@@ -151,14 +124,6 @@
             this.label2.TabIndex = 35;
             this.label2.Text = "Mostrar";
             // 
-            // buscartextBox
-            // 
-            this.buscartextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buscartextBox.Location = new System.Drawing.Point(648, 82);
-            this.buscartextBox.Name = "buscartextBox";
-            this.buscartextBox.Size = new System.Drawing.Size(329, 29);
-            this.buscartextBox.TabIndex = 43;
-            // 
             // dataVentas
             // 
             this.dataVentas.AllowUserToAddRows = false;
@@ -199,6 +164,32 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Ventas";
             // 
+            // button1
+            // 
+            this.button1.Image = global::ERP_ventas.Properties.Resources.ms_excel_30px;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(429, 80);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(116, 38);
+            this.button1.TabIndex = 48;
+            this.button1.Text = "Formato Excel";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnEnviar
+            // 
+            this.btnEnviar.Image = global::ERP_ventas.Properties.Resources.right_squared_32px;
+            this.btnEnviar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEnviar.Location = new System.Drawing.Point(344, 80);
+            this.btnEnviar.Name = "btnEnviar";
+            this.btnEnviar.Size = new System.Drawing.Size(77, 38);
+            this.btnEnviar.TabIndex = 47;
+            this.btnEnviar.Text = "Enviar";
+            this.btnEnviar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEnviar.UseVisualStyleBackColor = true;
+            this.btnEnviar.Click += new System.EventHandler(this.btnEnviar_Click);
+            // 
             // btnDetalle
             // 
             this.btnDetalle.Image = global::ERP_ventas.Properties.Resources.detail_property_30px;
@@ -212,27 +203,43 @@
             this.btnDetalle.UseVisualStyleBackColor = true;
             this.btnDetalle.Click += new System.EventHandler(this.btnDetalle_Click);
             // 
-            // btnImprimir
+            // btnCobrar
             // 
-            this.btnImprimir.Image = global::ERP_ventas.Properties.Resources.print_blue_30px;
-            this.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImprimir.Location = new System.Drawing.Point(261, 80);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(77, 38);
-            this.btnImprimir.TabIndex = 45;
-            this.btnImprimir.Text = "Imprimir";
-            this.btnImprimir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnCobrar.Image = global::ERP_ventas.Properties.Resources.stack_of_money_30px;
+            this.btnCobrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCobrar.Location = new System.Drawing.Point(261, 80);
+            this.btnCobrar.Name = "btnCobrar";
+            this.btnCobrar.Size = new System.Drawing.Size(77, 38);
+            this.btnCobrar.TabIndex = 45;
+            this.btnCobrar.Text = "Cobrar";
+            this.btnCobrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCobrar.UseVisualStyleBackColor = true;
+            this.btnCobrar.Click += new System.EventHandler(this.btnCobrar_Click);
             // 
-            // limpiarbutton
+            // siguienteBtn
             // 
-            this.limpiarbutton.Image = global::ERP_ventas.Properties.Resources.broom_32px;
-            this.limpiarbutton.Location = new System.Drawing.Point(983, 80);
-            this.limpiarbutton.Name = "limpiarbutton";
-            this.limpiarbutton.Size = new System.Drawing.Size(43, 38);
-            this.limpiarbutton.TabIndex = 42;
-            this.limpiarbutton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.limpiarbutton.UseVisualStyleBackColor = true;
+            this.siguienteBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.siguienteBtn.AutoSize = true;
+            this.siguienteBtn.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.siguienteBtn.Image = global::ERP_ventas.Properties.Resources.right_squared_32px;
+            this.siguienteBtn.Location = new System.Drawing.Point(397, 4);
+            this.siguienteBtn.Name = "siguienteBtn";
+            this.siguienteBtn.Size = new System.Drawing.Size(50, 43);
+            this.siguienteBtn.TabIndex = 28;
+            this.siguienteBtn.UseVisualStyleBackColor = false;
+            // 
+            // anteriorBtn
+            // 
+            this.anteriorBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.anteriorBtn.AutoSize = true;
+            this.anteriorBtn.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.anteriorBtn.Enabled = false;
+            this.anteriorBtn.Image = global::ERP_ventas.Properties.Resources.back_32px;
+            this.anteriorBtn.Location = new System.Drawing.Point(229, 4);
+            this.anteriorBtn.Name = "anteriorBtn";
+            this.anteriorBtn.Size = new System.Drawing.Size(50, 43);
+            this.anteriorBtn.TabIndex = 27;
+            this.anteriorBtn.UseVisualStyleBackColor = false;
             // 
             // btnEliminar
             // 
@@ -261,32 +268,6 @@
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
-            // btnEnviar
-            // 
-            this.btnEnviar.Image = global::ERP_ventas.Properties.Resources.right_squared_32px;
-            this.btnEnviar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEnviar.Location = new System.Drawing.Point(344, 80);
-            this.btnEnviar.Name = "btnEnviar";
-            this.btnEnviar.Size = new System.Drawing.Size(77, 38);
-            this.btnEnviar.TabIndex = 47;
-            this.btnEnviar.Text = "Enviar";
-            this.btnEnviar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEnviar.UseVisualStyleBackColor = true;
-            this.btnEnviar.Click += new System.EventHandler(this.btnEnviar_Click);
-            // 
-            // button1
-            // 
-            this.button1.Image = global::ERP_ventas.Properties.Resources.print_blue_30px;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(427, 80);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 38);
-            this.button1.TabIndex = 48;
-            this.button1.Text = "Formato Excel";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // VentasForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -295,10 +276,8 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnEnviar);
             this.Controls.Add(this.btnDetalle);
-            this.Controls.Add(this.btnImprimir);
+            this.Controls.Add(this.btnCobrar);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.buscartextBox);
-            this.Controls.Add(this.limpiarbutton);
             this.Controls.Add(this.dataVentas);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnNuevo);
@@ -317,7 +296,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -331,14 +309,12 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ComboBox elementosPaginacionCmb;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox buscartextBox;
-        private System.Windows.Forms.Button limpiarbutton;
         private System.Windows.Forms.DataGridView dataVentas;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnImprimir;
+        private System.Windows.Forms.Button btnCobrar;
         private System.Windows.Forms.Button btnDetalle;
         private System.Windows.Forms.Button btnEnviar;
         private System.Windows.Forms.Button button1;

@@ -121,5 +121,11 @@ namespace ERP_ventas.Formularios
         {
             dragging = false;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Configuraciones configuraciones = new Configuraciones();
+            configuraciones.ShowDialog();
+        }
     }
 }

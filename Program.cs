@@ -22,10 +22,10 @@ namespace ERP_ventas
             Application.SetCompatibleTextRenderingDefault(false);
 
             //Application.Run(new Login());
-            //Login loginForm = new Login();
-            VentasForm ofertasForm = new VentasForm();
-            ofertasForm.FormClosed += MainForm_Closed;
-            ofertasForm.Show();
+            Login loginForm = new Login();
+            //VentasForm ofertasForm = new VentasForm();
+            loginForm.FormClosed += MainForm_Closed;
+            loginForm.Show();
             Application.Run();
         }
 
