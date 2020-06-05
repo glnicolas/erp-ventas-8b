@@ -48,6 +48,26 @@ namespace ERP_ventas.Formularios.Ventas
         public VentasAgregar(Venta venta)
         {
             InitializeComponent();
+            btndevolucion.Hide();
+            productos = new List<Producto>();
+            ventaDAO = new VentaDAO();
+            comboBoxEstatus.SelectedIndex = 0;
+            ventaEnCaptura = venta;
+        }
+
+        public VentasAgregar(Venta venta, String s)
+        {
+            InitializeComponent();
+            btnAgregar.Enabled = false;
+            btnEditar.Enabled = false;
+            btnEliminar.Enabled = false;
+            btnBuscarCliente.Enabled = false;
+            empleadosComboBox.Enabled = false;
+            btnCancelar.Enabled = false;
+            btnConfirmar.Enabled = false;
+            btnGuardar.Enabled = false;
+            textBox1.Enabled = false;
+            totalTextBox.Enabled = false;
             productos = new List<Producto>();
             ventaDAO = new VentaDAO();
             comboBoxEstatus.SelectedIndex = 0;
@@ -574,6 +594,81 @@ namespace ERP_ventas.Formularios.Ventas
                     }
                 }
             }
+        }
+
+        private void btndevolucion_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewProductos.SelectedRows.Count == 1)
+            {
+                var row = dataGridViewProductos.SelectedRows[0];
+                var producto = (VistaProducto)row.DataBoundItem;
+                Devolucion dev = new Devolucion(producto.Cantidad);
+                dev.ShowDialog();
+                int cantdev = dev.cantidadDev;
+                string motivo = dev.motivo;
+
+                if (cantdev > 0)
+                {
+                    using (SqlConnection conexion = new SqlConnection(Properties.Settings.Default.cadenaConexion))
+                    {
+                        string cadena_sql = "";
+                        cadena_sql = "  insert into Devoluciones values(@fecha,@idproductoDetalle,@cant,@precio,@total,@motivo,@idventa,'A')";
+                        SqlCommand comando = new SqlCommand(cadena_sql, conexion);
+                        comando.Parameters.AddWithValue("@fecha", DateTime.Now.ToString("d"));
+                        comando.Parameters.AddWithValue("@idproductoDetalle", producto.IDDetalle);
+                        comando.Parameters.AddWithValue("@cant", cantdev);
+                        comando.Parameters.AddWithValue("@precio", producto.PrecioUnitario);
+                        comando.Parameters.AddWithValue("@total", cantdev * producto.PrecioUnitario);
+                        comando.Parameters.AddWithValue("@motivo", motivo);
+                        comando.Parameters.AddWithValue("@idventa", ventaEnCaptura.ID);
+                        conexion.Open();
+                        int result = comando.ExecuteNonQuery();
+
+                        // Check Error
+                        if (result < 0)
+                            Console.WriteLine("Error al ingresar devoluciones!");
+
+                    }
+
+
+
+
+                    if (cantdev == producto.Cantidad)
+                    {
+                        if (new ProductoDAO().ActualizarExistencias(producto.IDDetalle, cantdev))
+                        {
+                            Mensajes.Info("Devolucion efectuada");
+                            productos.Remove(producto.GetProducto());
+                            ActualizarTablaProductos();
+                        }
+                        else
+                            Mensajes.Error("Se ha producido un error");
+                    }
+                    else if (cantdev < producto.Cantidad)
+                    {
+                        if (new ProductoDAO().ActualizarExistencias(producto.IDDetalle, cantdev))
+                        {
+                            Mensajes.Info("Devolucion efectuada");
+                            for(int i = 0; i < productos.Count; i++)
+                            {
+                                if (productos.ToArray()[i].ID == producto.ID)
+                                {
+                                    productos.ToArray()[i].Cantidad -= cantdev;
+                                }
+                            }
+                            ActualizarTablaProductos();
+                        }
+                        else
+                            Mensajes.Error("Se ha producido un error");
+
+                    }
+                }
+                else
+                {
+                    Mensajes.Info("no entra");
+                }
+            }
+                
         }
     }
 }

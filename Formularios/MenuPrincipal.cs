@@ -80,5 +80,12 @@ namespace ERP_ventas
             ventasform.Show();
             Close();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Formularios.Devoluciones.DevolcionesForm dev = new Formularios.Devoluciones.DevolcionesForm();
+            dev.ShowDialog();
+
+        }
     }
 }

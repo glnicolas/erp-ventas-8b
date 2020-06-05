@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Datos\ClienteTiendaDAO.cs" />
+    <Compile Include="Datos\DevolucionesDAO.cs" />
     <Compile Include="Datos\EnviosDAO.cs" />
     <Compile Include="Datos\EnviosVentaDAO.cs" />
     <Compile Include="Datos\OfertasDAO.cs" />
@@ -109,6 +110,10 @@
     <Compile Include="Formularios\Clientes\ClienteTiendaRegistro.Designer.cs">
       <DependentUpon>ClienteTiendaRegistro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Devolucion\DevolcionesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Devolucion\DevolcionesForm.Designer.cs" />
     <Compile Include="Formularios\EnviosVentasForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +158,12 @@
     <Compile Include="Formularios\Ventas\AgregarProducto.Designer.cs">
       <DependentUpon>AgregarProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Ventas\Devolucion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Ventas\Devolucion.Designer.cs">
+      <DependentUpon>Devolucion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Ventas\VentasAgregar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +177,7 @@
       <DependentUpon>VentasForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelo\DetalleProducto.cs" />
+    <Compile Include="Modelo\Devoluciones.cs" />
     <Compile Include="Modelo\Envios.cs" />
     <Compile Include="Modelo\EnviosVentas.cs" />
     <Compile Include="Modelo\Producto.cs" />
@@ -263,6 +275,9 @@
     <EmbeddedResource Include="Formularios\Clientes\ClienteTiendaRegistro.resx">
       <DependentUpon>ClienteTiendaRegistro.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Devolucion\DevolcionesForm.resx">
+      <DependentUpon>DevolcionesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Envios\AddEnvio.resx">
       <DependentUpon>AddEnvio.cs</DependentUpon>
     </EmbeddedResource>
@@ -307,6 +322,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Ventas\AgregarProducto.resx">
       <DependentUpon>AgregarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Ventas\Devolucion.resx">
+      <DependentUpon>Devolucion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Ventas\VentasAgregar.resx">
       <DependentUpon>VentasAgregar.cs</DependentUpon>

@@ -57,6 +57,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.btndevolucion = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -305,6 +306,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btndevolucion);
             this.groupBox4.Controls.Add(this.btnEditar);
             this.groupBox4.Controls.Add(this.btnEliminar);
             this.groupBox4.Controls.Add(this.btnAgregar);
@@ -456,6 +458,19 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // btndevolucion
+            // 
+            this.btndevolucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btndevolucion.Location = new System.Drawing.Point(109, 22);
+            this.btndevolucion.Name = "btndevolucion";
+            this.btndevolucion.Size = new System.Drawing.Size(91, 31);
+            this.btndevolucion.TabIndex = 3;
+            this.btndevolucion.Text = "Devolucion";
+            this.btndevolucion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btndevolucion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btndevolucion.UseVisualStyleBackColor = true;
+            this.btndevolucion.Click += new System.EventHandler(this.btndevolucion_Click);
+            // 
             // VentasAgregar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -521,5 +536,6 @@
         private System.Windows.Forms.TextBox comentariosTextBox;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btndevolucion;
     }
 }
