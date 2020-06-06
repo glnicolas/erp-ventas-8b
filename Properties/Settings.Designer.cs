@@ -37,8 +37,8 @@ namespace ERP_ventas.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=187.241.125.146;Initial Catalog=ERP2020;Persist Security Info=True;Us" +
-            "er ID=sa; Password=Hola.123")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=ERP2020;Persist Security Info=True;User ID=" +
+            "sa; Password=Hola.123")]
         public string cadenaConexion {
             get {
                 return ((string)(this["cadenaConexion"]));
@@ -50,7 +50,7 @@ namespace ERP_ventas.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("187.241.125.146")]
+        [global::System.Configuration.DefaultSettingValueAttribute("localhost")]
         public string nombreServidor {
             get {
                 return ((string)(this["nombreServidor"]));
